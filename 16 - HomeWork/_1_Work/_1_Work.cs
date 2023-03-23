@@ -35,7 +35,8 @@ namespace _1_Work
 
 
             _flag = boolNumberTrue();
-            if (_flag == true) { _lineResult = _lineResult + " положительно"; }
+            if (_flag == true) { _lineResult = _lineResult + " положительно"; } //Отлично, хорошо практикуешься в написании функций. А теперь нужно избавиться от половины из них
+                                                                                   // Так как boolNumberTrue например можно использовать и во втором примере, только заменить условие если _flag == false
 
             _flag = boolNumberFalse();
             if (_flag == true) { _lineResult = _lineResult + " отрицательное"; }
