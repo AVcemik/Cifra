@@ -28,12 +28,12 @@
 
                 string line = Console.ReadLine();
 
-                Int32.TryParse(line, out resultInt);
-                Single.TryParse(line, out resultFloat);
+                Int32.TryParse(line, out resultInt);    //постарайся избавиться от инта, флоат тоже может быть целым
+                Single.TryParse(line, out resultFloat); //а почему не флоат.ТрайПарс?
 
                 if (resultInt != 0 && resultInt > 0 || resultInt == 0 && resultFloat == 0)
                 {
-                    result = resultInt + " - Целое положительное число.";
+                    result = resultInt + " - Целое положительное число.";  
                 }
                 else if (resultInt != 0 && resultInt < 0)
                 {
@@ -59,7 +59,7 @@
             {
                 Console.WriteLine("Не удалось определить число! \n\nНажмите любую клавишу для завершения...");
                 Console.ReadKey();
-                Environment.Exit(0);
+                Environment.Exit(0);    //Прикольно, не знал такого )
             }
         }
     }
