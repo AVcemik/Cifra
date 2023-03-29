@@ -1,4 +1,6 @@
-﻿namespace _1_Work
+﻿using System.Numerics;
+
+namespace _1_Work
 {
     internal class _1_Work
     {
@@ -15,38 +17,17 @@
             {
                 Console.Clear();
                 PrintData();
-                string line = Console.ReadLine();
-                string lineDigital = "";
-                foreach(char i in line)
-                {
-                    if (Char.IsDigit(i))
-                    {
-                        lineDigital += i;
-                    }
-                }
-                if (line == "Exit" || line == "exit")
-                {
-                    break;
-                }
-                if (line == "Help" || line == "help" || line == "?")
-                {
-                    PrintHelp();
-                    continue;
-                }
-                if (line == "remove " + lineDigital || line == "Remove " + lineDigital)
-                {
-                    int lineInt = int.Parse(lineDigital);
-                    if (lineInt > _data.Count)
-                    {
-                        BadRemoveLine();
-                        continue;
-                    }
-                    _data.RemoveAt(lineInt - 1);
-                    continue;
-                }
-                AppendData(line);
+                string _line = Console.ReadLine();
+
+               
+                if (ExecuteCommand(_line, DigitalLine(_line)) == "break") break;
+                else if (ExecuteCommand(_line, DigitalLine(_line)) == "continue") continue;
+                else    AppendData(_line);
             }
+
             WriteDataToFile();
+
+            //------------------------------------------------------------------------------
 
             void AppendData(string data)
             {
@@ -75,6 +56,8 @@
                 Console.WriteLine();
                 Console.WriteLine("Help - Вызов справки");
                 Console.WriteLine("Remove - Удаляет строку (нужно указать номер строки) {Пример: Remove 3}");
+                Console.WriteLine("Uppercase - Все слова с заглавными буквами");
+                Console.WriteLine("Save - Сохранить файл");
                 Console.WriteLine("Exit - Завершение программы");
                 Console.WriteLine("\nНажмите любую клавишу для продожения...");
                 Console.ReadKey();
@@ -84,6 +67,46 @@
                 Console.Clear();
                 Console.WriteLine("Вы ввели неверный номер строки, \n\nНажмите любую клавишу для продолжения");
                 Console.ReadKey();
+            }
+            void UppercaseLine(string line, string lineDigital)
+            {
+                int lineInt = int.Parse(lineDigital);
+                if (lineInt > _data.Count)
+                {
+                    BadRemoveLine();
+                }
+                line.ToUpper();
+
+            }
+            void RemoveLine(string line, string lineDigital)
+            {
+                int lineInt = int.Parse(lineDigital);
+                if (lineInt > _data.Count)
+                {
+                    BadRemoveLine();
+                }
+                _data.RemoveAt(lineInt - 1);
+
+            }
+            string ExecuteCommand(string command, string lineDigital)
+            {
+                if (command.ToLower().Trim() == "exit") return "break";
+                if (command.ToLower().Trim() == "help" || command == "?") PrintHelp(); return "continue";
+                if (command.ToLower().Trim() == "uppercase") UppercaseLine(command, lineDigital) ;  return "continue";
+                if (command.ToLower().Trim() == "save") WriteDataToFile(); return "continue";
+                if (command.ToLower().Trim() == "remove " + lineDigital) RemoveLine(command, lineDigital); return "continue";
+            }
+            string DigitalLine(string line)
+            {
+                string lineDigital = "";
+                foreach (char i in line)
+                {
+                    if (Char.IsDigit(i))
+                    {
+                        lineDigital += i;
+                    }
+                }
+                return lineDigital;
             }
             void WriteDataToFile()
             {
