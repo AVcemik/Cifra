@@ -1,4 +1,7 @@
-﻿namespace _1_Work
+﻿using System.Numerics;
+using System.Reflection;
+
+namespace _1_Work
 {
     internal class _1_Work
     {
@@ -13,40 +16,18 @@
 
             while (true)
             {
+                ExecuteCommand("");
                 Console.Clear();
                 PrintData();
-                string line = Console.ReadLine();
-                string lineDigital = "";
-                foreach(char i in line)
-                {
-                    if (Char.IsDigit(i))
-                    {
-                        lineDigital += i;
-                    }
-                }
-                if (line == "Exit" || line == "exit")
-                {
-                    break;
-                }
-                if (line == "Help" || line == "help" || line == "?")
-                {
-                    PrintHelp();
-                    continue;
-                }
-                if (line == "remove " + lineDigital || line == "Remove " + lineDigital)
-                {
-                    int lineInt = int.Parse(lineDigital);
-                    if (lineInt > _data.Count)
-                    {
-                        BadRemoveLine();
-                        continue;
-                    }
-                    _data.RemoveAt(lineInt - 1);
-                    continue;
-                }
-                AppendData(line);
+                string _line = Console.ReadLine();
+
+
+                if (ExecuteCommand(_line) == true) continue;
+                AppendData(_line);
             }
             WriteDataToFile();
+
+            //----------------------------------------
 
             void AppendData(string data)
             {
@@ -59,6 +40,43 @@
                 _fullPath = Path.Combine(_directory, _fileName); // Path.Combine стваит сам слэш между путями Комбинировать путь
                 return File.ReadAllLines(_fullPath).ToList(); // Чтение файла и запись в string переменную
             }
+            void WriteDataToFile()
+            {
+                File.WriteAllLines(_fullPath, _data); // Запись string-данных в файл по пути
+                Console.WriteLine("");
+                Console.WriteLine("Файл сохранен");
+            }
+            string CheckDigital(string lineDigital)
+            {
+                string result = "";
+                foreach (char i in lineDigital)
+                {
+                    if (Char.IsDigit(i))
+                    {
+                        result += i;
+                    }
+                }
+                return result;
+            }
+
+
+            bool ExecuteCommand(string line)
+            {
+                string lineDigital = CheckDigital(line);
+                int lineDigitalInt = int.Parse(lineDigital);
+
+                if (line.ToLower().Trim() == "exit") ExitProgramm();
+                if (line.ToLower().Trim() == "help" || line.ToLower().Trim() == "?") { PrintHelp(); return true; }
+                if (line.ToLower().Trim() == "remove " + lineDigital)
+                {  
+                     if (lineDigitalInt > _data.Count) { BadRemoveLine(); return true; }
+                     _data.RemoveAt(lineDigitalInt - 1);
+                     return true;
+                }
+                return false;
+
+            }
+
             void PrintData()
             {
                 int lineCount = 2;
@@ -85,10 +103,12 @@
                 Console.WriteLine("Вы ввели неверный номер строки, \n\nНажмите любую клавишу для продолжения");
                 Console.ReadKey();
             }
-            void WriteDataToFile()
+            void ExitProgramm()
             {
-                File.WriteAllLines(_fullPath, _data); // Запись string-данных в файл по пути
-                Console.WriteLine("Файл сохранен");
+                WriteDataToFile();
+                Console.WriteLine("Нажмите любую клавишу для завершения...");
+                Console.ReadKey();
+                Environment.Exit(0);
             }
         }
     }
