@@ -25,7 +25,6 @@ namespace _1_Work
                 if (ExecuteCommand(_line) == true) continue;
                 AppendData(_line);
             }
-            WriteDataToFile();
 
             //----------------------------------------
 
@@ -46,9 +45,10 @@ namespace _1_Work
                 Console.WriteLine("");
                 Console.WriteLine("Файл сохранен");
             }
-            string CheckDigital(string lineDigital)
+            int CheckDigital(string lineDigital)
             {
                 string result = "";
+                int resultInt = 0;
                 foreach (char i in lineDigital)
                 {
                     if (Char.IsDigit(i))
@@ -56,18 +56,17 @@ namespace _1_Work
                         result += i;
                     }
                 }
-                return result;
+                if (result == "") return 0;
+                else resultInt = int.Parse(result); return resultInt;
             }
 
 
             bool ExecuteCommand(string line)
             {
-                string lineDigital = CheckDigital(line);
-                int lineDigitalInt = int.Parse(lineDigital);
-
+                int lineDigitalInt = CheckDigital(line);
                 if (line.ToLower().Trim() == "exit") ExitProgramm();
                 if (line.ToLower().Trim() == "help" || line.ToLower().Trim() == "?") { PrintHelp(); return true; }
-                if (line.ToLower().Trim() == "remove " + lineDigital)
+                if (line.ToLower().Trim() == "remove " + lineDigitalInt)
                 {  
                      if (lineDigitalInt > _data.Count) { BadRemoveLine(); return true; }
                      _data.RemoveAt(lineDigitalInt - 1);
@@ -103,6 +102,8 @@ namespace _1_Work
                 Console.WriteLine("Вы ввели неверный номер строки, \n\nНажмите любую клавишу для продолжения");
                 Console.ReadKey();
             }
+
+
             void ExitProgramm()
             {
                 WriteDataToFile();
