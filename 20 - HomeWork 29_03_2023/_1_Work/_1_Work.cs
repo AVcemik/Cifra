@@ -7,6 +7,7 @@ namespace _1_Work
     {
         static void Main(string[] args)
         {
+
             string _directory = "";
             string _fileName = "Data.txt";
             string _fullPath = "";
@@ -73,6 +74,17 @@ namespace _1_Work
                 }
                 return 0;
             }
+            bool CheckBadLine(List<string> data, int numLine)
+            {
+                if (numLine > data.Count || numLine <= 0) 
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Вы ввели неверный номер строки");
+                    ContinueProgramm();
+                    return true;
+                }
+                return false;
+            }
             void PrintData(List<string> data)
             {
                 int lineCount = 2;
@@ -83,24 +95,31 @@ namespace _1_Work
                 Console.WriteLine("----------------------");
             }
 
-
             bool ExecuteCommand(string line)
             {
+                bool result;
                 int lineDigitalInt = CheckDigital(line);
+                int lineInt = lineDigitalInt + 1;
                 line = line.ToLower().Trim();
 
-                if (line == "exit") ExitProgramm();
-                if (line == "save") { SaveProgramm(); return true; }
-                if (line == "help" || line.ToLower().Trim() == "?") { PrintHelp(); return true; }
-                if (line == "numline") { NumLine(_data); return true; }
-                if (line == "numberline") { NumberLine(_data); return true; }
-                if (line == "lenghtline " + (lineDigitalInt + 1)) { LenghtLine(_data, lineDigitalInt);return true; }
-                if (line == "editnumchar") {EditNumChar(_data); return true;}
-                if (line == "editline " + (lineDigitalInt + 1)) { EditLine(_data, lineDigitalInt); return true; }
-                if (line == "sumline") { SumLine(_data); return true; }
-                if (line == "remove " + (lineDigitalInt + 1)) { RemoveLine(_data, lineDigitalInt); return true; }
-                return false;
+                string[] commands = new[] { Const.exit, Const.save, Const.help, Const.help2, Const.numline, Const.numberline, Const.lenghtline + lineInt, 
+                                            Const.numchar + lineInt, Const.editnumchar, Const.editline + lineInt, Const.calcline, Const.remove + lineInt, ""};
 
+                if (line == Const.exit) ExitProgramm();
+                else if (line == Const.save) SaveProgramm();
+                else if (line == Const.help || line.ToLower().Trim() == Const.help2) PrintHelp();
+                else if (line == Const.numline) NumLine(_data);
+                else if (line == Const.numberline) NumberLine(_data);
+                else if (line == Const.lenghtline + lineInt) LenghtLine(_data, lineDigitalInt);
+                else if (line == Const.numchar + lineInt) NumChar(_data, lineDigitalInt);
+                else if (line == Const.editnumchar) EditNumChar(_data);
+                else if (line == Const.editline + lineInt) EditLine(_data, lineDigitalInt);
+                else if (line == Const.calcline) SumLine(_data);
+                else if (line == Const.remove + lineInt) RemoveLine(_data, lineDigitalInt);
+                else if (line == "") ;
+                else return false;
+
+                return commands.Contains(line);
             }
 
             void ExitProgramm()
@@ -113,18 +132,7 @@ namespace _1_Work
             void PrintHelp()
             {
                 Console.Clear();
-                Console.WriteLine("Список команд:");
-                Console.WriteLine();
-                Console.WriteLine("Help - Вызов справки");
-                Console.WriteLine("Save - сохранит ваш файл");
-                Console.WriteLine("NumLine - Показывает кол-во строк");
-                Console.WriteLine("NumberLine - Показывет кол-во строк в котрых есть числа");
-                Console.WriteLine("LengthLine - Показывает кол-во символов в строке (включая пробелы)");
-                Console.WriteLine("EditNumChar - Заменить выбранную букву на другую");
-                Console.WriteLine("EditLine - Заменить строку, новой строкой (Указав сразу номер строки) {Пример: EditLine 2}");
-                Console.WriteLine("CalcLine - Калькулятор строк (Результят записывается новой строкой) (Если числа в строке отсутствуют, то строка = 0)");
-                Console.WriteLine("Remove - Удаляет строку (Указав номер строки) {Пример: Remove 3}");
-                Console.WriteLine("Exit - Завершение программы");
+                Help.CommandHelp();
                 ContinueProgramm();
             }
             void SaveProgramm()
@@ -169,6 +177,19 @@ namespace _1_Work
                 }
                 Console.WriteLine("\nКол-во символов в строке: " + result);
                 ContinueProgramm();
+            }
+            void NumChar(List<string> data, int numLine)
+            {
+                if (CheckBadLine(data, numLine + 1) != true)
+                {
+                    Console.WriteLine("");
+
+                    for (int i = 0, j = 1; i < data[numLine].Length; i++, j++)
+                    {
+                        Console.WriteLine(j + "-" + data[numLine][i]);
+                    }
+                    ContinueProgramm();
+                }
             }
             void EditNumChar(List<string> data)
             {
@@ -281,8 +302,7 @@ namespace _1_Work
             }
             void RemoveLine(List<string> data, int numLine)
             {
-                if (numLine > data.Count || numLine < 0)  BadRemoveLine();
-                else data.RemoveAt(numLine);
+                if (CheckBadLine(data, numLine + 1) != true) data.RemoveAt(numLine);
             }
 
             void BadRemoveLine()
