@@ -17,7 +17,6 @@ namespace _1_Work
 
             while (true)
             {
-                ExecuteCommand("");
                 Console.Clear();
                 PrintData(_data);
                 string _line = Console.ReadLine();
