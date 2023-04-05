@@ -7,7 +7,7 @@ namespace _1_Work
     {
         static void Main(string[] args)
         {
-                //File.WriteAllText(_fullPath, "");
+                //File.WriteAllText(_fullPath, ""); создать заранее
                 //File.Create(_fileName);
             string _directory = "c:\\Docs";
             string _fileName = "Data.txt";
@@ -32,7 +32,7 @@ namespace _1_Work
 
             void CheckDir(string directory)
             {
-                if (Directory.Exists("c:\\Docs") != true)
+                if (!Directory.Exists("c:\\Docs"))
                 {
                     Directory.CreateDirectory(directory);
                 }
