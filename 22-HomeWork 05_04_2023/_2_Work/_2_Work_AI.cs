@@ -9,7 +9,7 @@ namespace _2_Work
         static void Main(string[] args)
         {
             Console.WriteLine("Введите выражение:");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().Trim();
             try
             {
                 double result = Calculate(input);
