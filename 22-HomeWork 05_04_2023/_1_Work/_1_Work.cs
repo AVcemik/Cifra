@@ -15,25 +15,46 @@ namespace _1_Work
             float value2 = 0;
             string oper = "";
             bool _success = true;
+            bool _success1 = true;
+            string _line;
+            float result = 0;
 
-            string _line = Console.ReadLine();
-            _line = _line.Replace(Operation.sum, " " + Operation.sum + " " || Operation);
+            _line = Console.ReadLine();
+            Operation.StringListOperators(ref _line);
 
             List<string> _items = GetItems(_line);
 
-            value1 = TryParse(_items[0], ref _success);
-            oper = _items[1].Trim();
-
-            value2 = TryParse(_items[2], ref _success);
-
-            if (_success == false)
+            int wer = 2 + 2 * 2;
+            for (int i = 0; i < _items.Count; i++)
             {
-                Console.WriteLine("ОШИБКА (Вы что то ввели не верно)");
+                float value = TryParse(_items[i], ref _success);
+                Operation.CheckOperators(_items[i], ref _success1);
+
+                if (_success == false)
+                {
+                    Console.WriteLine("ОШИБКА (Вы что то ввели не верно)");
+                }
+                if (_items[i] == Operation.sum.ToString())
+                {
+                    result = result ;
+                }
+                else if (_items[i] == Operation.difference.ToString())
+                {
+                    result -= value;
+                }
+                else if (_items[i] == Operation.multiply.ToString())
+                {
+                    result *= value;
+                }
+                else if (_items[i] == Operation.divide.ToString())
+                {
+                    result /= value;
+                }
             }
-            else
-            {
-                Console.WriteLine("Результат: "+Calculate());
-            }
+            //value1 = TryParse(_items[0], ref _success);
+            //oper = _items[1].Trim();
+            //value2 = TryParse(_items[2], ref _success);
+
 
             ContinueProgramm();
 

@@ -8,19 +8,43 @@ using System.Threading.Tasks;
 namespace _1_Work
 {
     public static class Operation
-    {
-        public static char sum = '+';
-        public static char multiply = '*';
-        public static char divide = '/';
-        public static char difference = '-';
+   {
+        public const char sum = '+';
+        public const char difference= '-';
+        public const char multiply= '*';
+        public const char divide = '/';
 
-        public static char[] opertors = {sum, difference, multiply, divide};
-
-        public static void StringListOperators(string line)
+        public static void StringListOperators(ref string line)
         {
-            switch (line)
+            foreach (char i in line) 
+            { 
+                switch (i)
+                {
+                    case sum:
+                        line = line.Replace("" + Operation.sum, " " + Operation.sum + " ");
+                        break;
+                    case difference:
+                        line = line.Replace("" + Operation.difference, " " + Operation.difference + " ");
+                        break;
+                    case multiply:
+                        line = line.Replace("" + Operation.multiply, " " + Operation.multiply + " ");
+                        break;
+                    case divide:
+                        line = line.Replace("" + Operation.divide, " " + Operation.divide + " ");
+                        break;
+                }
+            }
+        }
+        public static void CheckOperators(string line, ref bool success)
+        {
+            char result = ' ';
+            try
             {
-
+                result = Char.Parse(line);
+            }
+            catch
+            {
+                success = false;
             }
         }
     }
