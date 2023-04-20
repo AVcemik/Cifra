@@ -8,14 +8,25 @@
 // (Считать, что идет дождь, если температура воздуха выше 0 С.)
 
 
-double[] fallout = new double[30];
+double[,] fallout = new double[30,2];
 Random r = new Random();
 
-for (int i = 0; i < fallout.Length; i++)
+for (int i = 0; i < fallout.GetLength(0); i++)
 {
-    fallout[i] = r.NextDouble();
+    for (int j = 0; j < fallout.GetLength(1); j++)
+    {
+        fallout[i, j] = r.NextDouble() + r.Next(-10, 10);
+    }
 }
-foreach (int i in fallout) Console.Write($"{i:F2} ");
+
+for (int i = 0; i < fallout.GetLength(0); i++)
+{
+    for (int j = 0; j < fallout.GetLength(1); j++)
+    {
+        Console.Write($"{fallout[i,j]:F2} ");
+    }
+    Console.WriteLine($"");
+}
 
 
 
