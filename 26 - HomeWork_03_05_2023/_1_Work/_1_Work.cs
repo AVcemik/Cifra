@@ -22,10 +22,65 @@ namespace _1_Work
 
             Person[] _vuz = new Person[10];
 
-            InputVuzInfo(_vuz);
+            //InputVuzInfo(_vuz);
+            TestInputVuzInfo(_vuz); // Это заполненый массив для теста, что бы не заполнять в ручную
+            SortAll(_vuz);
             OutputVuzInfo(_vuz);
 
             ExitProgramm();
+
+            void TestInputVuzInfo(Person[] vuz)
+            {
+                vuz[0].name = "Иванов И.И.";
+                vuz[0].fac = "Програмирование";
+                vuz[0].group = 2211;
+                vuz[0].dateup = new DateTime(2000, 1, 1);
+
+                vuz[1].name = "Лубенец А.В.";
+                vuz[1].fac = "Програмирование";
+                vuz[1].group = 2211;
+                vuz[1].dateup = new DateTime(1987, 11, 6);
+
+                vuz[2].name = "Бедников В.В.";
+                vuz[2].fac = "Дизайнер";
+                vuz[2].group = 2212;
+                vuz[2].dateup = new DateTime(2022, 11, 1);
+
+                vuz[3].name = "Богатников С.Р.";
+                vuz[3].fac = "Дизайнер";
+                vuz[3].group = 2213;
+                vuz[3].dateup = new DateTime(1902, 5, 13);
+
+                vuz[4].name = "Беляшев П.А.";
+                vuz[4].fac = "zxc";
+                vuz[4].group = 123;
+                vuz[4].dateup = new DateTime(2000, 1, 13);
+
+                vuz[5].name = "asdfafg";
+                vuz[5].fac = "qwe";
+                vuz[5].group = 123;
+                vuz[5].dateup = new DateTime(1930, 3, 18);
+
+                vuz[6].name = "kfdg";
+                vuz[6].fac = "";
+                vuz[6].group = 123;
+                vuz[6].dateup = new DateTime(2002, 1, 6);
+
+                vuz[7].name = "sdgsfj";
+                vuz[7].fac = "zxc";
+                vuz[7].group = 123;
+                vuz[7].dateup = new DateTime(1987, 1, 26);
+
+                vuz[8].name = "kgdsfv";
+                vuz[8].fac = "qwe";
+                vuz[8].group = 123;
+                vuz[8].dateup = new DateTime(2022, 1, 9);
+
+                vuz[9].name = "zscglkj";
+                vuz[9].fac = "qwe";
+                vuz[9].group = 123;
+                vuz[9].dateup = new DateTime(2000, 1, 1);
+            }
 
             void InputVuzInfo(Person[] vuz)
             {
@@ -33,6 +88,7 @@ namespace _1_Work
                 {
                     vuz[i] = new Person();
 
+                    Console.WriteLine($"Студент №{i+1}");
                     Console.Write("Введите вашу фамилию и инициалы: ");
                     vuz[i].name = Console.ReadLine();
 
@@ -45,17 +101,35 @@ namespace _1_Work
                     int month = InputMonthUp();
                     int day = InputDayUp(year, month);
                     vuz[i].dateup = new DateTime(year, month, day);
+                    Console.Clear();
                 }
             }
             void OutputVuzInfo(Person[] vuz)
             {
                 for (int i = 0; i < vuz.Length; i++)
                 {
-                    Console.WriteLine(vuz[i].name);
-                    Console.WriteLine(vuz[i].fac);
-                    Console.WriteLine(vuz[i].group);
-                    Console.WriteLine(vuz[i].dateup.ToShortDateString());
+                    Console.WriteLine($"{vuz[i].name}\t\t| {vuz[i].fac}\t| {vuz[i].group}\t| {vuz[i].dateup.ToShortDateString()}");
                 }
+            }
+            Person[] SortAll(Person[] vuz)
+            {
+                for (int i = 0; i < vuz.Length; i++)
+                {
+                    bool swap = false;
+
+                    for (int j = 0; j < vuz.Length; j++)
+                    {
+                        if (vuz[i].dateup < vuz[j].dateup)
+                        {
+                            DateTime temp = vuz[i].dateup;
+                            vuz[i].dateup = vuz[j].dateup;
+                            vuz[j].dateup = temp;
+                            swap = true;
+                        }
+                    }
+                    if (!swap) break;
+                }
+                return vuz;
             }
         }
         public static int InputNumGroup()
@@ -132,10 +206,10 @@ namespace _1_Work
 
                 if (check == true)
                 {
-                    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && day > 0 || day <= 31) break;
-                    else if (month == 4 || month == 6 || month == 9 || month == 11 && day > 0 || day <= 30) break;
-                    else if (month == 2 && year %4 == 0 && day > 0 || day < 29) break;
-                    else if (month == 2 && year %4 != 0 && day > 0 || day < 28) break;
+                    if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && day > 0 && day <= 31) break;
+                    else if (month == 4 || month == 6 || month == 9 || month == 11 && day > 0 && day <= 30) break;
+                    else if (month == 2 && year %4 == 0 && day > 0 && day < 29) break;
+                    else if (month == 2 && year %4 != 0 && day > 0 && day < 28) break;
                     else Console.WriteLine("\nВ этом месяце нет столько дней!!!\n");
                 }
                 else Console.WriteLine("Вы ввели не число!!!");
