@@ -24,8 +24,8 @@ namespace _1_Work
 
             //InputVuzInfo(_vuz);
             TestInputVuzInfo(_vuz); // Это заполненый массив для теста, что бы не заполнять в ручную
-            SortAll(_vuz);
-            OutputVuzInfo(_vuz);
+            SortDate(_vuz);         // Сортировка по зачислению студентов в структуре
+            OutputVuzInfo(_vuz);    // Вывод информации о студентах
 
             ExitProgramm();
 
@@ -33,7 +33,7 @@ namespace _1_Work
             {
                 vuz[0].name = "Иванов И.И.";
                 vuz[0].fac = "Програмирование";
-                vuz[0].group = 2211;
+                vuz[0].group = 2212;
                 vuz[0].dateup = new DateTime(2000, 1, 1);
 
                 vuz[1].name = "Лубенец А.В.";
@@ -43,43 +43,43 @@ namespace _1_Work
 
                 vuz[2].name = "Бедников В.В.";
                 vuz[2].fac = "Дизайнер";
-                vuz[2].group = 2212;
+                vuz[2].group = 2213;
                 vuz[2].dateup = new DateTime(2022, 11, 1);
 
                 vuz[3].name = "Богатников С.Р.";
                 vuz[3].fac = "Дизайнер";
-                vuz[3].group = 2213;
+                vuz[3].group = 2211;
                 vuz[3].dateup = new DateTime(1902, 5, 13);
 
                 vuz[4].name = "Беляшев П.А.";
-                vuz[4].fac = "zxc";
-                vuz[4].group = 123;
+                vuz[4].fac = "Дизайнер";
+                vuz[4].group = 2212;
                 vuz[4].dateup = new DateTime(2000, 1, 13);
 
-                vuz[5].name = "asdfafg";
-                vuz[5].fac = "qwe";
-                vuz[5].group = 123;
+                vuz[5].name = "Березнякова Н.И.";
+                vuz[5].fac = "Програмирование";
+                vuz[5].group = 2213;
                 vuz[5].dateup = new DateTime(1930, 3, 18);
 
-                vuz[6].name = "kfdg";
-                vuz[6].fac = "";
-                vuz[6].group = 123;
+                vuz[6].name = "Иванов И.И.";
+                vuz[6].fac = "Програмирование";
+                vuz[6].group = 2211;
                 vuz[6].dateup = new DateTime(2002, 1, 6);
 
-                vuz[7].name = "sdgsfj";
-                vuz[7].fac = "zxc";
-                vuz[7].group = 123;
+                vuz[7].name = "Василиса Л.А.";
+                vuz[7].fac = "Дизайнер";
+                vuz[7].group = 2213;
                 vuz[7].dateup = new DateTime(1987, 1, 26);
 
-                vuz[8].name = "kgdsfv";
-                vuz[8].fac = "qwe";
-                vuz[8].group = 123;
+                vuz[8].name = "Бомжатников М.И.";
+                vuz[8].fac = "Дизайнер";
+                vuz[8].group = 2212;
                 vuz[8].dateup = new DateTime(2022, 1, 9);
 
-                vuz[9].name = "zscglkj";
-                vuz[9].fac = "qwe";
-                vuz[9].group = 123;
-                vuz[9].dateup = new DateTime(2000, 1, 1);
+                vuz[9].name = "Сноуден Э.Д.";
+                vuz[9].fac = "Програмирование";
+                vuz[9].group = 2211;
+                vuz[9].dateup = new DateTime(1983, 6, 21);
             }
 
             void InputVuzInfo(Person[] vuz)
@@ -106,32 +106,83 @@ namespace _1_Work
             }
             void OutputVuzInfo(Person[] vuz)
             {
+                // Сортировка по имени
                 for (int i = 0; i < vuz.Length; i++)
                 {
-                    Console.WriteLine($"{vuz[i].name}\t\t| {vuz[i].fac}\t| {vuz[i].group}\t| {vuz[i].dateup.ToShortDateString()}");
+                    for (int j = 0; j < vuz.Length; j++)
+                    {
+                        if (vuz[i].name[0] < vuz[j].name[0])
+                        {
+                            Person temp = vuz[i];
+                            vuz[i] = vuz[j];
+                            vuz[j] = temp;
+                        }
+                    }
                 }
-            }
-            Person[] SortAll(Person[] vuz)
-            {
+                // Сортировка по дате поступления
                 for (int i = 0; i < vuz.Length; i++)
                 {
-                    bool swap = false;
-
                     for (int j = 0; j < vuz.Length; j++)
                     {
                         if (vuz[i].dateup < vuz[j].dateup)
                         {
-                            DateTime temp = vuz[i].dateup;
-                            vuz[i].dateup = vuz[j].dateup;
-                            vuz[j].dateup = temp;
-                            swap = true;
+                            Person temp = vuz[i];
+                            vuz[i] = vuz[j];
+                            vuz[j] = temp;
                         }
                     }
-                    if (!swap) break;
+                }
+                // Сортировка по группам
+                for (int i = 0; i < vuz.Length; i++)
+                {
+                    for (int j = 0; j < vuz.Length; j++)
+                    {
+                        if (vuz[i].group < vuz[j].group)
+                        {
+                            Person temp = vuz[i];
+                            vuz[i] = vuz[j];
+                            vuz[j] = temp;
+                        }
+                    }
+                }
+                // Сортировка по факультетам
+                for (int i = 0; i < vuz.Length; i++)
+                {
+                    for (int j = 0; j < vuz.Length; j++)
+                    {
+                        if (vuz[i].fac[0] < vuz[j].fac[0])
+                        {
+                            Person temp = vuz[i];
+                            vuz[i] = vuz[j];
+                            vuz[j] = temp;
+                        }
+                    }
+                }
+                // вывод отсартированной структуры
+                for (int i = 0; i < vuz.Length; i++)
+                {
+                    Console.WriteLine($"{vuz[i].name.PadRight(20)}| {vuz[i].fac.PadRight(16)}| {vuz[i].group} | {vuz[i].dateup.ToShortDateString().PadRight(15)}");
+                }
+            }
+            Person[] SortDate(Person[] vuz)
+            {
+                for (int i = 0; i < vuz.Length; i++)
+                {
+                    for (int j = 0; j < vuz.Length; j++)
+                    {
+                        if (vuz[i].dateup < vuz[j].dateup)
+                        {
+                            Person temp = vuz[i];
+                            vuz[i] = vuz[j];
+                            vuz[j] = temp;
+                        }
+                    }
                 }
                 return vuz;
             }
         }
+
+
         public static int InputNumGroup()
         {
             int result = -1;
