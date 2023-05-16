@@ -3,7 +3,7 @@ using System;
 
 namespace _1_Work
 {
-    internal class _1_Work
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -23,7 +23,7 @@ namespace _1_Work
 
             Person[] _vuz = new Person[10];
 
-            //InputVuzInfo(_vuz);
+            //InputVuzInfo(_vuz);   // Это ручное заполнение как по условию задания...
             TestInputVuzInfo(_vuz); // Это заполненый массив для теста, что бы не заполнять в ручную
             SortDate(_vuz);         // Сортировка по зачислению студентов в структуре
             OutputVuzInfo(_vuz);    // Вывод информации о студентах
