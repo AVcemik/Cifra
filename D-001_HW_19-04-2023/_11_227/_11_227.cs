@@ -16,15 +16,4 @@ AddFunc.OutputMass(_fallout);
 
 Console.WriteLine($"\nКол-во снега: {_snow} \nКол-во дождя: {_rain}");
 
-
-
-
-
-
-
-
-
-
-
-
 AddFunc.Exit();
