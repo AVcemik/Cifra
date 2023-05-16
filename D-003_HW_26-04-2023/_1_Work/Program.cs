@@ -1,14 +1,12 @@
 ﻿namespace _1_Work
 {
-    internal class _1_Work
+    internal class Program
     {
         static void Main(string[] args)
         {
             // Лубенец - 12.109
             // Дан двумерный массив из пятнадцати строк и двух столбцов.
             // Найти номера двух соседних строк, сумма элементов в которых минимальна.
-
-            Random rnd = new Random();
 
             int _result = -1;
             int _x = 15;      // Размер массива 0
