@@ -1,10 +1,12 @@
 ﻿namespace _1_Work
 {
-    internal class Program
+    internal class _1_Work
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            // Лубенец Problems2 (166-29)
+
+
         }
     }
 }
