@@ -10,6 +10,7 @@ using System.Text;
 
 
 string nameFile = "File.txt";
+string nameFileNew = "newFile.txt";
 
 using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
 {
@@ -84,9 +85,12 @@ using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
                     break;
                 }
                 if (sb[j] == '\n') count++;
-
             }
         }
+    }
+    using (FileStream fswhrite = new FileStream(nameFileNew, FileMode.Create, FileAccess.Write))
+    {
+
     }
 
 }
