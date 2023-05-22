@@ -19,23 +19,25 @@ using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
     StringBuilder sb = new StringBuilder();
     string readText = Encoding.Default.GetString(buffer);
     sb.Append(readText);
+    StringBuilder sbnew = new StringBuilder();
+    StringBuilder result = new StringBuilder();
 
     for (int i = 0, line = 1; i < sb.Length; i++) // Задание а
     {
+        sbnew.Append(sb[i]);
         if (sb[i] == '\n')
         {
             line++;
             if (line == 5)
             {
-                sb.Append("------------\n");
-                break;
+                sbnew.AppendLine("------------");
             }
         }
     }
     int _line = 1;
-    for (int i = 0; i < sb.Length; i++)     // так я узнал кол-во строк в файле
+    for (int i = 0; i < sbnew.Length; i++)     // так я узнал кол-во строк в файле
     {
-        if (sb[i] == '\n')
+        if (sbnew[i] == '\n')
         {
             _line++;
         }
@@ -47,7 +49,7 @@ using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
     {
         for (int j = 0, count = 0; j < sb.Length; j++, count++)
         {
-            if (sb[i] == '\n')
+            if (sbnew[i] == '\n')
             {
                 _countLine[i] = count;
                 count = 0;
@@ -55,7 +57,7 @@ using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
         }
     }
 
-    for (int i = 0, j = 0, count = 0; i < sb.Length; i++)  // Так я узнал кол-во пробелов в каждой строке
+    for (int i = 0, j = 0, count = 0; i < sbnew.Length; i++)  // Так я узнал кол-во пробелов в каждой строке
     {           
         if (_countLine[j] == 1)
         {
@@ -63,34 +65,37 @@ using (FileStream fs = new FileStream(nameFile, FileMode.Open, FileAccess.Read))
             j++;
             continue;
         }
-        else if (sb.Length == '\n')
+        else if (sbnew.Length == '\n')
         {
             j++;
             continue;
         }
-        else if (sb.Length == ' ')
+        else if (sbnew.Length == ' ')
         {
             _probel[j] = _probel[j]++;
         }
     }
-    for (int i = _probel.Length; i >= 0; i--)
+    int _nLine = _probel.Length-1;
+    for (; _nLine >= 0; _nLine--)
     {
-        if (_probel[i] == 1)
+        if (_probel[_nLine] == 1)
         {
-            for (int j = 0, count = 0; j < sb.Length; j++)
+            for (int j = 0, count = 0; j < sbnew.Length; j++)
             {
+                result.Append(sbnew[j]);
                 if (count == _line)
                 {
-                    sb.Append("------------\n");
-                    break;
+                    result.Append("------------\n");
+                    continue;
                 }
-                if (sb[j] == '\n') count++;
+                if (sbnew[j] == '\n') count++;
             }
         }
     }
     using (FileStream fswhrite = new FileStream(nameFileNew, FileMode.Create, FileAccess.Write))
     {
-
+        byte[] bufferwr = Encoding.Default.GetBytes(sbnew.ToString());
+        await fswhrite.WriteAsync(bufferwr, 0, bufferwr.Length);
     }
 
 }
