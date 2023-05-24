@@ -52,9 +52,9 @@
             DateTime startTime = DateTime.Now.AddHours(delayedStartHour);
             DateTime endTime = startTime.AddMinutes(startMinute);
             Console.Clear();
-            Console.WriteLine($"Текущая дата и время {timeNow.ToShortDateString()} {timeNow.ToShortTimeString()}");
-            Console.WriteLine($"Начало мойки в: {startTime.ToShortDateString()} {startTime.ToShortTimeString()}");
-            Console.WriteLine($"Окончание мойки в: {endTime.ToShortDateString()} {endTime.ToShortTimeString()}");
+            Console.WriteLine($"Текущая дата и время: \t{timeNow.ToShortDateString()} {timeNow.ToShortTimeString()}");
+            Console.WriteLine($"Начало мойки в: \t{startTime.ToShortDateString()} {startTime.ToShortTimeString()}");
+            Console.WriteLine($"Окончание мойки в: \t{endTime.ToShortDateString()} {endTime.ToShortTimeString()}");
 
 
 
