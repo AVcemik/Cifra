@@ -21,7 +21,7 @@ for (int i = 0; i < mas.Length; i++)
 {
 	for (int j = 0; j < mas[i].Length; j++)
 	{
-		mas[i][j] = random.Next(10);
+		mas[i][j] = random.Next(10); 
 	}
 }
 
