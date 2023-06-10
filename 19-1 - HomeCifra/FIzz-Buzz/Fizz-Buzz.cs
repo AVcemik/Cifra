@@ -36,6 +36,17 @@ while (true)
     if (check == true) break;
 }
 
+int _count = 0;
+while (true)
+{
+    
+}
+
+void CheackResult(int count)
+{
+
+}
+
 
 
 
