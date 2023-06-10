@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_1_Task", "_1_Work\_1_Task.csproj", "{6A9676EF-8354-4E26-906B-83AA3348AA92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_1_Task", "_1_Task\_1_Task.csproj", "{6A9676EF-8354-4E26-906B-83AA3348AA92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_2_Task", "_2_Task\_2_Task.csproj", "{4C9D2521-30A4-4267-9CB7-2A352D7D261B}"
 EndProject
