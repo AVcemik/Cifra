@@ -142,7 +142,7 @@ int Result(bool[] player)
     int result = -1;
     for (int i = 0; i < player.Length; i++)
     {
-        if (player[i] = true)
+        if (player[i] == true)
         {
             result = i;
             break;
