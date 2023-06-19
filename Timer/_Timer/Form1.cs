@@ -133,7 +133,7 @@ namespace _Timer
             strM = "00";
             strS = "00";
             lbTimer.Text = "00:00";
-            timer1.Interval = 300;
+            timer1.Interval = 1000;
         }
     }
 }
