@@ -28,89 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tbMinutes = new System.Windows.Forms.TextBox();
-            this.lbTimer = new System.Windows.Forms.Label();
-            this.tbSecundes = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btSetup = new System.Windows.Forms.Button();
-            this.btStart = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            components=new System.ComponentModel.Container();
+            timer1=new System.Windows.Forms.Timer(components);
+            tbMinutes=new TextBox();
+            lbTimer=new Label();
+            tbSecundes=new TextBox();
+            label1=new Label();
+            btSetup=new Button();
+            btStart=new Button();
+            SuspendLayout();
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Tick+=timer1_Tick;
             // 
             // tbMinutes
             // 
-            this.tbMinutes.Location = new System.Drawing.Point(240, 47);
-            this.tbMinutes.Name = "tbMinutes";
-            this.tbMinutes.Size = new System.Drawing.Size(103, 31);
-            this.tbMinutes.TabIndex = 0;
-            this.tbMinutes.Text = "Минуты";
+            tbMinutes.Location=new Point(240, 47);
+            tbMinutes.Name="tbMinutes";
+            tbMinutes.Size=new Size(103, 31);
+            tbMinutes.TabIndex=0;
+            tbMinutes.Text="Минуты";
             // 
             // lbTimer
             // 
-            this.lbTimer.Location = new System.Drawing.Point(12, 9);
-            this.lbTimer.Name = "lbTimer";
-            this.lbTimer.Size = new System.Drawing.Size(210, 69);
-            this.lbTimer.TabIndex = 1;
+            lbTimer.Location=new Point(12, 9);
+            lbTimer.Name="lbTimer";
+            lbTimer.Size=new Size(210, 69);
+            lbTimer.TabIndex=1;
             // 
             // tbSecundes
             // 
-            this.tbSecundes.Location = new System.Drawing.Point(347, 47);
-            this.tbSecundes.Name = "tbSecundes";
-            this.tbSecundes.Size = new System.Drawing.Size(103, 31);
-            this.tbSecundes.TabIndex = 2;
-            this.tbSecundes.Text = "Секунды";
+            tbSecundes.Location=new Point(347, 47);
+            tbSecundes.Name="tbSecundes";
+            tbSecundes.Size=new Size(103, 31);
+            tbSecundes.TabIndex=2;
+            tbSecundes.Text="Секунды";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(240, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Введите время";
+            label1.Location=new Point(240, 9);
+            label1.Name="label1";
+            label1.Size=new Size(210, 23);
+            label1.TabIndex=3;
+            label1.Text="Введите время";
             // 
             // btSetup
             // 
-            this.btSetup.Location = new System.Drawing.Point(240, 84);
-            this.btSetup.Name = "btSetup";
-            this.btSetup.Size = new System.Drawing.Size(210, 47);
-            this.btSetup.TabIndex = 4;
-            this.btSetup.Text = "Установить";
-            this.btSetup.UseVisualStyleBackColor = true;
-            this.btSetup.Click += new System.EventHandler(this.btSetup_Click);
+            btSetup.Location=new Point(240, 84);
+            btSetup.Name="btSetup";
+            btSetup.Size=new Size(210, 47);
+            btSetup.TabIndex=4;
+            btSetup.Text="Установить";
+            btSetup.UseVisualStyleBackColor=true;
+            btSetup.Click+=btSetup_Click;
             // 
             // btStart
             // 
-            this.btStart.Location = new System.Drawing.Point(12, 84);
-            this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(210, 47);
-            this.btStart.TabIndex = 5;
-            this.btStart.Text = "Старт";
-            this.btStart.UseVisualStyleBackColor = true;
-            this.btStart.Click += new System.EventHandler(this.btStart_Click);
+            btStart.Location=new Point(12, 84);
+            btStart.Name="btStart";
+            btStart.Size=new Size(210, 47);
+            btStart.TabIndex=5;
+            btStart.Text="Старт";
+            btStart.UseVisualStyleBackColor=true;
+            btStart.Click+=btStart_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 145);
-            this.Controls.Add(this.btStart);
-            this.Controls.Add(this.btSetup);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbSecundes);
-            this.Controls.Add(this.lbTimer);
-            this.Controls.Add(this.tbMinutes);
-            this.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
-            this.Text = "Таймер";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions=new SizeF(9F, 23F);
+            AutoScaleMode=AutoScaleMode.Font;
+            ClientSize=new Size(466, 145);
+            Controls.Add(btStart);
+            Controls.Add(btSetup);
+            Controls.Add(label1);
+            Controls.Add(tbSecundes);
+            Controls.Add(lbTimer);
+            Controls.Add(tbMinutes);
+            Font=new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin=new Padding(4, 5, 4, 5);
+            Name="Form1";
+            Text="Таймер";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

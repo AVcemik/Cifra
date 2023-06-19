@@ -4,30 +4,46 @@ namespace _Timer
     {
         int m, s;
         string strM, strS;
+        bool check = false;
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string res = string.Empty;
-            s--;
-            if (s == 0)
+            if (check == true)
             {
-                m--;
-                s = 59;
+                if (s < 10) strS = "0" + s;
+                else strS = "" + s;
+                if (m < 10) strM = "0" + m;
+                else strM = "" + m;
+
+                if (s == 0)
+                {
+                    if (m == 0 & s==0)
+                    {
+                        timer1.Enabled = false;
+                        btStart.Enabled = true;
+                        btStart.Text = "Старт";
+                        btSetup.Enabled = true;
+                    }
+                    else
+                    {
+                        m--;
+                        s = 59;
+                    }
+                }
             }
-            if (m == 0 & s==0)
+            if (check == false)
             {
-                timer1.Stop();
+                timer1.Enabled = false;
                 btStart.Enabled = true;
-                btStart.Text = "Пуск";
+                btStart.Text = "Старт";
                 btSetup.Enabled = true;
             }
-
-
-            lbTimer.Text = m +":" + s;
+            s--;
+            lbTimer.Text = strM +":" + strS;
         }
         private void tbMinutes_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= 0 && e.KeyChar <= 9) return;
+            if (e.KeyChar >= '0' && e.KeyChar <= '9') return;
             if (Char.IsControl(e.KeyChar))
             {
                 if (e.KeyChar == (char)Keys.Enter) tbSecundes.Focus();
@@ -38,7 +54,7 @@ namespace _Timer
         }
         private void tbSeconds_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= 0 && e.KeyChar <= 9) return;
+            if (e.KeyChar >= '0' && e.KeyChar <= '9') return;
             if (Char.IsControl(e.KeyChar))
             {
                 if (e.KeyChar == (char)Keys.Enter) btSetup.Focus();
@@ -50,27 +66,61 @@ namespace _Timer
 
         private void btSetup_Click(object sender, EventArgs e)
         {
-            if (tbMinutes.Text == "Минуты" || tbMinutes.Text == "") m = 0;
-            else m = int.Parse(tbMinutes.Text);
+            if (tbMinutes.Text == "Минуты" || tbMinutes.Text == "")
+            {
+                m = 0;
+                strM = "0" + m;
+            }
+            else
+            {
+                try
+                {
+                    m = int.Parse(tbMinutes.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Неверный формат минут");
+                }
+                if (m < 10) strM = "0" + m;
+                else strM = "" + m;
+            }
 
-            if (tbSecundes.Text == "Секунды" || tbSecundes.Text == "") s = 0;
-            else s = int.Parse(tbSecundes.Text)
-;
-            lbTimer.Text = $"{m}:{s}";
+            if (tbSecundes.Text == "Секунды" || tbSecundes.Text == "")
+            {
+                s = 0;
+                strS = "0" + s;
+            }
+            else
+            {
+                try
+                {
+                    s = int.Parse(tbSecundes.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Неверный формат секунд");
+                }
+                if (s < 10) strM = "0" + s;
+                else strS = "" + s;
+            }
+            check = true;
+
+            if (m == 0 && s == 0) check = false;
+            lbTimer.Text = $"{strM}:{strS}";
         }
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            
-            if (timer1.Enabled)
+
+            if (timer1.Enabled == false)
             {
-                timer1.Enabled = false;
+                timer1.Enabled = true;
                 btStart.Text = "Пауза";
                 btSetup.Enabled = false;
             }
             else
             {
-                timer1.Enabled = true;
+                timer1.Enabled = false;
                 btStart.Text = "Старт";
                 btSetup.Enabled = true;
             }
