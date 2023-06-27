@@ -118,6 +118,7 @@
             btApply.TabIndex=4;
             btApply.Text="Принять";
             btApply.UseVisualStyleBackColor=true;
+            btApply.Click+=btApply_Click;
             // 
             // Main
             // 

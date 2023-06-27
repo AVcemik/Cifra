@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             tbAnswer=new TextBox();
-            cbYesNo=new CheckBox();
             btRemove=new Button();
+            cbYesNo=new CheckBox();
             SuspendLayout();
             // 
             // tbAnswer
@@ -39,16 +39,6 @@
             tbAnswer.Name="tbAnswer";
             tbAnswer.Size=new Size(396, 31);
             tbAnswer.TabIndex=0;
-            // 
-            // cbYesNo
-            // 
-            cbYesNo.AutoSize=true;
-            cbYesNo.Location=new Point(405, 4);
-            cbYesNo.Name="cbYesNo";
-            cbYesNo.Size=new Size(123, 29);
-            cbYesNo.TabIndex=1;
-            cbYesNo.Text="Правильно";
-            cbYesNo.UseVisualStyleBackColor=true;
             // 
             // btRemove
             // 
@@ -60,12 +50,22 @@
             btRemove.UseVisualStyleBackColor=true;
             btRemove.Click+=btRemove_Click;
             // 
+            // cbYesNo
+            // 
+            cbYesNo.AutoSize=true;
+            cbYesNo.Location=new Point(405, 4);
+            cbYesNo.Name="cbYesNo";
+            cbYesNo.Size=new Size(123, 29);
+            cbYesNo.TabIndex=3;
+            cbYesNo.Text="Правильно";
+            cbYesNo.UseVisualStyleBackColor=true;
+            // 
             // AnswerControl
             // 
             AutoScaleDimensions=new SizeF(9F, 23F);
             AutoScaleMode=AutoScaleMode.Font;
-            Controls.Add(btRemove);
             Controls.Add(cbYesNo);
+            Controls.Add(btRemove);
             Controls.Add(tbAnswer);
             Font=new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             Margin=new Padding(4, 5, 4, 5);
@@ -78,7 +78,7 @@
         #endregion
 
         public TextBox tbAnswer;
-        public CheckBox cbYesNo;
         public Button btRemove;
+        public CheckBox cbYesNo;
     }
 }
