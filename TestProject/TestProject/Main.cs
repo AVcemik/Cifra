@@ -5,6 +5,7 @@ namespace FAQ
 {
     public partial class Main : Form
     {
+        private int count;
         private int result = 0;
         private int badResult = 0;
         private List<bool> checkApply;
@@ -63,6 +64,7 @@ namespace FAQ
                     if (questions.Count > 1) btNext.Enabled = true;
                     if (checkApply[currentQuestion] == true) btApply.Enabled = false;
                     else btApply.Enabled = true;
+                    count = questions.Count;
                 }
             }
         }
@@ -119,13 +121,39 @@ namespace FAQ
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            CheckBox cb = (CheckBox)sender;
-            checkApply[currentQuestion] = true;
-            for(int i = 0;; i++)
-            {
-                
-            }
+            count--;
+            GroupBox currentGroupBox = (GroupBox)plQuestion.Controls[0];
+            int selectedAnswers = 0;
+            int correctAnswers = 0;
 
+            foreach (Control control in currentGroupBox.Controls)
+            {
+                if (control is CheckBox cb && cb.Checked)
+                {
+                    selectedAnswers++;
+
+                    foreach (Answer answer in questions[currentQuestion].answers)
+                    {
+                        if (cb.Text == answer.answer)
+                        {
+                            if (answer.yesno)
+                            {
+                                correctAnswers++;
+                            }
+                            else
+                            {
+                                badResult++;
+                            }
+                        }
+                    }
+                }
+            }
+            result += correctAnswers;
+
+            checkApply[currentQuestion] = true;
+            btApply.Enabled = false;
+
+            if (count == 0) MessageBox.Show($"Правильных ответов: {result}\nНе правильных ответов: {badResult}");
 
         }
     }
