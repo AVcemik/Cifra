@@ -21,6 +21,7 @@ triang.setC(double.Parse(Console.ReadLine()!));
 
 
 Console.WriteLine();
-Console.WriteLine($"Сторона А: {triang.getA()} Сторона В: {triang.getB()} Сторона С: {triang.getC()}");
 Console.WriteLine($"Площадь: {triang.getArea():F2}");
 Console.WriteLine($"Периметр: {triang.getPerimetr():F2}");
+Console.WriteLine($"точка пересечения медиан: {triang.getMedianPoint(0):F2}, {triang.getMedianPoint(1):F2}");
+triang.getState();

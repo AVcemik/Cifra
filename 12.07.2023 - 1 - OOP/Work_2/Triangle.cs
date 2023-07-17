@@ -16,7 +16,6 @@ namespace Work_2
         {
             return a;
         }
-
         public double getB()
         {
             return b;
@@ -49,9 +48,16 @@ namespace Work_2
             if (a != 0 && b != 0 && c != 0) return a + b +c;
             return 0;
         }
-        public double getMedian()
+        public double getMedianPoint(byte point)
         {
-
+            double[] medianaPoint = new double[2];
+            medianaPoint[0] = (double)(a * a + c * c - b * b) / (2 * a);
+            medianaPoint[1] = (double)Math.Sqrt(b * b - (medianaPoint[0] - a) * (medianaPoint[0] - a));
+            return medianaPoint[point];
+        }
+        public string getState()
+        {
+            return $"Треугольник со сторонами: a: {a}, b: {b}, c: {c}";
         }
     }
 }
