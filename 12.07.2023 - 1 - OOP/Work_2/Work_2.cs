@@ -9,15 +9,8 @@ using Work_2;
 
 
 Triangle triang = new Triangle();
-
-Console.Write("Введите сторону А: ");
-triang.setA(double.Parse(Console.ReadLine()!));
-
-Console.Write("Введите сторону В: ");
-triang.setB(double.Parse(Console.ReadLine()!));
-
-Console.Write("Введите сторону С: ");
-triang.setC(double.Parse(Console.ReadLine()!));
+Console.WriteLine("Создаем треугольник");
+Console.WriteLine();
 
 
 Console.WriteLine();

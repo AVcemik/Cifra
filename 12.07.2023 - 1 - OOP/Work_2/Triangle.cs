@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,13 @@ namespace Work_2
         private double a;
         private double b;
         private double c;
+        private double xa;
+        private double xb;
+        private double xc;
+        private double ya;
+        private double yb;
+        private double yc;
+
 
         public double getA()
         {
@@ -58,6 +66,42 @@ namespace Work_2
         public string getState()
         {
             return $"Треугольник со сторонами: a: {a}, b: {b}, c: {c}";
+        }
+        public void InputData()
+        {
+
+            Console.WriteLine("Выберите вариант ввода данных\n1 - Длины сторон\n2 - Координаты точек");
+            if (byte.Parse(Console.ReadLine()!) == 1)
+            {
+                Console.Write("Введите сторону А: ");
+                setA(double.Parse(Console.ReadLine()!));
+
+                Console.Write("Введите сторону В: ");
+                setB(double.Parse(Console.ReadLine()!));
+
+                Console.Write("Введите сторону С: ");
+                setC(double.Parse(Console.ReadLine()!));
+            }
+            else if (byte.Parse(Console.ReadLine()!) == 2)
+            {
+                Console.Write("Введите координату х1: ");
+                xa = double.Parse(Console.ReadLine());
+
+                Console.Write("Введите координату y1: ");
+                ya = double.Parse(Console.ReadLine());
+
+                Console.Write("Введите координату х2: ");
+                xb = double.Parse(Console.ReadLine());
+
+                Console.Write("Введите координату y2: ");
+                yb = double.Parse(Console.ReadLine());
+
+                Console.Write("Введите координату х3: ");
+                xc = double.Parse(Console.ReadLine());
+
+                Console.Write("Введите координату y3: ");
+                yc = double.Parse(Console.ReadLine());
+            }
         }
     }
 }
