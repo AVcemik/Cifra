@@ -117,7 +117,7 @@ namespace Work_2
                 return $"{(SideXa + SideXb + SideXc) / 3},{(SideYa + SideYb + SideYc) / 3}";
             }
             else return "Неизвестная ошибка упс :(";
-        }
+        } 
         public string getStateABC()
         {
             return $"Стороны AB - {SideAb}, BC - {SideBc}, CA - {SideCa}";
