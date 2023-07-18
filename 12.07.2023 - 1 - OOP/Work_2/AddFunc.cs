@@ -55,9 +55,33 @@ namespace Work_2
         {
             Console.WriteLine("Создаем треугольник");
         }
-        public void CreateTriangle2()
+        public void Area()
         {
-            Console.WriteLine($"Площадь: {triangle.getArea():F2}");
+            Triangle t = new (X1, X2, X3);
+            Console.WriteLine($"Площадь: {t.getArea():F2}");
+        }
+        public void Perimetr()
+        {
+            Triangle t = new (X1, X2, X3);
+            Console.WriteLine($"Периметр: {t.getPerimetr():F2}");
+        }
+        public void Mediana()
+        {
+            Triangle t = new (X1, Y1, X2, Y2, X3, Y3);
+            Console.WriteLine($"Пересечение медиан: {t.getMedianPoint(Count):F2}");
+        }
+        public void StatsTriangle()
+        {
+            if (Count == 1)
+            {
+                Triangle t = new (X1, X2, X3);
+                Console.WriteLine(t.getStateABC());
+            }
+            else if (Count == 2)
+            {
+                Triangle t = new (X1, Y1, X2, Y2, X3, Y3);
+                Console.WriteLine(t.getStatePointABC());
+            }
         }
         public void InputData()
         {
@@ -76,7 +100,6 @@ namespace Work_2
 
                     Console.Write("Введите сторону С: ");
                     X3 = double.Parse(Console.ReadLine()!);
-                    Triangle triangle = new Triangle(X1, X2, X3);
                     break;
                 }
                 else if (Count == 2)
@@ -98,7 +121,6 @@ namespace Work_2
 
                     Console.Write("Введите координату y3: ");
                     Y3 = double.Parse(Console.ReadLine()!);
-                    Triangle triangle = new Triangle(X1, Y1, X2, Y2, X3, Y3);
                     break;
                 }
                 else

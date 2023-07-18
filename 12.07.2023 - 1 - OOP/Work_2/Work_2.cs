@@ -7,12 +7,13 @@ using Work_2;
 // периметра и точки пересечения медиан. Описать методы для
 // получения состояния объекта.
 
-AddFunc addFunc = new AddFunc();
+AddFunc addFunc = new ();
 
 addFunc.CreateTriangle();
+addFunc.InputData();
 Console.WriteLine();
 
-Console.WriteLine($"Площадь: {triang.getArea():F2}");
-Console.WriteLine($"Периметр: {triang.getPerimetr():F2}");
-Console.WriteLine($"точка пересечения медиан: {triang.getMedianPoint(0):F2}, {triang.getMedianPoint(1):F2}");
-triang.getState();
+addFunc.Area();
+addFunc.Perimetr();
+addFunc.Mediana();
+addFunc.StatsTriangle();

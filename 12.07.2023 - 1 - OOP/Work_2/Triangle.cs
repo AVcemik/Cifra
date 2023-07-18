@@ -90,6 +90,11 @@ namespace Work_2
             get => tempResult;
             set => tempResult = value;
         }
+        public byte Count
+        {
+            get => count;
+            set => count = value;
+        }
 
         public double getArea()
         {
@@ -101,11 +106,11 @@ namespace Work_2
             if (SideAb != 0 && SideBc != 0 && SideCa != 0) return SideAb + SideBc + SideCa;
             return 0;
         }
-        public string getMedianPoint()
+        public string getMedianPoint(byte count)
         {
             if (count == 1)
             {
-                return "Неизвестно (Невозможно посчитать без координат)";
+                return "Недостаточно данных";
             }
             else if (count == 2)
             {
@@ -113,9 +118,13 @@ namespace Work_2
             }
             else return "Неизвестная ошибка упс :(";
         }
-        public string getState()
+        public string getStateABC()
         {
-            return $"Треугольник со сторонами: a: {SideAb}, b: {SideBc}, c: {SideCa}";
+            return $"Стороны AB - {SideAb}, BC - {SideBc}, CA - {SideCa}";
+        }
+        public string getStatePointABC()
+        {
+            return $"Стороны AB - {SideAb}, BC - {SideBc}, CA - {SideCa}\nКоординаты вершин: A{SideXa}-{SideYa}, B{SideXb}-{SideYb}, C{SideXc}-{SideYc}";
         }
         
     }
