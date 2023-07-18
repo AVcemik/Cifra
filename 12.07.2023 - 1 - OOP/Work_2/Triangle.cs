@@ -9,9 +9,11 @@ namespace Work_2
 {
     internal class Triangle
     {
-        private double a;
-        private double b;
-        private double c;
+        private double tempResult;
+        private byte count;
+        private double ab;
+        private double bc;
+        private double ca;
         private double xa;
         private double xb;
         private double xc;
@@ -19,89 +21,102 @@ namespace Work_2
         private double yb;
         private double yc;
 
+        public Triangle(double ab, double bc, double ca)
+        {
+            this.ab = ab; 
+            this.bc = bc; 
+            this.ca = ca;
+        }
+        public Triangle(double xa, double ya, double xb, double yb, double xc, double yc)
+        {
+            this.xa = xa;
+            this.ya = ya;
+            this.xb = xb;
+            this.yb = yb;
+            this.xc = xc;
+            this.yc = yc;
+            this.ab = Math.Sqrt(Math.Pow(xb - xa, 2) + Math.Pow(yb - ya, 2));
 
-        public double getA()
-        {
-            return a;
-        }
-        public double getB()
-        {
-            return b;
         }
 
-        public double getC()
+        public double SideAb
         {
-            return c;
+            get => ab; 
+            set => ab = value;
+        }
+        public double SideBc
+        {
+            get => bc;
+            set => bc = value;
         }
 
-        public void setA(double ab)
+        public double SideCa
         {
-            if (ab > 0) a = ab;
+            get => ca;
+            set => ca = value;
         }
-        public void setB(double bc)
+        public double SideXa
         {
-            if (bc > 0) b = bc;
+            get => xa;
+            set => xa = value;
         }
-        public void setC(double ca)
+        public double SideYa
         {
-            if (ca > 0) c = ca;
+            get => ya;
+            set => ya = value;
         }
+        public double SideXb
+        {
+            get => xb;
+            set => xb = value;
+        }
+        public double SideYb
+        {
+            get => yb;
+            set => yb = value;
+        }
+        public double SideXc
+        {
+            get => xc;
+            set => xc = value;
+        }
+        public double SideYc
+        {
+            get => yc;
+            set => yc = value;
+        }
+        public double TempResult
+        {
+            get => tempResult;
+            set => tempResult = value;
+        }
+
         public double getArea()
         {
-            double s = (a + b + c) / 2;
-            return Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+            TempResult = (SideAb + SideBc + SideCa) / 2;
+            return Math.Sqrt(TempResult * (TempResult - SideAb) * (TempResult - SideBc) * (TempResult - SideCa));
         }
         public double getPerimetr()
         {
-            if (a != 0 && b != 0 && c != 0) return a + b +c;
+            if (SideAb != 0 && SideBc != 0 && SideCa != 0) return SideAb + SideBc + SideCa;
             return 0;
         }
-        public double getMedianPoint(byte point)
+        public string getMedianPoint()
         {
-            double[] medianaPoint = new double[2];
-            medianaPoint[0] = (double)(a * a + c * c - b * b) / (2 * a);
-            medianaPoint[1] = (double)Math.Sqrt(b * b - (medianaPoint[0] - a) * (medianaPoint[0] - a));
-            return medianaPoint[point];
+            if (count == 1)
+            {
+                return "Неизвестно (Невозможно посчитать без координат)";
+            }
+            else if (count == 2)
+            {
+                return $"{(SideXa + SideXb + SideXc) / 3},{(SideYa + SideYb + SideYc) / 3}";
+            }
+            else return "Неизвестная ошибка упс :(";
         }
         public string getState()
         {
-            return $"Треугольник со сторонами: a: {a}, b: {b}, c: {c}";
+            return $"Треугольник со сторонами: a: {SideAb}, b: {SideBc}, c: {SideCa}";
         }
-        public void InputData()
-        {
-
-            Console.WriteLine("Выберите вариант ввода данных\n1 - Длины сторон\n2 - Координаты точек");
-            if (byte.Parse(Console.ReadLine()!) == 1)
-            {
-                Console.Write("Введите сторону А: ");
-                setA(double.Parse(Console.ReadLine()!));
-
-                Console.Write("Введите сторону В: ");
-                setB(double.Parse(Console.ReadLine()!));
-
-                Console.Write("Введите сторону С: ");
-                setC(double.Parse(Console.ReadLine()!));
-            }
-            else if (byte.Parse(Console.ReadLine()!) == 2)
-            {
-                Console.Write("Введите координату х1: ");
-                xa = double.Parse(Console.ReadLine());
-
-                Console.Write("Введите координату y1: ");
-                ya = double.Parse(Console.ReadLine());
-
-                Console.Write("Введите координату х2: ");
-                xb = double.Parse(Console.ReadLine());
-
-                Console.Write("Введите координату y2: ");
-                yb = double.Parse(Console.ReadLine());
-
-                Console.Write("Введите координату х3: ");
-                xc = double.Parse(Console.ReadLine());
-
-                Console.Write("Введите координату y3: ");
-                yc = double.Parse(Console.ReadLine());
-            }
-        }
+        
     }
 }
