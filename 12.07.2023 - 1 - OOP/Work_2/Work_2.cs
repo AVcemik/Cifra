@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using Work_2;
+﻿using Work_2;
 // Домашняя работа (Work_1, Work_2)
 
 // 2.	Описать класс, представляющий треугольник.

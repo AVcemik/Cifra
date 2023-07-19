@@ -20,7 +20,10 @@ namespace Work_2
         private double ya;
         private double yb;
         private double yc;
+        public Triangle()
+        {
 
+        }
         public Triangle(double ab, double bc, double ca)
         {
             this.ab = ab; 
@@ -36,6 +39,8 @@ namespace Work_2
             this.xc = xc;
             this.yc = yc;
             this.ab = Math.Sqrt(Math.Pow(xb - xa, 2) + Math.Pow(yb - ya, 2));
+            this.bc = Math.Sqrt(Math.Pow(xc - xb, 2) + Math.Pow(yc - yb, 2));
+            this.ca = Math.Sqrt(Math.Pow(xa - xc, 2) + Math.Pow(ya - yc, 2));
 
         }
 
@@ -124,7 +129,13 @@ namespace Work_2
         }
         public string getStatePointABC()
         {
-            return $"Стороны AB - {SideAb}, BC - {SideBc}, CA - {SideCa}\nКоординаты вершин: A{SideXa}-{SideYa}, B{SideXb}-{SideYb}, C{SideXc}-{SideYc}";
+            return $"Стороны AB - {SideAb}, BC - {SideBc}, CA - {SideCa}\nКоординаты вершин: A({SideXa}-{SideYa}), B({SideXb}-{SideYb}), C({SideXc}-{SideYc})";
+        }
+        public void getSideABC()
+        {
+            SideAb = Math.Sqrt(Math.Pow(SideXb - SideXa, 2) + Math.Pow(SideYb - SideYa, 2));
+            SideBc = Math.Sqrt(Math.Pow(SideXc - SideXb, 2) + Math.Pow(SideYc - SideYb, 2));
+            SideCa = Math.Sqrt(Math.Pow(SideXa - SideXc, 2) + Math.Pow(SideYa - SideYc, 2));
         }
         
     }
