@@ -10,9 +10,9 @@ HomeLibery libery = new HomeLibery();
 MenuClass m = new MenuClass();
 
 //Наполнение, что бы что нибудь было
-libery.AddBook(new Book("Люди как боги", "Сергей Снегов", 1966));
-libery.AddBook(new Book("Пеппи Длинныйчулок", "Астрид Линдгрен", 1945));
-libery.AddBook(new Book("Гарри Поттер и филосовский камень", "Джоан Роулинг", 1997));
+libery.AddBook(new Book("Книга 1", "Иванов Иванович", 2000));
+libery.AddBook(new Book("Букварь", "Леонид Царский", 2000));
+libery.AddBook(new Book("Книга 2", "Иванов Иванович", 1997));
 
 while (true)
 {
@@ -24,15 +24,30 @@ while (true)
 
     if (m.Count == 1)
     {
-
+        Console.WriteLine();
+        Console.WriteLine("------------------------------");
+        Console.Write("Введите название книги: ");
+        libery.SearchByName(Console.ReadLine()!);
+        Console.WriteLine("------------------------------");
+        Console.WriteLine();
     }
     else if (m.Count == 2)
     {
-
+        Console.WriteLine();
+        Console.WriteLine("------------------------------");
+        Console.Write("Введите автора книги: ");
+        libery.SearchByAuthor(Console.ReadLine()!);
+        Console.WriteLine("------------------------------");
+        Console.WriteLine();
     }
     else if (m.Count == 3)
     {
-
+        Console.WriteLine();
+        Console.WriteLine("------------------------------");
+        Console.Write("Введите год книги: ");
+        libery.SearchByYear(int.Parse(Console.ReadLine()!));
+        Console.WriteLine("------------------------------");
+        Console.WriteLine();
     }
     else if (m.Count == 4)
     {
