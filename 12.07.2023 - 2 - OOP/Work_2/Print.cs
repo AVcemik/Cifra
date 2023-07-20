@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Work_2
 {
-    internal class MenuClass
+    internal class Print
     {
         public byte Count { get; set; }
 
@@ -21,6 +21,24 @@ namespace Work_2
             Console.WriteLine("6 - Отсортировать по году");
             Console.WriteLine("7 - Добавить книгу");
             Console.WriteLine("8 - Удалить книгу");
+            Console.WriteLine("9 - Список книг");
+            Console.WriteLine("10 - Выход");
+        }
+        public void RazdelitelStart()
+        {
+            Console.WriteLine();
+            Console.WriteLine("------------------------------");
+        }
+        public void RazdelitelEnd()
+        {
+            Console.WriteLine("------------------------------");
+            Console.WriteLine();
+        }
+        public void Pause()
+        {
+            RazdelitelStart();
+            Console.WriteLine("Нажмите любую клавишу для продолжения: ");
+            Console.ReadKey();
         }
     }
 }

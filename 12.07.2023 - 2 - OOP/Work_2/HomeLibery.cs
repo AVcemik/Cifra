@@ -18,45 +18,89 @@ namespace Work_2
         {
             books.Add(book);
         }
-        public void RemoveBook(Book book)
+        public void RemoveBook(string name)
         {
-            books.Remove(book);
+            for (int i = 0; i < books.Count; i++)
+            {
+                if (books[i].Name == name)
+                {
+                    books.RemoveAt(i);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Книга удалена");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                if (i == books.Count-1) Console.WriteLine("Книга не найдена");
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
         }
         public void SearchByName(string name) 
         {
-            bool flag = false;
             for (int i = 0; i < books.Count; i++)
             {
                 if (books[i].Name == name)
                 {
                     Console.WriteLine($"{books[i].Name}, {books[i].Author}, {books[i].Year}");
-                    flag = true;
                 }
-                if (i == books.Count && flag == false)
+                if (i == books.Count-1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Книга не найдена");
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
             }
         }
-        public List<Book> SearchByAuthor(string author)
+        public void SearchByAuthor(string author)
         {
-            return books.Where(b => b.Author.Equals(author)).ToList();
+            for (int i = 0; i < books.Count; i++)
+            {
+                if (books[i].Author == author)
+                {
+                    Console.WriteLine($"{books[i].Name}, {books[i].Author}, {books[i].Year}");
+                }
+                if (i == books.Count)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Книга не найдена");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+            }
         }
         public void SearchByYear(int year)
         {
-            bool flag = false;
             for (int i = 0; i < books.Count; i++)
             {
                 if (books[i].Year == year)
                 {
                     Console.WriteLine($"{books[i].Name}, {books[i].Author}, {books[i].Year}");
-                    flag = true;
                 }
-                if (i == books.Count && flag == false)
+                if (i == books.Count)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Книга не найдена");
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
             }
+        }
+        public void ListBook()
+        {
+            for (int i = 0; i < books.Count; i++)
+            {
+                Console.WriteLine($"{books[i].Name}, {books[i].Author}, {books[i].Year}");
+            }
+        }
+        public void SortName()
+        {
+            books.Sort((book1, book2) => book1.Name.CompareTo(book2.Name));
+        }
+        public void SortAuthor()
+        {
+            books.Sort((book1, book2) => book1.Author.CompareTo(book2.Author));
+        }
+        public void SortYear()
+        {
+            books.Sort((book1, book2) => book1.Year.CompareTo(book2.Year));
         }
     }
 }
