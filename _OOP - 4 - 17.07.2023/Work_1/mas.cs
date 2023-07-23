@@ -8,15 +8,18 @@ namespace Work_1
 {
     internal class masiv
     {
-        private string[] Mas { get; set; }
+        private string[] mas;
         public int Lenght { get; private set; }
 
         masiv (int lenght)
         {
-            Mas = new string[lenght];
+            this.mas = new string[lenght];
             Lenght = lenght;
         }
-
+        public void GetMas(string str)
+        {
+            mas = str;
+        }
 
         public void Print()
         {
@@ -24,7 +27,7 @@ namespace Work_1
 
             for (int i = 0; i < Lenght; i++)
             {
-                Console.WriteLine($"{i}: {Mas[i]}");
+                Console.WriteLine($"{i}: {mas[i]}");
             }
         }
     }
