@@ -12,6 +12,7 @@ namespace _Work_3
         public string Adress { get; private set; }
         public int TotalSpot { get; set; }
         public decimal Tariff { get; set; }
+        public int OccupiedSpot { get; set; }
 
         public ParkingPay(string name, string adress, int totalSpot, decimal tariff)
         {
@@ -19,8 +20,35 @@ namespace _Work_3
             Adress=adress;
             TotalSpot=totalSpot;
             Tariff=tariff;
+            OccupiedSpot=0;
         }
-
-
+        public void LeaveAuto(int carsLeave)
+        {
+            if (carsLeave < 0)
+            {
+                throw new ArgumentException("Число уехавших машин не может быть отрицательным.");
+            }
+            else if (carsLeave > OccupiedSpot)
+            {
+                throw new ArgumentException("Число уехавших машин не может превышать число занятых мест.");
+            }
+            else OccupiedSpot -= carsLeave;
+        }
+        public void AddAuto(int carsAdd)
+        {
+            if (carsAdd < 0)
+            {
+                throw new ArgumentException("Число прибывших машин не может быть отрицательным.");
+            }
+            else if (carsAdd > TotalSpot-OccupiedSpot)
+            {
+                throw new ArgumentException("Число прибывших машин не может превышать кол-во свободных мест.");
+            }
+            else OccupiedSpot += carsAdd;
+        }
+        public void CountSpot()
+        {
+            Console.WriteLine($"Кол-во свободных мест: {TotalSpot - OccupiedSpot}");
+        }
     }
 }
