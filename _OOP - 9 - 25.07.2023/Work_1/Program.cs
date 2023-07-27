@@ -1,4 +1,5 @@
-﻿// Домашняя работа
+﻿using Work_1;
+// Домашняя работа
 // 1.	Создать класс Liquid (жидкость), имеющий поля названия и плотности.
 // Определить методы переназначения и изменения плотности.
 // Создать производный класс Alcohol (спирт), имеющий крепость.
@@ -8,7 +9,20 @@
 // Определить производный класс Rectangle (прямоугольник) с полями-сторонами.
 // Определить методы вычисления периметра и площади прямоугольника.
 
+// Задача 1
 
+Liquid liquid = new();
+Alcohol alcohol = new();
+liquid.setDensity(1);
+alcohol.setDensity(2);
 
+// Задача 2
+Pair pair = new();
+Rectangle rectangle = new ();
 
+pair.SetPair(2,3);
+Console.WriteLine($"Произведение пары чисел: {pair.Multiplya()}");
 
+rectangle.SetPair(2,3);
+Console.WriteLine($"Площадь прямоугольника: {rectangle.Multiplya()}");
+Console.WriteLine($"Периметр прямоугольника: {rectangle.Perimtr()}");
