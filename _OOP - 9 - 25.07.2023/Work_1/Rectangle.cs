@@ -22,6 +22,15 @@ namespace Work_1
             this.value1=value1;
             this.value2=value2;
         }
+        public new void SetPair(int x, int y)
+        {
+            value1 = x;
+            value2 = y;
+        }
+        public new int Multiplya()
+        {
+            return value1 * value2;
+        }
         public int Perimtr()
         {
             return (value1 + value2) * 2;
