@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,9 +35,9 @@ namespace _12._07._2023___2___OOP
                 mas[j] = temp;
             }
         }
-        public void CountElement()
+        public int CountElement()
         {
-
+            return mas.Distinct().Count();
         }
 
         public void InputMas()
@@ -46,10 +47,6 @@ namespace _12._07._2023___2___OOP
                 Console.Write($"{mas[i]} ");
             }
             Console.WriteLine();
-        }
-        ~MyClass()
-        {
-            mas = new int[0];
         }
     }
 }

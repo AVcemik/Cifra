@@ -19,4 +19,4 @@ m.InputMas();
 m.Shuffle();
 Console.WriteLine("перемешанный массив: ");
 m.InputMas();
-m.CountElement(); // Непонял что он должен делать
+Console.WriteLine($"Кол-во различных элементов в массиве: {m.CountElement()}");
