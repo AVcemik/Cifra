@@ -8,12 +8,12 @@ namespace Work_1
 {
     internal class Abiturient
     {
-        private string? name;
+        public string Name { get; private set; }
         public Facult? Facult { get; set; }
 
         public Abiturient(string? name)
         {
-            this.name=name;
+            Name=name!;
         }
     }
 }

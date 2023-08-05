@@ -8,5 +8,11 @@ namespace Work_1
 {
     internal class Mark
     {
+        public int Marks { get; private set; }
+
+        public Mark(int marks)
+        {
+            Marks = marks;
+        }
     }
 }

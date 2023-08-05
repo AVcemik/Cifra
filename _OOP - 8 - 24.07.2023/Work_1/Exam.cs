@@ -8,11 +8,12 @@ namespace Work_1
 {
     internal class Exam
     {
-        public string? Name { get; }
+        public string? Name { get; private set; }
+        public Mark? Mark { get; set; }
 
-        public Exam(string name)
+        public void SetName(string name)
         {
-            Name=name;
+            Name = name;
         }
     }
 }

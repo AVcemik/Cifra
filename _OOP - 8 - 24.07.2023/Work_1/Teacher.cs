@@ -8,17 +8,18 @@ namespace Work_1
 {
     internal class Teacher
     {
-        public string? Name { get; set; }
-        public Exam? ExamMark { get; private set; }
+        public string Name { get; private set; }
+        public Facult? Facult { get; set; }
+        public Mark? Mark { get; set; }
 
         public Teacher(string? name)
         {
-            Name=name;
+            Name=name!;
         }
 
-        public void setMark(int mark)
+        public void SetMark(int marks)
         {
-            
+            Mark mark = new(marks);
         }
     }
 }
