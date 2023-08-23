@@ -16,15 +16,25 @@
 
 
 // Задание 1
+using _1_Work;
+
 Console.Write("Введите радиус окружности");
-int radius =inputInt();
+int radius = inputInt();
 
 double s = Math.PI * Math.Sqrt(radius);
 
-int = 0;
 // Задание 2
+addFunc name = new addFunc();
+Console.Write("Введите ваше имя:");
+name.setFirstName(Console.ReadLine()!);
+Console.Write("Введите ваше фамилию:");
+name.setLastName(Console.ReadLine()!);
+Console.Write("Введите ваше отчество:");
+name.setSecondName(Console.ReadLine()!);
 
-string name = Console.Write("Введите ваше имя:");
+Console.WriteLine($"Имя - {name.getFirstName()}\nФамилия - {name.getLastName()}\nОтчество - {name.getSecondName()}");
+
+
 
 
 int inputInt()
