@@ -13,3 +13,28 @@
 // Внимательно следите за корректностью написания синтаксиса.
 // Ответ отправить в виде документа, где прикрепить скрин экрана, в
 // котором видно код и вывод в консоль
+
+
+// Задание 1
+Console.Write("Введите радиус окружности");
+int radius =inputInt();
+
+double s = Math.PI * Math.Sqrt(radius);
+
+int = 0;
+// Задание 2
+
+string name = Console.Write("Введите ваше имя:");
+
+
+int inputInt()
+{
+    int digital = -1;
+    while (true)
+    {
+        string str = Console.ReadLine()!;
+        int.TryParse(str, out digital);
+        if (digital != -1) break;
+    }
+    return digital;
+}
