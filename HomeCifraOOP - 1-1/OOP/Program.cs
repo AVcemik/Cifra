@@ -23,6 +23,35 @@ Console.WriteLine($"Время1 = {time1.GetTime()}");
 Console.WriteLine($"Время2 = {time2.GetTime()}");
 Console.WriteLine($"Время3 = {time3.GetTime()}");
 
+Console.WriteLine();
+
+Triangle tringleOne = new Triangle(3, 4, 2);
+Triangle tringleTwo = new Triangle(0, 1, 2, 2, 4, 0);
+
+Console.WriteLine($"Площаль первого треугольника: {tringleOne.Area():F2}");
+Console.WriteLine($"Площадь второго треугольника: {tringleTwo.Area():F2}");
+Console.WriteLine($"Площадь треугольника по длинам сторон: {Triangle.Area(2, 5, 4):F2}");
+Console.WriteLine($"Площадь треугольника по координатам точек: {Triangle.Area(2, 1, 3, 3, 5, 1):F2}");
+
+Console.WriteLine();
+
+Console.WriteLine($"Периметр первого треугольника: {tringleOne.Perimetr():F2}");
+Console.WriteLine($"Периметр второго треугольника: {tringleTwo.Perimetr():F2}");
+Console.WriteLine($"Периметр треугольника по длинам сторон: {Triangle.Perimetr(2, 5, 4):F2}");
+Console.WriteLine($"периметр треугольника по координатам точек: {Triangle.Area(2, 1, 3, 3, 5, 1):F2}");
+
+Console.WriteLine();
+
+Console.WriteLine($"Пересечение медиан первого треугольника не посчитать из за отсутствия координат");
+Console.WriteLine($"Пересечение медиана второго треугольника {tringleTwo.Mediana():F2}");
+Console.WriteLine($"Пересечение медиан треугольника {Triangle.Mediana(2, 1, 3, 3, 5, 1):F2}");
+
+Console.WriteLine();
+
+Console.WriteLine("Нажмите любую клавишу для завршения программы...");
+Console.ReadKey();
+
+
 /// <summary>
 /// Класс работы со временем
 /// </summary>
@@ -143,13 +172,23 @@ public class Triangle
         _pointBy = pointBy;
         _pointCx = pointCx;
         _pointCy = pointCy;
-        _sideA = Math.Sqrt(Math.Pow(pointBx - pointAx, 2) + Math.Pow(pointBy - pointAy, 2));
-        _sideB = Math.Sqrt(Math.Pow(pointCx - pointBx, 2) + Math.Pow(pointCy - pointBy, 2));
-        _sideC = Math.Sqrt(Math.Pow(pointAx - pointCx, 2) + Math.Pow(pointAy - pointCy, 2));
+        _sideA = PointToSide(pointAx, pointAy, pointBx, pointBy);
+        _sideB = PointToSide(pointBx, pointBy, pointCx, pointCy);
+        _sideC = PointToSide(pointCx, pointCy, pointAx, pointAy);
     }
 
     /// <summary>
-    /// Статичный метод посчета площади треугольника
+    /// Метод подсчета площади треугольника
+    /// </summary>
+    /// <returns>Результат</returns>
+    public double Area()
+    {
+        double s = (_sideA + _sideB + _sideC) / 2;
+        return Math.Sqrt(s * (s - _sideA) * (s - _sideB) * (s - _sideC));
+    }
+
+    /// <summary>
+    /// Статичный метод посчета площади треугольника через длины сторон
     /// </summary>
     /// <param name="sideA">Сторона А</param>
     /// <param name="sideB">Сторона В</param>
@@ -160,26 +199,19 @@ public class Triangle
         double s = (sideA + sideB + sideC) / 2;
         return Math.Sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
     }
+
     /// <summary>
-    /// Метод подсчета площади треугольника
-    /// </summary>
-    /// <returns>Результат</returns>
-    public double Area()
-    {
-        double s = (_sideA + _sideB + _sideC) / 2;
-        return Math.Sqrt(s * (s - _sideA) * (s - _sideB) * (s - _sideC));
-    }
-    /// <summary>
-    /// Статичный метод посчета периметра треугольника
+    /// Статичный метод посчета площади треугольника через координаты точек
     /// </summary>
     /// <param name="sideA">Сторона А</param>
     /// <param name="sideB">Сторона В</param>
     /// <param name="sideC">Сторона С</param>
     /// <returns>Результат</returns>
-    public static double Perimetr(double sideA, double sideB, double sideC)
+    public static double Area(double pointAx, double pointAy, double pointBx, double pointBy, double pointCx, double pointCy)
     {
-        return sideA + sideB + sideC;
+        return Area(PointToSide(pointAx, pointAy, pointBx, pointBy), PointToSide(pointBx, pointBy, pointCx, pointCy), PointToSide(pointCx, pointCy, pointAx, pointAy));
     }
+
     /// <summary>
     /// Метод подсчета треугольника
     /// </summary>
@@ -189,8 +221,64 @@ public class Triangle
         return _sideA + _sideB + _sideC;
     }
 
+    /// <summary>
+    /// Статичный метод посчета периметра треугольника через длины сторон
+    /// </summary>
+    /// <param name="sideA">Сторона А</param>
+    /// <param name="sideB">Сторона В</param>
+    /// <param name="sideC">Сторона С</param>
+    /// <returns>Результат</returns>
+    public static double Perimetr(double sideA, double sideB, double sideC)
+    {
+        return sideA + sideB + sideC;
+    }
+
+    /// <summary>
+    /// Статичный метод посчета периметра треугольника по координатам точек
+    /// </summary>
+    /// <param name="sideA">Сторона А</param>
+    /// <param name="sideB">Сторона В</param>
+    /// <param name="sideC">Сторона С</param>
+    /// <returns>Результат</returns>
+    public static double Perimetr(double pointAx, double pointAy, double pointBx, double pointBy, double pointCx, double pointCy)
+    {
+        return Perimetr(PointToSide(pointAx, pointAy, pointBx, pointBy), PointToSide(pointBx, pointBy, pointCx, pointCy), PointToSide(pointCx, pointCy, pointAx, pointAy));
+    }
+
+    /// <summary>
+    /// Метод нахождение пересечения медиан
+    /// </summary>
+    /// <returns></returns>
     public string Mediana()
     {
-        return $"x:{(_pointAx + _pointBx + _pointCx)/3} y:{(_pointAy + _pointBx + _pointCx)/3}";
+        return $"x:{(_pointAx + _pointBx + _pointCx) / 3:F2} y:{(_pointAy + _pointBy + _pointCy) / 3:F2}";
+    }
+
+    /// <summary>
+    /// Статичный метод подсчета медиан
+    /// </summary>
+    /// <param name="pointAx"></param>
+    /// <param name="pointAy"></param>
+    /// <param name="pointBx"></param>
+    /// <param name="pointBy"></param>
+    /// <param name="pointCx"></param>
+    /// <param name="pointCy"></param>
+    /// <returns></returns>
+    public static string Mediana(double pointAx, double pointAy, double pointBx, double pointBy, double pointCx, double pointCy)
+    {
+        return $"x:{(pointAx + pointBx + pointCx) / 3:F2} y:{(pointAy + pointBy + pointCy) / 3:F2}";
+    }
+
+    /// <summary>
+    /// Статичный метод преоброзования координат в длины
+    /// </summary>
+    /// <param name="pointAx"></param>
+    /// <param name="pointAy"></param>
+    /// <param name="pointBx"></param>
+    /// <param name="pointBy"></param>
+    /// <returns></returns>
+    private static double PointToSide(double pointAx, double pointAy, double pointBx, double pointBy)
+    {
+        return Math.Sqrt(Math.Pow(pointBx - pointAx, 2) + Math.Pow(pointBy - pointAy, 2));
     }
 }
