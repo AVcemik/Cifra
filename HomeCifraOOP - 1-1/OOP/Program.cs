@@ -159,13 +159,24 @@ public class Triangle
 
     public Triangle(double sideA, double sideB, double sideC)
     {
+        if (sideA + sideB <= sideC || sideB + sideC <= sideA || sideC + sideA <= sideB)
+        {
+            throw new Exception("Такой треугольник не существует!!!");
+        }
         _sideA = sideA;
         _sideB = sideB;
         _sideC = sideC;
+
     }
 
     public Triangle(double pointAx, double pointAy, double pointBx, double pointBy, double pointCx, double pointCy)
     {
+        if (PointToSide(pointAx, pointAy, pointBx, pointBy) + PointToSide(pointBx, pointBy, pointCx, pointCy) <= PointToSide(pointCx, pointCy, pointAx, pointAy) ||
+            PointToSide(pointBx, pointBy, pointCx, pointCy) + PointToSide(pointCx, pointCy, pointAx, pointAy) <= PointToSide(pointAx, pointAy, pointBx, pointBy) ||
+            PointToSide(pointCx, pointCy, pointAx, pointAy) + PointToSide(pointAx, pointAy, pointBx, pointBy) <= PointToSide(pointBx, pointBy, pointCx, pointCy))
+        {
+            throw new Exception("Такой треугольник не существует!!!");
+        }
         _pointAx = pointAx;
         _pointAy = pointAy;
         _pointBx = pointBx;
