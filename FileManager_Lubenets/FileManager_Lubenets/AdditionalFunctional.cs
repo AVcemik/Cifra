@@ -20,7 +20,7 @@
         }
         public static string DefaultPath
         {
-            get => _defaultDirectory;
+            get => _defaultDirectory; 
         }
         public static string CurrentDirectory
         {
