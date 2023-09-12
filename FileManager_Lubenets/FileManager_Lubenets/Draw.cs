@@ -34,6 +34,7 @@
 
         public static void DrawInputCommandField(string directory)
         {
+            DrawWindow(30, 1);
             Console.SetCursorPosition(1, 31);
             if (Directory.Exists(directory))
             {
@@ -41,7 +42,7 @@
             }
             else
             {
-                throw new Exception("Такого пути не существует!");
+                Display.DisplayWindowTwo("Такого пути не существует!", true);
             }
             
         }
