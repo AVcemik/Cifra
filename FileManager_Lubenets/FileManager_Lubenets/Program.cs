@@ -12,5 +12,3 @@ Draw.DrawWindow(30, 1);
 AdditionalFunctional.UpdateConsole();
 
 Console.ReadKey();
-
-
