@@ -11,6 +11,8 @@
 // сортировки книг по разным полям.
 
 
+using System.Xml.Linq;
+
 Masiv masiv = new Masiv(10);
 
 masiv.FillArrayRandom();
@@ -25,13 +27,32 @@ HomeLibrary homeLibrary = new HomeLibrary();
 homeLibrary.AddBook(new Book("Пеппи длиный чулок",1945, "Астрид Линдгрен"));
 homeLibrary.AddBook(new Book("Буратино", 1936, "Алексей Николаевич Толстой"));
 homeLibrary.AddBook(new Book("Люди как боги", 1966, "Сергей Александрович Снегов"));
-homeLibrary.AddBook(new Book("Книга", 2023, "Я"));
+homeLibrary.AddBook(new Book("Книга", 1966, "Я"));
 
-
-while (true)
-{
-
-}
+Console.WriteLine("--------------------------------------------");
+homeLibrary.PrintHomeLibrary();
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Сортировка по Имени");
+homeLibrary.SortBookName();
+homeLibrary.PrintHomeLibrary();
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Сортировка по Году");
+homeLibrary.SortBookAge();
+homeLibrary.PrintHomeLibrary();
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Сортировка по Автору");
+homeLibrary.SortBookAuthor();
+homeLibrary.PrintHomeLibrary();
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Ищем книгу Буратино");
+homeLibrary.SearchName("Буратино");
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Ищем книги 1966 года");
+homeLibrary.SearchAge(1966);
+Console.WriteLine("--------------------------------------------");
+Console.WriteLine("Удаляем книгу Буратино");
+homeLibrary.RemoveBookName("Буратино");
+homeLibrary.PrintHomeLibrary();
 
 
 
@@ -148,42 +169,65 @@ public class HomeLibrary
         _books = new List<Book>();
     }
 
+    public void PrintHomeLibrary()
+    {
+        for (int i = 0; i < _books.Count; i++)
+        {
+            Console.WriteLine(_books[i].PrintBook());
+        }
+    }
     public void AddBook(Book book)
     {
         _books.Add(book);
     }
-    public string SearchName(string name)
+    public void SearchName(string name)
     {
+        bool book = false;
         for (int i = 0; i < _books.Count; i++)
         {
             if (_books[i].Name == name)
             {
-                return _books[i].PrintBook();
+                book = true;
+                Console.WriteLine(_books[i].PrintBook());
             }
         }
-        return "Не удалось найти книгу";
+        if (!book)
+        {
+            Console.WriteLine("Книга не найдена");
+        }
+        
     }
-    public string SearchAge(int age)
+    public void SearchAge(int age)
     {
+        bool book = false;
         for (int i = 0; i < _books.Count; i++)
         {
             if (_books[i].Age == age)
             {
-                return _books[i].PrintBook();
+                book = true;
+                Console.WriteLine(_books[i].PrintBook());
             }
         }
-        return "Не удалось найти книгу";
+        if (!book)
+        {
+            Console.WriteLine("Книга не найдена");
+        }
     }
-    public string SearchAuthor(string author)
+    public void SearchAuthor(string author)
     {
+        bool book = false;
         for (int i = 0; i < _books.Count; i++)
         {
             if (_books[i].Author == author)
             {
-                return _books[i].PrintBook();
+                book = true;
+                Console.WriteLine(_books[i].PrintBook());
             }
         }
-        return "Не удалось найти книгу";
+        if (!book)
+        {
+            Console.WriteLine("Книга не найдена");
+        }
     }
     
     public void SortBookName()
