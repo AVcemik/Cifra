@@ -34,6 +34,16 @@ namespace FileManager_Lubenets
                         ChangeDirectory();
                     }
                     break;
+                case "ls":
+                    {
+
+                    }
+                    break;
+                case "mkdir":
+                    {
+                        MakeDirectory();
+                    }
+                    break;
                 case "exit":
                     {
                         Exit();
@@ -78,6 +88,24 @@ namespace FileManager_Lubenets
                 AdditionalFunctional.CurrentDirectory = AdditionalFunctional.DefaultPath;
             }
             
+        }
+        public static void MakeDirectory()
+        {
+            if (SplittedCommand.Length > 1)
+            {
+                if (Directory.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[1]))
+                {
+                    Display.DisplayWindowTwo("Такая папка уже существует", true);
+                }
+                else
+                {
+                    Directory.CreateDirectory(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[1]);
+                }
+            }
+            else
+            {
+                Display.DisplayWindowTwo("Вы не указали название папки", true);
+            }
         }
         public static void Exit()
         {
