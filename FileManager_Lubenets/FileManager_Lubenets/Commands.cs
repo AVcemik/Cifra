@@ -45,31 +45,39 @@ namespace FileManager_Lubenets
 
         public static void ChangeDirectory()
         {
-            string tempDirectory = SplittedCommand[1];
-            for (int i = 2; i < SplittedCommand.Length; i++)
+            if (SplittedCommand.Length > 1)
             {
-                tempDirectory += " " + SplittedCommand[i];
-            }
-
-            if (SplittedCommand[1] == ".." && AdditionalFunctional.CurrentDirectory.Length >3)
-            {
-                AdditionalFunctional.CurrentDirectory = Directory.GetParent(AdditionalFunctional.CurrentDirectory)!.ToString();
-            }
-            else 
-            {
-                if (SplittedCommand[1].Contains(@":\") && Directory.Exists(tempDirectory))
+                string tempDirectory = SplittedCommand[1];
+                for (int i = 2; i < SplittedCommand.Length; i++)
                 {
-                    AdditionalFunctional.CurrentDirectory = tempDirectory;
+                    tempDirectory += " " + SplittedCommand[i];
                 }
-                else if (Directory.Exists(AdditionalFunctional.CurrentDirectory + @"\" + SplittedCommand[1]))
+
+                if (SplittedCommand[1] == ".." && AdditionalFunctional.CurrentDirectory.Length > 3)
                 {
-                    AdditionalFunctional.CurrentDirectory += @"\" + SplittedCommand[1];
+                    AdditionalFunctional.CurrentDirectory = Directory.GetParent(AdditionalFunctional.CurrentDirectory)!.ToString();
                 }
                 else
                 {
-                    Display.DisplayWindowTwo("Такого пути не существует!", true);
+                    if (SplittedCommand[1].Contains(@":\") && Directory.Exists(tempDirectory))
+                    {
+                        AdditionalFunctional.CurrentDirectory = tempDirectory;
+                    }
+                    else if (Directory.Exists(AdditionalFunctional.CurrentDirectory + @"\" + SplittedCommand[1]))
+                    {
+                        AdditionalFunctional.CurrentDirectory += @"\" + SplittedCommand[1];
+                    }
+                    else
+                    {
+                        Display.DisplayWindowTwo("Такого пути не существует!", true);
+                    }
                 }
             }
+            else
+            {
+                AdditionalFunctional.CurrentDirectory = AdditionalFunctional.DefaultPath;
+            }
+            
         }
         public static void Exit()
         {

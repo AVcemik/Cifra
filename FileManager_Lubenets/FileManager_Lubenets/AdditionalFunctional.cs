@@ -7,7 +7,7 @@ namespace FileManager_Lubenets
     /// </summary>
     internal class AdditionalFunctional
     {
-        private static string _defaultDirectory = @"C:\Users\Print01\Downloads";
+        private static string _defaultDirectory = @"C:\Users\C4PC12\Desktop";
         private static string _currentDirectory = _defaultDirectory;
         private static int _windowWidth = 120;
         private static int _windowHeight = 40;
