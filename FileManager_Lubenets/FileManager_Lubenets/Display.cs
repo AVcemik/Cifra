@@ -20,15 +20,20 @@ namespace FileManager_Lubenets
             AdditionalFunctional.SetCursorPosition(20, 0);
             Draw.DrawWindow(20,8);
         }
-        public static void DisplayWindowTwo(string text, bool error)
+        public static void DisplayWindowTwo(string text, bool successful)
         {
             AdditionalFunctional.SetCursorPosition(20, 0);
             Draw.DrawWindow(20, 8);
 
-            if (error)
+            if (!successful)
             {
                 AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
                 AdditionalFunctional.RedTextConsole(text);
+            }
+            else
+            {
+                AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
+                AdditionalFunctional.GreenTextConsole(text);
             }
         }
 

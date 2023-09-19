@@ -30,24 +30,29 @@ namespace FileManager_Lubenets
             switch (SplittedCommand[0]) 
             {
                 case "cd":
-                    {
-                        ChangeDirectory();
-                    }
+                    ChangeDirectory();
                     break;
-                case "ls":
-                    {
 
-                    }
+                case "ls":
+
                     break;
+
                 case "mkdir":
-                    {
                         MakeDirectory();
-                    }
+                    break;
+
+                case "touch":
+                    TouchFile();
+                    break;
+
+                case "rm":
+                    Remove();
+                    break;
+                case "rmdir":
+                    Remove();
                     break;
                 case "exit":
-                    {
-                        Exit();
-                    }
+                    Exit();
                     break;
             }
             AdditionalFunctional.UpdateConsole();
@@ -79,7 +84,7 @@ namespace FileManager_Lubenets
                     }
                     else
                     {
-                        Display.DisplayWindowTwo("Такого пути не существует!", true);
+                        Display.DisplayWindowTwo("Такой папки не существует!", false);
                     }
                 }
             }
@@ -95,7 +100,7 @@ namespace FileManager_Lubenets
             {
                 if (Directory.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[1]))
                 {
-                    Display.DisplayWindowTwo("Такая папка уже существует", true);
+                    Display.DisplayWindowTwo("Такая папка уже существует", false);
                 }
                 else
                 {
@@ -104,8 +109,40 @@ namespace FileManager_Lubenets
             }
             else
             {
-                Display.DisplayWindowTwo("Вы не указали название папки", true);
+                Display.DisplayWindowTwo("Вы не указали название папки", false);
             }
+        }
+        public static void TouchFile()
+        {
+            if (SplittedCommand.Length > 1)
+            {
+                if (File.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[1] + ".txt"))
+                {
+                    Display.DisplayWindowTwo("Такой файл уже существует", false);
+                }
+                else
+                {
+                    File.Create(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[1] + ".txt");
+                }
+            }
+            else
+            {
+                Display.DisplayWindowTwo("Вы не указали название файла", false);
+            }
+        }
+        public static void Remove()
+        {
+            if (SplittedCommand.Length > 1)
+            {
+                if (SplittedCommand[1] == "-r" && Directory.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2]))
+                {
+
+                }
+            }
+        }
+        public static void RemoveAll(string path)
+        {
+            //Directory[] directoryAll = Directory.GetDirectories(path);
         }
         public static void Exit()
         {
