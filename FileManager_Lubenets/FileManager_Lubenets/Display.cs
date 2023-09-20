@@ -20,21 +20,38 @@ namespace FileManager_Lubenets
             AdditionalFunctional.SetCursorPosition(20, 0);
             Draw.DrawWindow(20,8);
         }
-        public static void DisplayWindowTwo(string text, bool successful)
+        public static void DisplayWindowTwo(string text)
         {
             AdditionalFunctional.SetCursorPosition(20, 0);
             Draw.DrawWindow(20, 8);
+            AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
+            Console.Write(text);
+        }
+
+            public static void DisplayWindowTwo(string text, bool successful)
+        {
+            AdditionalFunctional.SetCursorPosition(20, 0);
+            Draw.DrawWindow(20, 8);
+            AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
 
             if (!successful)
             {
-                AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
                 AdditionalFunctional.RedTextConsole(text);
             }
             else
             {
-                AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (text.Length / 2), 25);
                 AdditionalFunctional.GreenTextConsole(text);
             }
+        }
+        public static void DisplayWindowTwo(string line1, string line2)
+        {
+            AdditionalFunctional.SetCursorPosition(20, 0);
+            Draw.DrawWindow(20, 8);
+
+            AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (line1.Length / 2), 24);
+            Console.Write(line1);
+            AdditionalFunctional.SetCursorPosition((AdditionalFunctional.WindowWidth / 2) - (line2.Length / 2), 25);
+            Console.Write(line2);
         }
 
         /// <summary>
@@ -83,8 +100,14 @@ namespace FileManager_Lubenets
 
             if (command.ToString() == "cd..")
             {
-                command.Clear();
-                command.Append("cd ..");
+                command.Replace("cd..", "cd ..");
+            }
+            if (command.Length > 5)
+            {
+                if (command[0] == 'r' && command[1] == 'm' && command[2] == 'd' && command[3] == 'i' && command[4] == 'r')
+                {
+                    command.Replace("rmdir", "rm dir");
+                }
             }
 
             Commands.CommandParser(command);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,9 +47,6 @@ namespace FileManager_Lubenets
                     break;
 
                 case "rm":
-                    Remove();
-                    break;
-                case "rmdir":
                     Remove();
                     break;
                 case "exit":
@@ -136,13 +134,28 @@ namespace FileManager_Lubenets
             {
                 if (SplittedCommand[1] == "-r" && Directory.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2]))
                 {
-
+                    Display.DisplayWindowTwo("Данная папка и ее содержимое будет безвозвратно удаллено!!!", "(y/n): ");
+                    if (Console.ReadLine() == "y")
+                    {
+                        Directory.Delete(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2],     true);
+                        Display.DisplayWindowTwo("Папка и ее содержимое успешно удаленно!!!", true);
+                    }
+                    else
+                    {
+                        Display.DisplayWindowTwo("Действие отменено!!!");
+                    }
+                }
+                else if (SplittedCommand[1] == "dir" && Directory.Exists(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2]))
+                {
+                    string[] boolFolder = Directory.GetDirectories(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2]);
+                    Directory.Delete(AdditionalFunctional.CurrentDirectory + "\\" + SplittedCommand[2]);
+                    Display.DisplayWindowTwo("Папка и ее содержимое успешно удаленно");
+                }
+                else
+                {
+                    Display.DisplayWindowTwo("Данная папка или файл не найдены!!!", false);
                 }
             }
-        }
-        public static void RemoveAll(string path)
-        {
-            //Directory[] directoryAll = Directory.GetDirectories(path);
         }
         public static void Exit()
         {

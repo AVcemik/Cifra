@@ -42,7 +42,7 @@
             }
             else
             {
-                Display.DisplayWindowTwo("Такого пути не существует!", true);
+                Display.DisplayWindowTwo("Такого пути не существует!", false);
             }
             
         }
