@@ -81,33 +81,45 @@ class Masiv
     }
     public void Merge(Masiv masiv1, Masiv masiv2)
     {
+        string temp = "";
+
         if (masiv1.Length > masiv2.Length)
         {
             Length = masiv1.Length;
+            line = new string[masiv1.Length];
         }
         else if (masiv1.Length < masiv2.Length)
         {
             Length = masiv2.Length;
+            line = new string[masiv2.Length];
         }
         _numberElement = masiv1[0].Length + masiv2[0].Length;
 
-        for (int i = 0; i < Length; i++)
+        for (int i = 0; i < masiv1.Length; i++)
         {
-            string temp = "";
-            for (int j = 0; j < _numberElement; j++)
+            for (int j = 0; j < masiv1._numberElement; j++)
             {
-                temp += masiv1.line[i][j];
-
-                if (masiv1.line[i][j] != masiv2.line[i][j])
-                {
-                    temp += masiv2.line[i][j];
-                }
+                temp += masiv1[i][j];
             }
-            if (temp.Length < _numberElement)
+            line[i] = temp;
+            temp = "";
+        }
+
+        for (int i = 0; i < masiv2.Length; i++)
+        {
+            temp = line[i];
+            for (int j = 0; j < masiv2._numberElement; j++)
             {
-                for (int j = _numberElement - temp.Length; j < _numberElement; j++)
+                if (temp == null)
                 {
-                    temp += " ";
+                    for (int f = 0; f < _numberElement; f++)
+                    {
+                        temp += " ";
+                    }
+                }
+                if (temp[j] != masiv2[i][j])
+                {
+                    temp += masiv2[i][j];
                 }
             }
             line[i] = temp;
