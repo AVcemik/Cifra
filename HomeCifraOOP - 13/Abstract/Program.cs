@@ -14,25 +14,26 @@
 Организовать запись и чтение коллекции в/из файл.
 Организовать обработку некорректного формата входного файла.
  */
+Console.WriteLine(new string('-',127) +  '|');
+//abstract class Animals
+//{
+//    public string Name { get; set;}
+//    public int Food { get; set;}
 
-abstract class Animals
-{
-    public string Name { get; set;}
-    public int Food { get; set;}
+//    public Animals (string name, int food)
+//    {
+//        Name = name;
+//        Food = food;
+//    }
 
-    public Animals (string name, int food)
-    {
-        Name = name;
-        Food = food;
-    }
+//    public void FoodEat()
+//    {
 
-    public void FoodEat()
-    {
+//    }
+//}
 
-    }
-}
+//class Predators : Animals
+//{
+//    public 
+//}
 
-class Predators : Animals
-{
-    public 
-}
