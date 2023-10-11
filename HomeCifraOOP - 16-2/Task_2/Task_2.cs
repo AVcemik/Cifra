@@ -27,7 +27,7 @@ while (true)
         break;
     }
 
-    // 
+    // Счетчик
     foreach (KeyValuePair<string, int> item in nameVisit)
     {
         if (item.Key == name)
@@ -51,6 +51,7 @@ while (true)
 
 Console.WriteLine();
 
+// Информация по посещениям
 foreach (KeyValuePair<string, int> item in nameVisit)
 {
     Console.WriteLine($"Кол-во посещений у {item.Key}: {item.Value}");

@@ -10,6 +10,7 @@ int[] masivFalse = new int[] { 1, 2, 2, 5, 5 };
 
 Console.WriteLine("masivTrue: " + CheckUnique(masivTrue));
 Console.WriteLine("masivFalse: " + CheckUnique(masivFalse));
+// Проверка массива на уникальность
 bool CheckUnique(int[] masiv)
 {
     HashSet<int> hashSet = new HashSet<int>();
