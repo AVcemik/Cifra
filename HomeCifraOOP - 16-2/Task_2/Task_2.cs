@@ -16,10 +16,10 @@ while (true)
     int count = 1;
 
     Console.Write("Введите имя: ");
-    name = Console.ReadLine();
+    name = Console.ReadLine()!;
 
     // Проверка на нулл (Человек без имени войти не может)
-    if (name == "") continue;
+    if (name.Trim() == "") continue;
 
     // Выход из программы
     if (name.ToLower() == "выход")
