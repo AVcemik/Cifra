@@ -18,11 +18,16 @@ while (true)
     Console.Write("Введите имя: ");
     name = Console.ReadLine();
 
+    // Проверка на нулл (Человек без имени войти не может)
+    if (name == "") continue;
+
+    // Выход из программы
     if (name.ToLower() == "выход")
     {
         break;
     }
 
+    // 
     foreach (KeyValuePair<string, int> item in nameVisit)
     {
         if (item.Key == name)
