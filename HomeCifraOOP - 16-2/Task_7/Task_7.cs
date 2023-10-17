@@ -5,4 +5,18 @@
 Используйте Dictionary для этой задачи.
  */
 
-Dictionary<> log = new Dictionary<>();
+string curentDirectory = Directory.GetCurrentDirectory();
+string logFile = "\\log.txt";
+Dictionary<string, string> log  = new Dictionary<string, string>();
+string[] temp = File.ReadAllLines(curentDirectory + logFile);
+
+for (int i = 0; i < temp.Length; i++)
+{
+    string[] lineTemp = temp[i].Split('');
+    log.Add(lineTemp[0], lineTemp[1]);
+}
+
+foreach (var item in log)
+{
+    Console.WriteLine(log.Keys + " - " + log.Values);
+}
