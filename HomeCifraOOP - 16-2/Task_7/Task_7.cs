@@ -7,16 +7,23 @@
 
 string curentDirectory = Directory.GetCurrentDirectory();
 string logFile = "\\log.txt";
-Dictionary<string, string> log  = new Dictionary<string, string>();
-string[] temp = File.ReadAllLines(curentDirectory + logFile);
+Dictionary<string, int> count  = new Dictionary<string, int>();
+string[] log = File.ReadAllLines(curentDirectory + logFile);
 
-for (int i = 0; i < temp.Length; i++)
+for (int i = 0; i < log.Length; i++)
 {
-    string[] lineTemp = temp[i].Split('');
-    log.Add(lineTemp[0], lineTemp[1]);
+    string[] lineTemp = log[i].Split(" Ошибка: ", 2);
+    if (count.ContainsKey(lineTemp[1]))
+    {
+        count[lineTemp[1]]++;
+    }
+    else
+    {
+        count.Add(lineTemp[1], 1);
+    }
 }
 
-foreach (var item in log)
+foreach (var item in count)
 {
-    Console.WriteLine(log.Keys + " - " + log.Values);
+    Console.WriteLine(item.Key + " - " + item.Value);
 }

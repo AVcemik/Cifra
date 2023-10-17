@@ -7,14 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="log.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="log.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
 </Project>
