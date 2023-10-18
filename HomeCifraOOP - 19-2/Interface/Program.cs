@@ -19,7 +19,7 @@ employee.Add(new Empoyee("Александр", 2, new List<Task>
         new Task ("Идти на учебу", Priority.Hight, new DateTime(2023, 10, 18) )
     }
 ));
-employee.Add(new Empoyee("Иван", 1, new List<Task>
+employee.Add(new Empoyee("Иван", 3, new List<Task>
     {
         new Task ("Валять дурака", Priority.Hight, new DateTime(2023, 10, 25) ),
         new Task ("Заняться делом", Priority.Low, new DateTime(2023, 10, 20) ),
@@ -29,9 +29,10 @@ employee.Add(new Empoyee("Иван", 1, new List<Task>
 
 for (int i = 0; i < employee.Count; i++)
 {
+    Console.WriteLine(employee[i].Id + " - " + employee[i].Name );
     for (int j = 0; j < employee[i].Tasks.Count; j++)
     {
-
+        Console.WriteLine("     - " + employee[i].Tasks[j].Prioritys + " - " + employee[i].Tasks[j].DueData.ToShortDateString() + " - " + employee[i].Tasks[j].Titel);
     }
 }
 
