@@ -1,60 +1,62 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Olymp
 {
     internal class Program
     {
+        static int result;
+        
         static void Main(string[] args)
         {
-            
-            string[] line = Console.ReadLine().Split(' ');
+            // Пример 1 (входные данные уже в переменных)
 
-            string[] bugsBox = line[0].Split(' ');
+            //int bugs = 100;
+            //int box = 5;
+            //int[] capacityBug = new int[] { 75, 78, 44, 47, 42 };
+            //int[] capacityPrice = new int[] { 67, 3, 67, 72, 17 };
+            //int result = int.MaxValue;
 
 
-            string[] quantity = new string[int.Parse(bugsBox[1])];
-            string[] price = new string[int.Parse(bugsBox[1])];
+            // Решение(Входные данные принимает с ввода)
 
-            quantity = line[1].Split(" ");
-            price = line[2].Split(" ");
-            int result = -1;
+            string[] str1 = Console.ReadLine().Split(' ');
+            string[] str2 = Console.ReadLine().Split(' ');
+            string[] str3 = Console.ReadLine().Split(' ');
 
-            for (int i = 0; i < quantity.Length; i++)
+            result = int.MaxValue;
+
+            int bugs = int.Parse(str1[0]);
+            int box = int.Parse(str1[1]);
+            int[] capacityBug = Array.ConvertAll(str2, int.Parse);
+            int[] capacityPrice = Array.ConvertAll(str3, int.Parse);
+
+            for (int i = 0+2; i < box; i++)
             {
-                int count = 0;
-                int tempQuantity = int.Parse(quantity[i]);
-                int tempPrice = int.Parse(price[i]);
-                for (int j = i + 1; j < quantity.Length; j++)
-                {
-                    if (j == i) continue;
+                capacityBug[i] = int.Parse(str2[i]);
+            }
+            for (int i = 0+2+box; i < box; i++)
+            {
+                capacityPrice[i] = int.Parse(str3[i]);
+            }
 
-                    tempQuantity += int.Parse(quantity[j]);
-                    tempPrice += int.Parse(price[j]);
+            Price(bugs, 0, 0, box, capacityBug, capacityPrice);
 
-                    if (tempQuantity >= int.Parse(bugsBox[0]))
-                    {
-                        count++;
-                        j = count;
-                        if (result == -1)
-                        {
-                            result = tempPrice;
-                        }
-                        else if (tempPrice == 0) continue;
-                        else if (result > tempPrice)
-                        {
-                            result = tempPrice;
-                        }
-
-                        tempQuantity = int.Parse(quantity[i]);
-                        tempPrice = int.Parse(price[i]);
-                        count = j;
-                    }
-                    
-                }
+            if (result == int.MaxValue)
+            {
+                Console.WriteLine(result);
             }
             Console.WriteLine(result);
+        }
+        static void Price(int capacityBugs, int capacityPrices, int i, int box, int[] capacityBug, int[] capacityPrice)
+        {
+            if (capacityBugs <= 0 && capacityPrices < result) result = capacityPrices;
+            if (i == box) return;
+
+            Price(capacityBugs, capacityPrices, i + 1, box, capacityBug, capacityPrice);
+            Price(capacityBugs - capacityBug[i], capacityPrices + capacityPrice[i], i + 1, box, capacityBug, capacityPrice);
         }
     }
 }
