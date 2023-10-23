@@ -8,7 +8,6 @@ using System.Xml.Linq;
 List<Empoyee> employee = new List<Empoyee>();
 employee.Add(new Empoyee("Елена", 1, new List<Task>
     {
-        new Task ("Идти на работу", Priority.Midlle, new DateTime(2023, 10, 27) ),
         new Task ("Следить за ребенком", Priority.Hight, new DateTime(2023, 10, 30) )
     }
 ));
@@ -22,23 +21,30 @@ employee.Add(new Empoyee("Александр", 2, new List<Task>
 employee.Add(new Empoyee("Иван", 3, new List<Task>
     {
         new Task ("Валять дурака", Priority.Hight, new DateTime(2023, 10, 25) ),
-        new Task ("Заняться делом", Priority.Low, new DateTime(2023, 10, 20) ),
-        new Task ("ничего не делать", Priority.Midlle, new DateTime(2023, 10, 23) )
+        new Task ("Заняться делом", Priority.Low, new DateTime(2023, 10, 20) )
     }
 ));
 
-for (int i = 0; i < employee.Count; i++)
+DisplayList(employee);
+employee.Sort();
+employee.Reverse();
+Console.WriteLine("\nОтсортированный список по кол-во задач\n");
+DisplayList(employee);
+
+
+
+void DisplayList(List<Empoyee> list)
 {
-    Console.WriteLine(employee[i].Id + " - " + employee[i].Name );
-    for (int j = 0; j < employee[i].Tasks.Count; j++)
+    for (int i = 0; i < list.Count; i++)
     {
-        Console.WriteLine("     - " + employee[i].Tasks[j].Prioritys + " - " + employee[i].Tasks[j].DueData.ToShortDateString() + " - " + employee[i].Tasks[j].Titel);
+        Console.WriteLine(list[i].Id + " - " + list[i].Name);
+        for (int j = 0; j < list[i].Tasks.Count; j++)
+        {
+            Console.WriteLine("     - " + list[i].Tasks[j].Prioritys + " - " + list[i].Tasks[j].DueData.ToShortDateString() + " - " + list[i].Tasks[j].Titel);
+        }
     }
 }
-
-
-
-public class Empoyee : IComparable<Empoyee>, IEnumerable
+public class Empoyee : IComparable<Empoyee>
 {
     public string Name { get; set; }
     public int Id { get; set; }
@@ -51,25 +57,8 @@ public class Empoyee : IComparable<Empoyee>, IEnumerable
     }
     public int CompareTo(Empoyee other)
     {
-        if (Tasks.Count != other.Tasks.Count)
-        {
-            return Tasks.Count.CompareTo(other.Tasks.Count);
-        }
-        if (Tasks.Count > 0)
-        {
-            int priorityComparison = String.Compare(Tasks[0].Prioritys.ToString(), other.Tasks[0].Prioritys.ToString());
-            if (priorityComparison != 0)
-                return priorityComparison;
-        }
-        return string.Compare(Name, other.Name);
+        return Tasks.Count.CompareTo(other.Tasks.Count);
     }
-    public IEnumerator GetEnumerator()
-    {
-        return Tasks.GetEnumerator();
-    }
-
-
-
 }
 
 public class Task : ICloneable
@@ -86,8 +75,7 @@ public class Task : ICloneable
 
     public object Clone()
     {
-        DateTime dueDataCopy = new DateTime(DueData.Year, DueData.Month, DueData.Day);
-        return new Task(Titel, Prioritys, dueDataCopy);
+        return new Task(Titel, Prioritys, DueData);
     }
 }
 
