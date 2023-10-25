@@ -1,7 +1,9 @@
 ﻿/*
  *          Домашнее задание 19-1
  */
-TaskManager manager = new TaskManager();
+List<TaskManager> manager = new();
+
+Menu();
 
 
 
@@ -31,26 +33,39 @@ void Commands(string str)
             break;
     }
 }
-T CommandPriotitet()
+void ListTaskEvent(TaskManager manager)
+{
+    for (int i = 0; i < manager.; i++)
+    {
+
+    }
+}
+void SetPriotitet(out Priority priority)
 {
     Console.WriteLine("1 - Высокий");
     Console.WriteLine("2 - Средний");
     Console.WriteLine("3 - Низкий");
-    Console.Write("Выберите приоритет (Если это событие через пробел введите место проведение события): ");
-    string[] command = Console.ReadLine()!.Split(' ', 2);
+    Console.Write("Выберите приоритет: ");
+    string command = Console.ReadLine()!;
 
-    switch (command[0])
+    switch (command)
     {
-        case "1": return Priority.High;
-        case "2": return Priority.Medium;
-        case "3": return Priority.Low;
+        case "1":
+            priority = Priority.High;
+            break;
+        case "2":
+            priority = Priority.Medium;
+            break;
+        case "3":
+            priority = Priority.Low;
+            break;
         default:
             {
-                ColorText("Неправильно указан приоритет", Colors.Red);
-                return CommandPriotitet();
+                ColorText("Приоритет не присвоен!!!", Colors.Red);
+                priority = Priority.NotPriority;
             }
+            break;
     }
-    
 }
 void AddTaskEvent()
 {
@@ -58,10 +73,23 @@ void AddTaskEvent()
     Console.Write("Введите название задачи или события: ");
     string titel = Console.ReadLine()!;
     DateTime date = ParseDate();
-    manager.AddTask(CommandPriotitet());
-    
-    
-    
+    Priority priority = new();
+    SetPriotitet(out priority);
+    Console.Write("Введите место мероприяти (если это задача ничего не вводите): ");
+    string location = Console.ReadLine()!;
+    if (location == "")
+    {
+        Task newTask = new(titel, date, priority);
+        manager.AddTask(newTask);
+        ColorText("Задача успешно добавлена", Colors.Green);
+    }
+    else
+    {
+        Event newEvent = new(titel, date, priority, location);
+        manager.AddTask(newEvent);
+        ColorText("Событие успешно добавлена", Colors.Green);
+    }
+    PauseSoft();
 }
 void PauseSoft()
 {
@@ -99,6 +127,7 @@ void ColorText(string str, Colors color)
 }
 public enum Priority
 {
+    NotPriority,
     Low,
     Medium,
     High
@@ -167,11 +196,11 @@ public class TaskManager
     }
     public void AddTask(Task task)
     {
-        DataList.Add((task, null));
+        DataList.Add((task, null!));
     }
     public void AddTask(Event someEvent)
     {
-        DataList.Add((null, someEvent));
+        DataList.Add((null!, someEvent));
     }
     public void Display()
     {
