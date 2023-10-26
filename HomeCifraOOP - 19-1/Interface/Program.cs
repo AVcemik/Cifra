@@ -1,21 +1,24 @@
 ﻿/*
  *          Домашнее задание 19-1
  */
+using Interface;
+
 List<TaskManager> manager = new();
 
-Menu();
+MainMenu();
 
 
 
-void Menu()
+void MainMenu()
 {
     Console.Clear();
     Console.WriteLine("Меню:");
-    Console.WriteLine("1 - Добавить задачу или событие");
-    Console.WriteLine("2 - Удалить задачу");
-    Console.WriteLine("3 - Вывести список всех задач и событий");
+    Console.WriteLine("1 - Добавить задачу");
+    Console.WriteLine("2 - Добавить событие");
+    Console.WriteLine("3 - Удалить задачу");
+    Console.WriteLine("4 - Вывести список всех задач и событий");
     Commands("Введите номер меню: ");
-    Menu();
+    MainMenu();
 }
 void Commands(string str)
 {
@@ -136,96 +139,4 @@ public enum Colors
 {
     Green,
     Red
-}
-
-interface ITask
-{
-    string Title { get; set; } // Название задачи или события
-    DateTime DueDate { get; set; } // Дата выполнение задачи или события.
-    Priority Priority { get; set; } // Приоритет задачи или события
-
-
-    void Display(); // Метод для отображения информации о задачи или событии.
-}
-
-public class Task : ITask
-{
-    public string Title { get; set; }
-    public DateTime DueDate { get; set; }
-    public Priority Priority { get; set; }
-
-    public Task(string title, DateTime dueDate, Priority priority)
-    {
-        Title = title;
-        DueDate = dueDate;
-        Priority = priority;
-    }
-
-    public void Display()
-    {
-        Console.WriteLine($"Название: {0}\nДата и время: {1}\nПриоритет: {2}", Title, DueDate, Priority);
-    }
-}
-public class Event : ITask
-{
-    public string Title { get; set; }
-    public DateTime DueDate { get; set; }
-    public Priority Priority { get; set; }
-    public string Location { get; set; }
-
-    public Event(string title, DateTime dueDate, Priority priority, string location)
-    {
-        Title = title;
-        DueDate = dueDate;
-        Priority = priority;
-        Location = location;
-    }
-
-    public void Display()
-    {
-        Console.WriteLine($"Название: {0}\nДата и время: {1}\nПриоритет: {2}\nМесто проведения: {3}", Title, DueDate, Priority, Location);
-    }
-}
-
-public class TaskManager
-{
-    public List<(Task, Event)> DataList { get; set; }
-    public TaskManager()
-    {
-        DataList = new List<(Task, Event)>();
-    }
-    public void AddTask(Task task)
-    {
-        DataList.Add((task, null!));
-    }
-    public void AddTask(Event someEvent)
-    {
-        DataList.Add((null!, someEvent));
-    }
-    public void Display()
-    {
-        for (int i = 0; i < DataList.Count; i++)
-        {
-            if (DataList[i].Item1 != null)
-            {
-                Console.WriteLine("Название: " + DataList[i].Item1.Title);
-                Console.WriteLine("Дата: " + DataList[i].Item1.DueDate.ToShortDateString());
-                Console.WriteLine("Приоритет: " + DataList[i].Item1.Priority);
-                Console.WriteLine();
-            }
-            else if (DataList[i].Item2 != null)
-            {
-                Console.WriteLine("Название: " + DataList[i].Item2.Title);
-                Console.WriteLine("Дата: " + DataList[i].Item2.DueDate.ToShortDateString());
-                Console.WriteLine("Приоритет: " + DataList[i].Item2.Priority);
-                Console.WriteLine("Место проведения: " + DataList[i].Item2.Location);
-                Console.WriteLine();
-
-            }
-            else
-            {
-                Console.WriteLine("Какая то ошибка");
-            }
-        }
-    }
 }
