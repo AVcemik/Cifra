@@ -1,4 +1,4 @@
-﻿namespace FallingObjects
+﻿namespace GameFallingObj
 {
     partial class Form1
     {
@@ -28,47 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            button1 = new Button();
+            startBT = new Button();
             SuspendLayout();
             // 
-            // label2
+            // startBT
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(275, 9);
-            label2.Name = "label2";
-            label2.Size = new Size(43, 15);
-            label2.TabIndex = 0;
-            label2.Text = "asdasd";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(608, 43);
-            button1.Name = "button1";
-            button1.Size = new Size(133, 49);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            startBT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            startBT.Location = new Point(305, 221);
+            startBT.Name = "startBT";
+            startBT.Size = new Size(133, 49);
+            startBT.TabIndex = 1;
+            startBT.Text = "Старт";
+            startBT.UseVisualStyleBackColor = true;
+            startBT.Click += button1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
-            Controls.Add(label2);
+            ClientSize = new Size(784, 461);
+            Controls.Add(startBT);
             Name = "Form1";
             Text = "Падающие обекты";
             FormClosing += Form1_FormClosing;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label2;
-        private Button button1;
+        private Button startBT;
     }
 }

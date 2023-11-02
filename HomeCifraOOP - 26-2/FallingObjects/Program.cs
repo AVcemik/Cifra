@@ -1,4 +1,4 @@
-namespace FallingObjects
+namespace GameFallingObj
 {
     internal static class Program
     {
