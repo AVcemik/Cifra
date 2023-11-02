@@ -14,8 +14,8 @@ namespace GameFallingObj
         public Form1()
         {
             InitializeComponent();
-            int positionX = 50;
-            int positionY = 50;
+            int positionX = 0;
+            int positionY = 0;
             Point point = new();
             point.X = positionX;
             point.Y = positionY;
@@ -25,13 +25,16 @@ namespace GameFallingObj
             pictureBox.Location = point;
             Controls.Add(pictureBox);
         }
+        public void Stone()
+        {
 
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread th = new Thread(down);
-            th.Start();
+            Thread stone = new Thread(Stone);
+            stone.Start();
         }
         public void down()
         {
