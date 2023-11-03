@@ -40,7 +40,7 @@
             startBT.TabIndex = 1;
             startBT.Text = "Старт";
             startBT.UseVisualStyleBackColor = true;
-            startBT.Click += button1_Click;
+            startBT.Click += StartBTN_Click;
             // 
             // Form1
             // 
