@@ -20,7 +20,7 @@ namespace GameFallingObj
         public PictureBox player = new();
         private readonly int _startPositionY = -30;
         private readonly int _startSpeedMax = 1;
-        private readonly int _startSpeedMin = 10;
+        private readonly int _startSpeedMin = 20;
         private readonly int _downSpeed = 1;
         private readonly int _stepDownSpeed = 4;
         private bool moveLeft = false;
