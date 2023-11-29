@@ -42,7 +42,6 @@
             AddUserBT = new Button();
             EditUserBT = new Button();
             SaveFileBT = new Button();
-            OpenUpdateFileBT = new Button();
             SuspendLayout();
             // 
             // ContactListLTB
@@ -151,33 +150,24 @@
             EditUserBT.Name = "EditUserBT";
             EditUserBT.Size = new Size(183, 35);
             EditUserBT.TabIndex = 12;
-            EditUserBT.Text = "Редактировать";
+            EditUserBT.Text = "Внести изменения";
             EditUserBT.UseVisualStyleBackColor = true;
             // 
             // SaveFileBT
             // 
-            SaveFileBT.Location = new Point(375, 229);
+            SaveFileBT.Location = new Point(277, 229);
             SaveFileBT.Name = "SaveFileBT";
             SaveFileBT.Size = new Size(183, 35);
             SaveFileBT.TabIndex = 13;
-            SaveFileBT.Text = "Сохранить";
+            SaveFileBT.Text = "Сохранить изменения";
             SaveFileBT.UseVisualStyleBackColor = true;
-            // 
-            // OpenUpdateFileBT
-            // 
-            OpenUpdateFileBT.Location = new Point(186, 229);
-            OpenUpdateFileBT.Name = "OpenUpdateFileBT";
-            OpenUpdateFileBT.Size = new Size(183, 35);
-            OpenUpdateFileBT.TabIndex = 14;
-            OpenUpdateFileBT.Text = "Открыть";
-            OpenUpdateFileBT.UseVisualStyleBackColor = true;
+            SaveFileBT.Click += SaveFileBT_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(570, 450);
-            Controls.Add(OpenUpdateFileBT);
             Controls.Add(SaveFileBT);
             Controls.Add(EditUserBT);
             Controls.Add(AddUserBT);
@@ -215,6 +205,5 @@
         private Button AddUserBT;
         private Button EditUserBT;
         private Button SaveFileBT;
-        private Button OpenUpdateFileBT;
     }
 }
