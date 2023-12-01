@@ -51,6 +51,11 @@ internal class Program
                 else if (users[i].IsAdmin == true)
                     AdminMenu();
             }
+            else
+            {
+                Other.DisplayTextRed("Неверное введены данные!!!");
+                Other.PausedApp();
+            }
         }
     }
     public static void UserMenu()           // Меню пользователя
@@ -63,7 +68,7 @@ internal class Program
         string command = Console.ReadLine()!;
 
         if (command == "1")
-            LoginMenu();
+            StartMenu();
         else if (command == "0")
             Other.ExitApp();
         else
@@ -82,7 +87,7 @@ internal class Program
         string command = Console.ReadLine()!;
 
         if (command == "1")
-            LoginMenu();
+            StartMenu();
         else if (command == "0")
             Other.ExitApp();
         else
@@ -95,11 +100,6 @@ internal class Program
     {
         uint nextId = SetMaxId();
         nextId++;
-        uint[] ids = new uint[users.Count];
-        for (int i = 0; i < users.Count; i++)
-        {
-            ids[i] = users[i].Id;
-        }
 
         Console.Clear();
         Console.Write("Введите ваше Логин: ");
@@ -111,13 +111,36 @@ internal class Program
         Console.Write("Введите ваш возраст: ");
         ushort age = 0;
         ushort.TryParse(Console.ReadLine()!, out age);
-        if (age >= 0)
+        if (age > 0)
         {
-            users.Add(Registration(nextId, login, password, name, age));
-            UpdateListUsers();
+            bool checkUser = false;
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Login == login)
+                {
+                    Other.DisplayTextRed("Пользователь с таким логин уже существует!!!");
+                    Other.PausedApp();
+                    checkUser = true;
+                    break;
+                }
+            }
+            if (checkUser == false)
+            {
+                users.Add(Registration(nextId, login, password, name, age));
+                UpdateListUsers();
+                Other.DisplayTextGreen("Регистрация прошла успешно!!!");
+                Other.PausedApp();
+                StartMenu();
+            }
+            else
+                StartMenu();
         }
         else
+        {
             Other.DisplayTextRed("Возраст введен не корректно!!!");
+            Other.PausedApp();
+            StartMenu();
+        }
     }
     public static uint SetMaxId()           // Определяем следующий Id
     {
@@ -135,20 +158,21 @@ internal class Program
     }
     public static void SerializationXML()   // Сериализация файла
     {
-        XmlSerializer serializer = new(typeof(List<User>), "UserAccount");
-
-        using (FileStream fileStream = new(_pathFile, FileMode.OpenOrCreate))
+        XmlSerializer serializer = new(typeof(List<User>));
+        File.Delete(_pathFile);
+        using (StreamWriter streamWriter = new(_pathFile))
         {
-            serializer.Serialize(fileStream, users);
+            serializer.Serialize(streamWriter, users);
         }
     }
     public static void DeserializationXML() // Десериализация
     {
-        XmlSerializer serializer = new(typeof(List<User>), "UserAccount");
+        XmlSerializer serializer = new(typeof(List<User>));
 
-        using (FileStream fileStream = new(_pathFile, FileMode.OpenOrCreate, FileAccess.Read))
+        using (StreamReader streamReader = new(_pathFile))
         {
-            users = (List<User>)serializer.Deserialize(fileStream)!;
+            users.Clear();
+            users = (List<User>)serializer.Deserialize(streamReader)!;
         }
     }
     public static void PresetStartApp() // Стартовые настройки программы
@@ -168,13 +192,14 @@ internal class Program
             catch (Exception)
             {
                 Console.WriteLine("Data файл был поврежден, программа восстановлен к заводским установкам");
-            }
-            finally
-            {
                 File.Delete(_pathFile);
                 users.Add(new User() { Id = 0, Login = "admin", Password = "admin", Name = "admin", Age = 36, IsAdmin = true });
                 users.Add(new User() { Id = 1, Login = "user", Password = "user", Name = "user", Age = 36, IsAdmin = false });
                 SerializationXML();
+            }
+            finally
+            {
+                DeserializationXML();
             }
         }
     }

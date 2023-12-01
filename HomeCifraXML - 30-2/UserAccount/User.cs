@@ -1,4 +1,6 @@
-﻿namespace UserAccount
+﻿using System.Xml.Serialization;
+
+namespace UserAccount
 {
     [Serializable]
     public class User
