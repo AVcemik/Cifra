@@ -51,12 +51,10 @@ internal class Program
                 else if (users[i].IsAdmin == true)
                     AdminMenu();
             }
-            else
-            {
-                Other.DisplayTextRed("Неверное введены данные!!!");
-                Other.PausedApp();
-            }
         }
+        Other.DisplayTextRed("Неверно введены данные!!!");
+        Other.PausedApp();
+        StartMenu();
     }
     public static void UserMenu()           // Меню пользователя
     {
