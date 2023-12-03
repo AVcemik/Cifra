@@ -2,23 +2,18 @@
 {
     internal static class Other
     {
-        private static readonly string _filePath = Directory.GetCurrentDirectory() + "\\Адресная кнгига.xlsx";
-        public static bool EditNoSaveData { get; set; } = false;
-
+        private static readonly string _filePath = Directory.GetCurrentDirectory() + "\\Адресная кнгига.xlsx"; // Полный путь до книги
         public static string GetFilePath()  // Получение полного пути к файлу
         {
             return _filePath;
         }
-        public static void ExitApp()
+        public static void DisplayNotificationMessage(string word) // Вывод уведомления
         {
-
-                var result = MessageBox.Show("Изменения не сохранены", "Сохранить изменения?", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    // РЕализовать сохранение изменений
-                }
-                Application.Exit();
-
+            MessageBox.Show(word, "Уведомление");
+        }
+        public static void DisplayErrorMessage(string word) // Вывод ошибки
+        {
+            MessageBox.Show(word, "Ошибка");
         }
     }
 }

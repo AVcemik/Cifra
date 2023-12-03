@@ -52,13 +52,14 @@
             ContactListLTB.Name = "ContactListLTB";
             ContactListLTB.Size = new Size(168, 364);
             ContactListLTB.TabIndex = 0;
+            ContactListLTB.SelectedIndexChanged += ContactListLTB_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(59, 15);
+            label1.Size = new Size(62, 15);
             label1.TabIndex = 1;
             label1.Text = "Контакты";
             // 
@@ -74,7 +75,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(186, 9);
             label2.Name = "label2";
-            label2.Size = new Size(31, 15);
+            label2.Size = new Size(32, 15);
             label2.TabIndex = 3;
             label2.Text = "Имя";
             // 
@@ -83,7 +84,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(186, 141);
             label3.Name = "label3";
-            label3.Size = new Size(40, 15);
+            label3.Size = new Size(42, 15);
             label3.TabIndex = 4;
             label3.Text = "Адрес";
             // 
@@ -99,7 +100,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(186, 53);
             label4.Name = "label4";
-            label4.Size = new Size(101, 15);
+            label4.Size = new Size(104, 15);
             label4.TabIndex = 6;
             label4.Text = "Номер телефона";
             // 
@@ -115,7 +116,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(186, 97);
             label5.Name = "label5";
-            label5.Size = new Size(116, 15);
+            label5.Size = new Size(122, 15);
             label5.TabIndex = 8;
             label5.Text = "Электронный адрес";
             // 
@@ -134,6 +135,7 @@
             DeleteUserBT.TabIndex = 10;
             DeleteUserBT.Text = "Удалить";
             DeleteUserBT.UseVisualStyleBackColor = true;
+            DeleteUserBT.Click += DeleteUserBT_Click;
             // 
             // AddUserBT
             // 
@@ -143,6 +145,7 @@
             AddUserBT.TabIndex = 11;
             AddUserBT.Text = "Добавить";
             AddUserBT.UseVisualStyleBackColor = true;
+            AddUserBT.Click += AddUserBT_Click;
             // 
             // EditUserBT
             // 
@@ -152,6 +155,7 @@
             EditUserBT.TabIndex = 12;
             EditUserBT.Text = "Внести изменения";
             EditUserBT.UseVisualStyleBackColor = true;
+            EditUserBT.Click += EditUserBT_Click;
             // 
             // SaveFileBT
             // 
@@ -167,6 +171,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(570, 450);
             Controls.Add(SaveFileBT);
             Controls.Add(EditUserBT);
@@ -183,8 +188,10 @@
             Controls.Add(label1);
             Controls.Add(ContactListLTB);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
