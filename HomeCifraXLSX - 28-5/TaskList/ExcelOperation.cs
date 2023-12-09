@@ -13,48 +13,40 @@ namespace TaskList
 
             ExcelPackage book = new(_dataFile);
             ExcelWorksheet workSheet = book.Workbook.Worksheets[_nameSheet];
-
-            for (int i = 2; i <= workSheet.Dimension.End.Row; i++)
+            if (workSheet == null)
             {
-                string name = workSheet.Cells[i, 1].Value.ToString()!;
-                DateTime date = (DateTime)workSheet.Cells[i, 3].Value;
-                Priority priority = (Priority)workSheet.Cells[i, 4].Value;
-                Tasks temp = new(name, date, priority);
-                listTask.Add(temp);
-            }
-            return listTask;
-        }
-        public static void CheckFileXLSX()  // Проверка на существование файла
-        {
-            ExcelPackage.LicenseContext = LicenseContext.Commercial;
-            if (!File.Exists(_dataFile))
-            {
-                ExcelPackage book = new(_dataFile);
-                ExcelWorksheet workSheet = book.Workbook.Worksheets.Add(_nameSheet);
-                workSheet.Cells[1, 1].Value = "Название";
-                workSheet.Cells[1, 2].Value = "Статус";
-                workSheet.Cells[1, 3].Value = "Время";
-                workSheet.Cells[1, 4].Value = "Приоритет";
+                workSheet = book.Workbook.Worksheets.Add(_nameSheet);
                 book.Save();
             }
+            else
+            {
+                for (int i = 1; i <= workSheet.Dimension.End.Row; i++)
+                {
+                    string name = workSheet.Cells[i, 1].Value.ToString()!;
+                    DateTime date = DateTime.Parse(workSheet.Cells[i, 3].Text);
+                    Priority priority = (Priority)int.Parse(workSheet.Cells[i, 4].Text);
+                    Tasks temp = new(name, date, priority);
+                    listTask.Add(temp);
+                }
+            }
             
+            
+            return listTask;
         }
         public static void SaveXLSX(List<Tasks> listTask)
         {
             ExcelPackage.LicenseContext = LicenseContext.Commercial;
             ExcelPackage book = new(_dataFile);
             ExcelWorksheet workSheet = book.Workbook.Worksheets[_nameSheet];
-
-            workSheet.Cells["A2:E1000"].Clear();
-
-            for (int i = 0, row = 2; i < listTask.Count; i++, row++)
+            workSheet.Cells[$"A1:E{workSheet.Dimension.End.Row}"].Clear();
+            for (int i = 0, row = 1; i < listTask.Count; i++, row++)
             {
                 workSheet.Cells[row, 1].Value = listTask[i].Name;
-                workSheet.Cells[row, 2].Value = listTask[i].StatusTask;
+                workSheet.Cells[row, 2].Value = (int)listTask[i].StatusTask;
                 workSheet.Cells[row, 3].Value = listTask[i].Date;
-                workSheet.Cells[row, 4].Value = listTask[i].PriorityTask;
+                workSheet.Cells[row, 4].Value = (int)listTask[i].PriorityTask;
             }
-
+            workSheet.Cells[$"C1:C{workSheet.Dimension.End.Row}"].Style.Numberformat.Format = "yyyy.mm.dd";
             book.Save();
         }
     }

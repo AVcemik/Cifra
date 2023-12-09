@@ -16,9 +16,9 @@ namespace TaskList
     }
     public enum Priority
     {
-        Low, 
-        Medium, 
-        High
+        Низкий, 
+        Средний, 
+        Высокий
     }
     public class Tasks
     {

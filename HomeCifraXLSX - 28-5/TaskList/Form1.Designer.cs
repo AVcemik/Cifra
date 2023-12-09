@@ -28,156 +28,192 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.ListTasksDGV = new System.Windows.Forms.DataGridView();
-            this.NameTaskTB = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.DateTaskDTP = new System.Windows.Forms.DateTimePicker();
-            this.PriorityTaskCB = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.AddTaskBT = new System.Windows.Forms.Button();
-            this.RemoveTaskBT = new System.Windows.Forms.Button();
-            this.SaveBT = new System.Windows.Forms.Button();
-            this.EndTaskBT = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ListTasksDGV)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            ListTasksDGV = new DataGridView();
+            NameTaskTB = new TextBox();
+            label2 = new Label();
+            label4 = new Label();
+            DateTaskDTP = new DateTimePicker();
+            PriorityTaskCB = new ComboBox();
+            label5 = new Label();
+            AddTaskBT = new Button();
+            RemoveTaskBT = new Button();
+            SaveBT = new Button();
+            EndTaskBT = new Button();
+            nameTask = new DataGridViewTextBoxColumn();
+            statsTask = new DataGridViewTextBoxColumn();
+            dateTask = new DataGridViewTextBoxColumn();
+            prirityTask = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)ListTasksDGV).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Список задач";
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(84, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Список задач";
             // 
             // ListTasksDGV
             // 
-            this.ListTasksDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListTasksDGV.Location = new System.Drawing.Point(12, 27);
-            this.ListTasksDGV.Name = "ListTasksDGV";
-            this.ListTasksDGV.RowTemplate.Height = 25;
-            this.ListTasksDGV.Size = new System.Drawing.Size(617, 411);
-            this.ListTasksDGV.TabIndex = 1;
+            ListTasksDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListTasksDGV.Columns.AddRange(new DataGridViewColumn[] { nameTask, statsTask, dateTask, prirityTask });
+            ListTasksDGV.Location = new Point(12, 27);
+            ListTasksDGV.Name = "ListTasksDGV";
+            ListTasksDGV.RowTemplate.Height = 25;
+            ListTasksDGV.Size = new Size(690, 411);
+            ListTasksDGV.TabIndex = 1;
             // 
             // NameTaskTB
             // 
-            this.NameTaskTB.Location = new System.Drawing.Point(635, 27);
-            this.NameTaskTB.Name = "NameTaskTB";
-            this.NameTaskTB.Size = new System.Drawing.Size(153, 23);
-            this.NameTaskTB.TabIndex = 2;
+            NameTaskTB.Location = new Point(708, 27);
+            NameTaskTB.Name = "NameTaskTB";
+            NameTaskTB.Size = new Size(153, 23);
+            NameTaskTB.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(635, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Название задачи";
+            label2.AutoSize = true;
+            label2.Location = new Point(708, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(106, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Название задачи";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(635, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Дата сдачи";
+            label4.AutoSize = true;
+            label4.Location = new Point(708, 58);
+            label4.Name = "label4";
+            label4.Size = new Size(70, 15);
+            label4.TabIndex = 7;
+            label4.Text = "Дата сдачи";
             // 
             // DateTaskDTP
             // 
-            this.DateTaskDTP.Location = new System.Drawing.Point(635, 76);
-            this.DateTaskDTP.Name = "DateTaskDTP";
-            this.DateTaskDTP.Size = new System.Drawing.Size(151, 23);
-            this.DateTaskDTP.TabIndex = 8;
+            DateTaskDTP.Location = new Point(708, 76);
+            DateTaskDTP.Name = "DateTaskDTP";
+            DateTaskDTP.Size = new Size(151, 23);
+            DateTaskDTP.TabIndex = 8;
             // 
             // PriorityTaskCB
             // 
-            this.PriorityTaskCB.FormattingEnabled = true;
-            this.PriorityTaskCB.Items.AddRange(new object[] {
-            "Низкий",
-            "Средний",
-            "Высокий"});
-            this.PriorityTaskCB.Location = new System.Drawing.Point(633, 120);
-            this.PriorityTaskCB.Name = "PriorityTaskCB";
-            this.PriorityTaskCB.Size = new System.Drawing.Size(153, 23);
-            this.PriorityTaskCB.TabIndex = 9;
+            PriorityTaskCB.FormattingEnabled = true;
+            PriorityTaskCB.Items.AddRange(new object[] { "Низкий", "Средний", "Высокий" });
+            PriorityTaskCB.Location = new Point(708, 120);
+            PriorityTaskCB.Name = "PriorityTaskCB";
+            PriorityTaskCB.Size = new Size(151, 23);
+            PriorityTaskCB.TabIndex = 9;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(635, 102);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Приоритет";
+            label5.AutoSize = true;
+            label5.Location = new Point(708, 102);
+            label5.Name = "label5";
+            label5.Size = new Size(70, 15);
+            label5.TabIndex = 10;
+            label5.Text = "Приоритет";
             // 
             // AddTaskBT
             // 
-            this.AddTaskBT.Location = new System.Drawing.Point(635, 149);
-            this.AddTaskBT.Name = "AddTaskBT";
-            this.AddTaskBT.Size = new System.Drawing.Size(151, 35);
-            this.AddTaskBT.TabIndex = 11;
-            this.AddTaskBT.Text = "Добавить задачу";
-            this.AddTaskBT.UseVisualStyleBackColor = true;
-            this.AddTaskBT.Click += new System.EventHandler(this.AddTaskBT_Click);
+            AddTaskBT.Location = new Point(706, 149);
+            AddTaskBT.Name = "AddTaskBT";
+            AddTaskBT.Size = new Size(153, 35);
+            AddTaskBT.TabIndex = 11;
+            AddTaskBT.Text = "Добавить задачу";
+            AddTaskBT.UseVisualStyleBackColor = true;
+            AddTaskBT.Click += AddTaskBT_Click;
             // 
             // RemoveTaskBT
             // 
-            this.RemoveTaskBT.Location = new System.Drawing.Point(635, 190);
-            this.RemoveTaskBT.Name = "RemoveTaskBT";
-            this.RemoveTaskBT.Size = new System.Drawing.Size(151, 35);
-            this.RemoveTaskBT.TabIndex = 13;
-            this.RemoveTaskBT.Text = "Удалить задачу";
-            this.RemoveTaskBT.UseVisualStyleBackColor = true;
+            RemoveTaskBT.Location = new Point(706, 190);
+            RemoveTaskBT.Name = "RemoveTaskBT";
+            RemoveTaskBT.Size = new Size(153, 35);
+            RemoveTaskBT.TabIndex = 13;
+            RemoveTaskBT.Text = "Удалить задачу";
+            RemoveTaskBT.UseVisualStyleBackColor = true;
+            RemoveTaskBT.Click += RemoveTaskBT_Click;
             // 
             // SaveBT
             // 
-            this.SaveBT.Location = new System.Drawing.Point(635, 403);
-            this.SaveBT.Name = "SaveBT";
-            this.SaveBT.Size = new System.Drawing.Size(151, 35);
-            this.SaveBT.TabIndex = 14;
-            this.SaveBT.Text = "Сохранить изменения";
-            this.SaveBT.UseVisualStyleBackColor = true;
-            this.SaveBT.Click += new System.EventHandler(this.SaveBT_Click);
+            SaveBT.Location = new Point(706, 403);
+            SaveBT.Name = "SaveBT";
+            SaveBT.Size = new Size(153, 35);
+            SaveBT.TabIndex = 14;
+            SaveBT.Text = "Сохранить изменения";
+            SaveBT.UseVisualStyleBackColor = true;
+            SaveBT.Click += SaveBT_Click;
             // 
             // EndTaskBT
             // 
-            this.EndTaskBT.Location = new System.Drawing.Point(633, 362);
-            this.EndTaskBT.Name = "EndTaskBT";
-            this.EndTaskBT.Size = new System.Drawing.Size(153, 35);
-            this.EndTaskBT.TabIndex = 15;
-            this.EndTaskBT.Text = "Завершить задачу";
-            this.EndTaskBT.UseVisualStyleBackColor = true;
+            EndTaskBT.Location = new Point(706, 362);
+            EndTaskBT.Name = "EndTaskBT";
+            EndTaskBT.Size = new Size(153, 35);
+            EndTaskBT.TabIndex = 15;
+            EndTaskBT.Text = "Завершить задачу";
+            EndTaskBT.UseVisualStyleBackColor = true;
+            EndTaskBT.Click += EndTaskBT_Click;
+            // 
+            // nameTask
+            // 
+            nameTask.Frozen = true;
+            nameTask.HeaderText = "Название";
+            nameTask.Name = "nameTask";
+            nameTask.ReadOnly = true;
+            nameTask.SortMode = DataGridViewColumnSortMode.NotSortable;
+            nameTask.Width = 250;
+            // 
+            // statsTask
+            // 
+            statsTask.Frozen = true;
+            statsTask.HeaderText = "Статус";
+            statsTask.Name = "statsTask";
+            statsTask.ReadOnly = true;
+            statsTask.Width = 150;
+            // 
+            // dateTask
+            // 
+            dateTask.Frozen = true;
+            dateTask.HeaderText = "Срок здачи";
+            dateTask.Name = "dateTask";
+            dateTask.ReadOnly = true;
+            dateTask.Width = 150;
+            // 
+            // prirityTask
+            // 
+            prirityTask.Frozen = true;
+            prirityTask.HeaderText = "Приоритет";
+            prirityTask.Name = "prirityTask";
+            prirityTask.ReadOnly = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.EndTaskBT);
-            this.Controls.Add(this.SaveBT);
-            this.Controls.Add(this.RemoveTaskBT);
-            this.Controls.Add(this.AddTaskBT);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.PriorityTaskCB);
-            this.Controls.Add(this.DateTaskDTP);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.NameTaskTB);
-            this.Controls.Add(this.ListTasksDGV);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список задач";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.ListTasksDGV)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(864, 450);
+            Controls.Add(EndTaskBT);
+            Controls.Add(SaveBT);
+            Controls.Add(RemoveTaskBT);
+            Controls.Add(AddTaskBT);
+            Controls.Add(label5);
+            Controls.Add(PriorityTaskCB);
+            Controls.Add(DateTaskDTP);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(NameTaskTB);
+            Controls.Add(ListTasksDGV);
+            Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Список задач";
+            FormClosing += Form1_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)ListTasksDGV).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -194,5 +230,9 @@
         private Button RemoveTaskBT;
         private Button SaveBT;
         private Button EndTaskBT;
+        private DataGridViewTextBoxColumn nameTask;
+        private DataGridViewTextBoxColumn statsTask;
+        private DataGridViewTextBoxColumn dateTask;
+        private DataGridViewTextBoxColumn prirityTask;
     }
 }
