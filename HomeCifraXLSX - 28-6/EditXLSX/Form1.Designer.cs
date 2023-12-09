@@ -70,8 +70,8 @@
             // 
             // SaveAsBT
             // 
-            SaveAsBT.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            SaveAsBT.Location = new Point(669, 403);
+            SaveAsBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            SaveAsBT.Location = new Point(669, 402);
             SaveAsBT.Name = "SaveAsBT";
             SaveAsBT.Size = new Size(123, 35);
             SaveAsBT.TabIndex = 2;
@@ -86,7 +86,7 @@
             // AddColumnBT
             // 
             AddColumnBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            AddColumnBT.Location = new Point(669, 135);
+            AddColumnBT.Location = new Point(669, 170);
             AddColumnBT.Name = "AddColumnBT";
             AddColumnBT.Size = new Size(123, 35);
             AddColumnBT.TabIndex = 3;
@@ -108,7 +108,7 @@
             // DeleteRowBT
             // 
             DeleteRowBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeleteRowBT.Location = new Point(669, 176);
+            DeleteRowBT.Location = new Point(669, 211);
             DeleteRowBT.Name = "DeleteRowBT";
             DeleteRowBT.Size = new Size(123, 35);
             DeleteRowBT.TabIndex = 5;
@@ -119,7 +119,7 @@
             // DeleteColumnBT
             // 
             DeleteColumnBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeleteColumnBT.Location = new Point(669, 217);
+            DeleteColumnBT.Location = new Point(669, 252);
             DeleteColumnBT.Name = "DeleteColumnBT";
             DeleteColumnBT.Size = new Size(123, 35);
             DeleteColumnBT.TabIndex = 6;
@@ -129,7 +129,8 @@
             // 
             // SaveBT
             // 
-            SaveBT.Location = new Point(669, 362);
+            SaveBT.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            SaveBT.Location = new Point(669, 361);
             SaveBT.Name = "SaveBT";
             SaveBT.Size = new Size(123, 35);
             SaveBT.TabIndex = 7;
@@ -141,6 +142,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(798, 450);
             Controls.Add(SaveBT);
             Controls.Add(DeleteColumnBT);
