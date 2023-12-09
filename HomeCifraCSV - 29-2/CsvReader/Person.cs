@@ -1,11 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CsvReaders
 {
@@ -24,5 +19,16 @@ namespace CsvReaders
         [DisplayName("Номер телефона")]
         public string PhoneNumber { get; set; }
 
+        public Person()
+        {
+        }
+
+        public Person(string firstName, string lastName, string email, string phoneNumber)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+        }
     }
 }

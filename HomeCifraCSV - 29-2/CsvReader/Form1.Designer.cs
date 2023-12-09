@@ -58,7 +58,7 @@
             // 
             OpenCsvFileBT.Location = new Point(12, 256);
             OpenCsvFileBT.Name = "OpenCsvFileBT";
-            OpenCsvFileBT.Size = new Size(192, 32);
+            OpenCsvFileBT.Size = new Size(157, 32);
             OpenCsvFileBT.TabIndex = 2;
             OpenCsvFileBT.Text = "Открыть";
             OpenCsvFileBT.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             // SaveCsvFileBT
             // 
-            SaveCsvFileBT.Location = new Point(459, 256);
+            SaveCsvFileBT.Location = new Point(503, 256);
             SaveCsvFileBT.Name = "SaveCsvFileBT";
-            SaveCsvFileBT.Size = new Size(201, 32);
+            SaveCsvFileBT.Size = new Size(157, 32);
             SaveCsvFileBT.TabIndex = 3;
             SaveCsvFileBT.Text = "Сохранить";
             SaveCsvFileBT.UseVisualStyleBackColor = true;
