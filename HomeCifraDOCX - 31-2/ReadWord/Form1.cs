@@ -1,4 +1,4 @@
-using Word = Microsoft.Office.Interop.Word;
+﻿using Word = Microsoft.Office.Interop.Word;
 
 namespace ReadWord
 {
@@ -10,8 +10,9 @@ namespace ReadWord
         public Form1()
         {
             InitializeComponent();
+            SetupCheckLB("❎", Color.Green);
         }
-        private void OpenFileBT_Click(object sender, EventArgs e)
+        private void OpenFileBT_Click(object sender, EventArgs e)   // Кнопка открыть файл
         {
             if (openOFD.ShowDialog() == DialogResult.OK)
             {
@@ -21,10 +22,10 @@ namespace ReadWord
 
                 ParagraphTB.Enabled = true;
                 UnBlockedAll();
-                editCheckLB.ForeColor = Color.Green;
+                SetupCheckLB("✅", Color.Green);
             }
         }
-        private void AddParagraphBT_Click(object sender, EventArgs e)
+        private void AddParagraphBT_Click(object sender, EventArgs e)   // Кнопка добавить параграф
         {
             Word.Paragraph paragraph = _doc!.Paragraphs.Add();
             paragraph.Range.Font.Name = SetFontCB.Text;
@@ -59,9 +60,10 @@ namespace ReadWord
 
             paragraph.Range.Font.Size = int.Parse(SetSizeFontTB.Text);
             paragraph.Range.Text = ParagraphTB.Text + "\n";
-            MessageBox.Show("�������� ��������", "�����������");
+            MessageBox.Show("Параграф добавлен", "Уведомление");
+            SetupCheckLB("✅", Color.Red);
         }
-        public void BlockedAll()
+        public void BlockedAll()    // Блокировка контента до открытия файла
         {
             ParagraphTB.Enabled = false;
             BoldCHB.Enabled = false;
@@ -71,8 +73,12 @@ namespace ReadWord
             AddParagraphBT.Enabled = false;
             SaveFileBT.Enabled = false;
             SetFontCB.Enabled = false;
+            AligmentParagraphCB.Enabled = false;
+            SearchWordTB.Enabled = false;
+            EditWordTB.Enabled = false;
+            EditWordBT.Enabled = false;
         }
-        public void UnBlockedAll()
+        public void UnBlockedAll()  // Разблокировка контента после открытия файла
         {
             ParagraphTB.Enabled = true;
             BoldCHB.Enabled = true;
@@ -82,17 +88,26 @@ namespace ReadWord
             AddParagraphBT.Enabled = true;
             SaveFileBT.Enabled = true;
             SetFontCB.Enabled = true;
+            AligmentParagraphCB.Enabled = true;
+            SearchWordTB.Enabled = true;
+            EditWordTB.Enabled = true;
+            EditWordBT.Enabled = true;
         }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)   // Крестик
         {
             _wordApp.Quit();
             Application.Exit();
         }
-
-        private void SaveFileBT_Click(object sender, EventArgs e)
+        private void SaveFileBT_Click(object sender, EventArgs e)   // Кнопка сохранить
         {
             _doc!.Save();
-            MessageBox.Show("���� ������� ��������");
+            MessageBox.Show("Файл успешно сохранен");
+            SetupCheckLB("✅", Color.Green);
+        }
+        private void SetupCheckLB(string symbl, Color color)    // Установки статуса файла
+        {
+            editCheckLB.Text = symbl;
+            editCheckLB.ForeColor = color;
         }
     }
 }
