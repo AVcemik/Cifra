@@ -10,10 +10,11 @@ namespace ReadWord
         public Form1()
         {
             InitializeComponent();
-            SetupCheckLB("❎", Color.Green);
+            DefaultSetingApp();
         }
         private void OpenFileBT_Click(object sender, EventArgs e)   // Кнопка открыть файл
         {
+            OpenFileBT.Enabled = false;
             if (openOFD.ShowDialog() == DialogResult.OK)
             {
                 _currentPath = openOFD.FileName;
@@ -24,21 +25,29 @@ namespace ReadWord
                 UnBlockedAll();
                 SetupCheckLB("✅", Color.Green);
             }
+            OpenFileBT.Enabled = true;
         }
         private void AddParagraphBT_Click(object sender, EventArgs e)   // Кнопка добавить параграф
         {
+            BlockedAll();
             Word.Paragraph paragraph = _doc!.Paragraphs.Add();
-            paragraph.Range.Font.Name = SetFontCB.Text;
+
+            paragraph.Range.ParagraphFormat.Alignment = SetAligmentParagraphCB.SelectedIndex switch
+            {
+                0 => Word.WdParagraphAlignment.wdAlignParagraphLeft,
+                1 => Word.WdParagraphAlignment.wdAlignParagraphRight,
+                2 => Word.WdParagraphAlignment.wdAlignParagraphCenter,
+                3 => Word.WdParagraphAlignment.wdAlignParagraphJustify,
+                _ => Word.WdParagraphAlignment.wdAlignParagraphLeft
+            };
 
             paragraph.Range.Font.Name = SetFontCB.SelectedIndex switch
             {
                 0 => "Arial",
                 1 => "Calibri",
-                2 => "TimesNewRoman",
+                2 => "Times New Roman",
                 _ => "Arial"
             };
-
-            paragraph.Range.Font.Color = Word.WdColor.wdColorBlack;
 
             paragraph.Range.Font.Color = SetColorFontCB.SelectedIndex switch
             {
@@ -60,8 +69,38 @@ namespace ReadWord
 
             paragraph.Range.Font.Size = int.Parse(SetSizeFontTB.Text);
             paragraph.Range.Text = ParagraphTB.Text + "\n";
+
+            
+
             MessageBox.Show("Параграф добавлен", "Уведомление");
             SetupCheckLB("✅", Color.Red);
+            SetSizeFontTB.Text = "24";
+
+            UnBlockedAll();
+        }
+        private void SaveFileBT_Click(object sender, EventArgs e)   // Кнопка сохранить
+        {
+            BlockedAll();
+            _doc!.Save();
+            MessageBox.Show("Файл успешно сохранен");
+            SetupCheckLB("✅", Color.Green);
+            UnBlockedAll();
+        }
+        private void EditWordBT_Click(object sender, EventArgs e) // замена текста
+        {
+            BlockedAll();
+            if (SearchWordTB.Text != null && SearchWordTB.Text.Trim() != "")
+            {
+                Word.Range range = _doc!.Content;
+                if (EditWordTB.Text == null)
+                    EditWordTB.Text = "";
+
+                range.Find.Execute(SearchWordTB.Text, ReplaceWith: EditWordTB.Text);
+            }
+            SearchWordTB.Clear();
+            EditWordTB.Clear();
+            MessageBox.Show("Тект успешно заменен", "Уведомление");
+            UnBlockedAll();
         }
         public void BlockedAll()    // Блокировка контента до открытия файла
         {
@@ -73,7 +112,7 @@ namespace ReadWord
             AddParagraphBT.Enabled = false;
             SaveFileBT.Enabled = false;
             SetFontCB.Enabled = false;
-            AligmentParagraphCB.Enabled = false;
+            SetAligmentParagraphCB.Enabled = false;
             SearchWordTB.Enabled = false;
             EditWordTB.Enabled = false;
             EditWordBT.Enabled = false;
@@ -88,26 +127,35 @@ namespace ReadWord
             AddParagraphBT.Enabled = true;
             SaveFileBT.Enabled = true;
             SetFontCB.Enabled = true;
-            AligmentParagraphCB.Enabled = true;
+            SetAligmentParagraphCB.Enabled = true;
             SearchWordTB.Enabled = true;
             EditWordTB.Enabled = true;
             EditWordBT.Enabled = true;
-        }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)   // Крестик
-        {
-            _wordApp.Quit();
-            Application.Exit();
-        }
-        private void SaveFileBT_Click(object sender, EventArgs e)   // Кнопка сохранить
-        {
-            _doc!.Save();
-            MessageBox.Show("Файл успешно сохранен");
-            SetupCheckLB("✅", Color.Green);
         }
         private void SetupCheckLB(string symbl, Color color)    // Установки статуса файла
         {
             editCheckLB.Text = symbl;
             editCheckLB.ForeColor = color;
+        }
+        private void DefaultSetingApp() // Настройки программы по уолчанию при запуске
+        {
+            BlockedAll();
+            SetupCheckLB("❎", Color.Red);
+            SetSizeFontTB.Text = "24";
+            SetFontCB.SelectedIndex = 0;
+            SetColorFontCB.SelectedIndex = 0;
+            SetAligmentParagraphCB.SelectedIndex = 0;
+        }
+        private void SetSizeFontTB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) || number == ((char)Keys.Back))
+                e.Handled = true;
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)   // Крестик
+        {
+            _wordApp.Quit();
+            Application.Exit();
         }
     }
 }

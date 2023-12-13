@@ -48,7 +48,7 @@
             SearchWordTB = new TextBox();
             label7 = new Label();
             EditWordTB = new TextBox();
-            AligmentParagraphCB = new ComboBox();
+            SetAligmentParagraphCB = new ComboBox();
             label8 = new Label();
             EditWordBT = new Button();
             label9 = new Label();
@@ -150,9 +150,11 @@
             // 
             SetSizeFontTB.Enabled = false;
             SetSizeFontTB.Location = new Point(499, 203);
+            SetSizeFontTB.MaxLength = 3;
             SetSizeFontTB.Name = "SetSizeFontTB";
             SetSizeFontTB.Size = new Size(196, 23);
             SetSizeFontTB.TabIndex = 10;
+            SetSizeFontTB.KeyPress += SetSizeFontTB_KeyPress;
             // 
             // AddParagraphBT
             // 
@@ -199,7 +201,6 @@
             // 
             // openOFD
             // 
-            openOFD.FileName = "openOFD";
             openOFD.Filter = "*.docx | *docx";
             // 
             // label6
@@ -236,13 +237,14 @@
             EditWordTB.Size = new Size(196, 63);
             EditWordTB.TabIndex = 18;
             // 
-            // AligmentParagraphCB
+            // SetAligmentParagraphCB
             // 
-            AligmentParagraphCB.FormattingEnabled = true;
-            AligmentParagraphCB.Location = new Point(499, 247);
-            AligmentParagraphCB.Name = "AligmentParagraphCB";
-            AligmentParagraphCB.Size = new Size(196, 23);
-            AligmentParagraphCB.TabIndex = 19;
+            SetAligmentParagraphCB.FormattingEnabled = true;
+            SetAligmentParagraphCB.Items.AddRange(new object[] { "По левому краю", "По правому краю", "По центру", "Растянуть" });
+            SetAligmentParagraphCB.Location = new Point(499, 247);
+            SetAligmentParagraphCB.Name = "SetAligmentParagraphCB";
+            SetAligmentParagraphCB.Size = new Size(196, 23);
+            SetAligmentParagraphCB.TabIndex = 19;
             // 
             // label8
             // 
@@ -261,6 +263,7 @@
             EditWordBT.TabIndex = 21;
             EditWordBT.Text = "Заменить текст";
             EditWordBT.UseVisualStyleBackColor = true;
+            EditWordBT.Click += EditWordBT_Click;
             // 
             // label9
             // 
@@ -281,7 +284,7 @@
             Controls.Add(label9);
             Controls.Add(EditWordBT);
             Controls.Add(label8);
-            Controls.Add(AligmentParagraphCB);
+            Controls.Add(SetAligmentParagraphCB);
             Controls.Add(EditWordTB);
             Controls.Add(label7);
             Controls.Add(SearchWordTB);
@@ -332,7 +335,7 @@
         private TextBox SearchWordTB;
         private Label label7;
         private TextBox EditWordTB;
-        private ComboBox AligmentParagraphCB;
+        private ComboBox SetAligmentParagraphCB;
         private Label label8;
         private Button EditWordBT;
         private Label label9;
