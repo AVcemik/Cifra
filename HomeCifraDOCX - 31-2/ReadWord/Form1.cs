@@ -29,54 +29,24 @@ namespace ReadWord
         }
         private void AddParagraphBT_Click(object sender, EventArgs e)   // Кнопка добавить параграф
         {
-            BlockedAll();
-            Word.Paragraph paragraph = _doc!.Paragraphs.Add();
+                BlockedAll();
 
-            paragraph.Range.ParagraphFormat.Alignment = SetAligmentParagraphCB.SelectedIndex switch
-            {
-                0 => Word.WdParagraphAlignment.wdAlignParagraphLeft,
-                1 => Word.WdParagraphAlignment.wdAlignParagraphRight,
-                2 => Word.WdParagraphAlignment.wdAlignParagraphCenter,
-                3 => Word.WdParagraphAlignment.wdAlignParagraphJustify,
-                _ => Word.WdParagraphAlignment.wdAlignParagraphLeft
-            };
+                Word.Paragraph paragraph = _doc!.Paragraphs.Add();
 
-            paragraph.Range.Font.Name = SetFontCB.SelectedIndex switch
-            {
-                0 => "Arial",
-                1 => "Calibri",
-                2 => "Times New Roman",
-                _ => "Arial"
-            };
+                paragraph.Range.Text = " ";
+                paragraph.Alignment = SetAlignmentFont();
+                paragraph.Range.Font.Bold = SetBoldFont();
+                paragraph.Range.Font.Name = SetNameFont();
+                paragraph.Range.Font.Color = SetColorFont();
+                paragraph.Range.Font.Size = SetSizeFont();
+                paragraph.Range.Text = ParagraphTB.Text + "\n";
 
-            paragraph.Range.Font.Color = SetColorFontCB.SelectedIndex switch
-            {
-                0 => Word.WdColor.wdColorBlack,
-                1 => Word.WdColor.wdColorBlue,
-                2 => Word.WdColor.wdColorGreen,
-                3 => Word.WdColor.wdColorRed,
-                _ => Word.WdColor.wdColorBlack
-            };
+                MessageBox.Show("Параграф добавлен", "Уведомление");
 
-            if (BoldCHB.Checked)
-            {
-                paragraph.Range.Font.Bold = 1;
-            }
-            else
-            {
-                paragraph.Range.Font.Bold = 0;
-            }
+                SetupCheckLB("✅", Color.Red);
+                SetSizeFontTB.Text = "13";
 
-            paragraph.Range.Font.Size = int.Parse(SetSizeFontTB.Text);
-            paragraph.Range.Text = ParagraphTB.Text + "\n";
-
-            
-
-            MessageBox.Show("Параграф добавлен", "Уведомление");
-            SetupCheckLB("✅", Color.Red);
-            SetSizeFontTB.Text = "24";
-
-            UnBlockedAll();
+                UnBlockedAll();            
         }
         private void SaveFileBT_Click(object sender, EventArgs e)   // Кнопка сохранить
         {
@@ -141,21 +111,76 @@ namespace ReadWord
         {
             BlockedAll();
             SetupCheckLB("❎", Color.Red);
-            SetSizeFontTB.Text = "24";
+            SetSizeFontTB.Text = "13";
             SetFontCB.SelectedIndex = 0;
             SetColorFontCB.SelectedIndex = 0;
             SetAligmentParagraphCB.SelectedIndex = 0;
         }
-        private void SetSizeFontTB_KeyPress(object sender, KeyPressEventArgs e)
+        private byte SetBoldFont()  // Проверяет нажатие CheckBox
         {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) || number == ((char)Keys.Back))
-                e.Handled = true;
+            if (BoldCHB.Checked)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private string SetNameFont()    // Возвращаем strting из списка шрифтов по индексу
+        {
+           switch(SetFontCB.SelectedIndex)
+            {
+                case 0: return "Arial";
+                case 1: return "Calibri";
+                case 2: return "Times New Roman";
+                default: return "Arial";
+            };
+        }
+        private Word.WdColor SetColorFont() // Возвращаем WdColor из списка цветов по индексу
+        {
+            switch (SetColorFontCB.SelectedIndex)
+            {
+                case 0: return Word.WdColor.wdColorBlack;
+                case 1: return Word.WdColor.wdColorBlue;
+                case 2: return Word.WdColor.wdColorGreen;
+                case 3: return Word.WdColor.wdColorRed;
+                default: return Word.WdColor.wdColorBlack;
+            };
+        }
+        private int SetSizeFont()   // Возвращаем размер шрифта
+        {
+            int result = 13;
+            int.TryParse(SetSizeFontTB.Text, out result);
+
+            if (result <= 0)
+                return 13;
+            else if (result == null)
+                return 13;
+            else
+                return result;
+        }
+        private Word.WdParagraphAlignment SetAlignmentFont() // Возвращаем WdParagraphAlignment из списка выравнивания по индексу
+        {
+            switch(SetAligmentParagraphCB.SelectedIndex)
+            {
+                case 0: return Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                case 1: return Word.WdParagraphAlignment.wdAlignParagraphRight;
+                case 2: return Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                case 3: return Word.WdParagraphAlignment.wdAlignParagraphJustify;
+                default: return Word.WdParagraphAlignment.wdAlignParagraphLeft;
+            };
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)   // Крестик
         {
             _wordApp.Quit();
             Application.Exit();
+        }
+        private void SetSizeFontTB_KeyPress(object sender, KeyPressEventArgs e) // Событие ограничение ввода значение в размер шрифта
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != ((char)Keys.Back))
+                e.Handled = true;
         }
     }
 }

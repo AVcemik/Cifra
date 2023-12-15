@@ -65,6 +65,7 @@
             // 
             // filePathTB
             // 
+            filePathTB.Enabled = false;
             filePathTB.Location = new Point(12, 27);
             filePathTB.Name = "filePathTB";
             filePathTB.Size = new Size(481, 23);
@@ -110,8 +111,10 @@
             // 
             // SetFontCB
             // 
+            SetFontCB.DropDownStyle = ComboBoxStyle.DropDownList;
             SetFontCB.Enabled = false;
             SetFontCB.FormattingEnabled = true;
+            SetFontCB.ImeMode = ImeMode.NoControl;
             SetFontCB.Items.AddRange(new object[] { "Arial", "Calibri", "TimesNewRoman" });
             SetFontCB.Location = new Point(499, 115);
             SetFontCB.Name = "SetFontCB";
@@ -129,6 +132,7 @@
             // 
             // SetColorFontCB
             // 
+            SetColorFontCB.DropDownStyle = ComboBoxStyle.DropDownList;
             SetColorFontCB.Enabled = false;
             SetColorFontCB.FormattingEnabled = true;
             SetColorFontCB.Items.AddRange(new object[] { "Черный", "Синий", "Зеленый", "Красный" });
@@ -239,6 +243,7 @@
             // 
             // SetAligmentParagraphCB
             // 
+            SetAligmentParagraphCB.DropDownStyle = ComboBoxStyle.DropDownList;
             SetAligmentParagraphCB.FormattingEnabled = true;
             SetAligmentParagraphCB.Items.AddRange(new object[] { "По левому краю", "По правому краю", "По центру", "Растянуть" });
             SetAligmentParagraphCB.Location = new Point(499, 247);
