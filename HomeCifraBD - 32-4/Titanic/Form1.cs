@@ -37,50 +37,46 @@ namespace Titanic
         {
             SortedDisplay(SortPassanger.ѕассажиры“ретьего ласса);
         }
-        private async void SortedDisplay(SortPassanger sort)    // —ортировка вывода пассажиров
+        private void SortedDisplay(SortPassanger sort)    // —ортировка вывода пассажиров
         {
             ButtonEnable(false);
+
+            ListPassengerDGV.Rows.Clear();
+            if (sort == SortPassanger.¬сеѕассажиры)
             {
-                await Task.Run(() =>
-                {
-                    ListPassengerDGV.Rows.Clear();
-                    if (sort == SortPassanger.¬сеѕассажиры)
-                    {
-                        foreach (Passenger item in _passengers)
-                            ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
-                    }
-                    else if (sort == SortPassanger.¬ыжившие)
-                    {
-                        foreach (Passenger item in _passengers)
-                        {
-                            if (item.Survived == 1)
-                            {
-                                ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
-                            }
-                        }
-                    }
-                    else if (sort == SortPassanger.—овершенноЋетнии)
-                    {
-                        foreach (Passenger item in _passengers)
-                        {
-                            double.TryParse(item.Age!.Replace('.', ','), out double age);
-                            if (age >= 18)
-                                ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
-                        }
-                    }
-                    else if (sort == SortPassanger.ѕассажиры“ретьего ласса)
-                    {
-                        foreach (Passenger item in _passengers)
-                        {
-                            if (item.Pclass == 3)
-                            {
-                                ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
-                            }
-                        }
-                    }
-                });
-                ButtonEnable(true);
+                foreach (Passenger item in _passengers)
+                    ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
             }
+            else if (sort == SortPassanger.¬ыжившие)
+            {
+                foreach (Passenger item in _passengers)
+                {
+                    if (item.Survived == 1)
+                    {
+                        ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
+                    }
+                }
+            }
+            else if (sort == SortPassanger.—овершенноЋетнии)
+            {
+                foreach (Passenger item in _passengers)
+                {
+                    double.TryParse(item.Age!.Replace('.', ','), out double age);
+                    if (age >= 18)
+                        ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
+                }
+            }
+            else if (sort == SortPassanger.ѕассажиры“ретьего ласса)
+            {
+                foreach (Passenger item in _passengers)
+                {
+                    if (item.Pclass == 3)
+                    {
+                        ListPassengerDGV.Rows.Add(item.Name, SurvivedWord(item.Survived), item.Age, item.Pclass);
+                    }
+                }
+            }
+                ButtonEnable(true);
         }
         private async Task TimerLabel() // “аймер до 23:59:59
         {
@@ -90,20 +86,17 @@ namespace Titanic
             string hh = "00";
             string mm = "00";
             string ss = "00";
-            await Task.Run(() =>
+            for (int i = 0; i < 86400; i++)
             {
-                for (int i = 0; i < 86400; i++)
-                {
-                    if (h < 10) hh = "0" + h.ToString(); else hh = h.ToString();
-                    if (m < 10) mm = "0" + m.ToString(); else mm = m.ToString();
-                    if (s < 10) ss = "0" + s.ToString(); else ss = s.ToString();
-                    TimerLB.Text = $"{hh}:{mm}:{ss}";
-                    Task.Delay(10);
-                    s++;
-                    if (s >= 60) { s = 0; m++; }
-                    if (m >= 60) { m = 0; h++; }
-                }
-            });                    
+                if (h < 10) hh = "0" + h.ToString(); else hh = h.ToString();
+                if (m < 10) mm = "0" + m.ToString(); else mm = m.ToString();
+                if (s < 10) ss = "0" + s.ToString(); else ss = s.ToString();
+                TimerLB.Text = $"{hh}:{mm}:{ss}";
+                await Task.Delay(1000);
+                s++;
+                if (s >= 60) { s = 0; m++; }
+                if (m >= 60) { m = 0; h++; }
+            }                  
         }
         private static List<Passenger> ReadData()   // ¬озвращает данные из Ѕƒ
         {
