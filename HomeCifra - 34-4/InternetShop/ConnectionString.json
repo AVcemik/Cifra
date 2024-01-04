@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server=192.168.40.78;database=InternetShop;user=internet-shop-admin;password=0000"
+  }
+}
