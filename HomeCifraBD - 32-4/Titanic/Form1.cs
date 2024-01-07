@@ -21,19 +21,19 @@ namespace Titanic
             Task.Run(TimerLabel);
         }
 
-        private void AllPasangerBT_Click(object sender, EventArgs e)    // Все пассажиры
+        private void AllPasangerBT_Click(object sender, EventArgs e)    // Клик_Все пассажиры
         {
             SortedDisplay(SortPassanger.ВсеПассажиры);
         }
-        private void SurvivedPassengerBT_Click(object sender, EventArgs e)  // Выжившие
+        private void SurvivedPassengerBT_Click(object sender, EventArgs e)  // Клик_Выжившие
         {
             SortedDisplay(SortPassanger.Выжившие);
         }
-        private void AgePassengerBT_Click(object sender, EventArgs e)   // Совершеннолетние
+        private void AgePassengerBT_Click(object sender, EventArgs e)   // Клик_Совершеннолетние
         {
             SortedDisplay(SortPassanger.СовершенноЛетнии);
         }
-        private void PclassPassengerBT_Click(object sender, EventArgs e)    // Пассажири 3-го класса
+        private void PclassPassengerBT_Click(object sender, EventArgs e)    // Клик_Пассажири 3-го класса
         {
             SortedDisplay(SortPassanger.ПассажирыТретьегоКласса);
         }
