@@ -47,7 +47,6 @@ namespace InternetShop
 
                 context.SaveChanges();
             }
-
         }
         public static string StringConnection(SettingBD context)
         {
