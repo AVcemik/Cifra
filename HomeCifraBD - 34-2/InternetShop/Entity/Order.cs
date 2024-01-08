@@ -7,9 +7,9 @@ namespace InternetShop.Entity
 {
     public enum Statuse
     {
-        Created,
-        InProcessen,
-        Ready
+        Создан,
+        В_процессе,
+        Готов
     }
     public class Order
     {

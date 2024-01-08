@@ -20,12 +20,12 @@ namespace InternetShop.Entity
         public List<Order>? Orders { get; set; }
         public User() { }
 
-        public User(string? userName, string? password, string? email, List<Order> orders)
+        public User(string? userName, string? password, string? email)
         {
             UserName = userName;
             Password = password;
             Email = email;
-            Orders = orders;
+            Orders = new();
         }
     }
 }

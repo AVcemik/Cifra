@@ -6,42 +6,53 @@ namespace InternetShop
     {
         //-----------------------------------------------------
         // Здесь подставляем свои данные базы данных
-        public static string serverBD = "192.168.40.78";          // IP адрес сервера базы данных
-        public static string userBD = "Online-Shop-Admin";        // Имя пользователя базы данных
-        public static string passwordBD = "0000";                 // Пароль пользователя базы данных
-        public static string databaseBD = "OnlineShop";           // Имя базы данных
+        public static string serverBD = "192.168.10.182";       // IP адрес сервера базы данных
+        public static string userBD = "online-shop-admin";      // Имя пользователя базы данных
+        public static string passwordBD = "0000";               // Пароль пользователя базы данных
+        public static string databaseBD = "OnlineShop";         // Имя базы данных
         //-----------------------------------------------------
         static void Main(string[] args)
         {
+            List<Category> categories = new()
+            {
+                new("Еда", "Съедобное"),
+                new("Инструменты", "Есть не советую")
+            };
 
-            Category food = new("Еда", "Съедобное");
-            Category tools = new("Инструменты", "Есть не советую");
+            List<Product> listProducts = new()
+            {
+                new Product("Яблоко", "Вкусное и немного зеленое", 15, categories[1-1]),
+                new Product("Молоток", "Увеличивает пальцы и окрашивает в красный цвет", 500, categories[2-1]),
+                new Product("Банан", "Желтый, не бумеранг", 86, categories[1-1]),
+                new Product("Мухомор", "Красный в пятнышку, окуратно но есть можно", 10, categories[1-1]),
+                new Product("Наковальня", "На нее можно положить яблоко и ударить молотком", 2499, categories[2-1])
+            };
 
             List<Product> listProductOne = new()
             {
-                new Product("Яблоко", "Вкусное и немного зеленое", 15, food),
-                new Product("Молоток", "Увеличивает пальцы и окрашивает в красный цвет", 500, tools),
-                new Product("Банан", "Желтый, не бумеранг", 86, food),
-                new Product("Мухомор", "Красный в пятнышку, окуратно но есть можно", 10, food),
-                new Product("Наковальня", "На нее можно положить яблоко и ударить молотком", 2499, tools),
+                listProducts[2-1], listProducts[3-1], listProducts[4-1], listProducts[5-1]
             };
             List<Product> listProductTwo = new()
             {
-                new Product("Яблоко", "Вкусное и немного зеленое", 15, food),
-                new Product("Молоток", "Увеличивает пальцы и окрашивает в красный цвет", 500, tools)
+                listProducts[1-1], listProducts[3-1], listProducts[4-1]
             };
 
-            User cemik = new("cemik", "Cifra39", "aveal.cemik@gmail.com", new List<Order>());
-            User basenka = new("basenka", "Cifra39", "basenka@gmail.com", new List<Order>());
 
-            Order orderOne = new(DateTime.Now, Statuse.InProcessen, cemik, listProductOne);
-            Order orderTwo = new(DateTime.Now, Statuse.Created, basenka, listProductTwo);
+            User cemik = new("cemik", "Cifra39", "aveal.cemik@gmail.com");
+            User basenka = new("basenka", "Cifra39", "basenka@gmail.com");
+
+            Order orderOne = new(DateTime.Now, Statuse.В_процессе, cemik, listProductOne);
+            Order orderTwo = new(DateTime.Now, Statuse.Создан, basenka, listProductTwo);
 
             cemik.Orders!.Add(orderOne);
             basenka.Orders!.Add(orderTwo);
 
             using (InternetStoreContext context = new())
             {
+                context.Categories.AddRange(categories);
+                context.Products.AddRange(listProducts);
+                context.Add(cemik);
+                context.Add(basenka);
                 context.Orders.Add(orderOne);
                 context.Orders.Add(orderTwo);
 
