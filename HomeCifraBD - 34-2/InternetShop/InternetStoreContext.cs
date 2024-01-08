@@ -27,13 +27,12 @@ namespace InternetShop
         {
             var vers = new Version(6, 0, 2);
             var MySql = new MySqlServerVersion(vers);
-            //-----------------------------------------------------
-            // Здесь подставляем свои данные базы данных
+
             string serverBD = InternetShop.StringConnection(SettingBD.serverBD);
             string userBD = InternetShop.StringConnection(SettingBD.userBD);
             string passwordBD = InternetShop.StringConnection(SettingBD.passwordBD);
             string databaseBD = InternetShop.StringConnection(SettingBD.databaseBD);
-            //-----------------------------------------------------
+
             string Connect = $"server={serverBD};user={userBD};password={passwordBD};database={databaseBD};";
             optionsBuilder.UseMySql(Connect, MySql);
         }
