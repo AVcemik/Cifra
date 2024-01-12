@@ -8,18 +8,23 @@ namespace Work_1
 {
     internal class Facult
     {
-        public Exam? Exam { get; set; }
-        public string? Name { get; private set; }
+        public string? FacultName { get; set; }
+        public List<Student> Students { get; private set; }
+        public List<Exam> Exam { get; set; }
         public Facult(string name)
         {
-            Name = name;
+            FacultName = name;
+            Students = new();
+            Exam = new();
+        }
+        public void AddExam(Exam exam)
+        {
+            Exam.Add(exam);
+        }
+        public void RegistrationStudent(Student student)
+        {
+            Students.Add(student);
         }
 
-        //private List<Abiturient> abiturients;
-        //public Facult(string? name)
-        //{
-        //    Name=name;
-        //    abiturients = new List<Abiturient>();
-        //}
     }
 }

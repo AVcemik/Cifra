@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Work_1
 {
-    internal class Exam
+    public class Exam
     {
-        public string? Name { get; private set; }
-        public Mark? Mark { get; set; }
+        public string? ExamName { get; private set; }
+        public int Mark { get; set; }
 
-        public void SetName(string name)
+        public Exam (string examName)
         {
-            Name = name;
+            ExamName = examName;
         }
     }
 }

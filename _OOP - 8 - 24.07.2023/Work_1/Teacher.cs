@@ -17,9 +17,10 @@ namespace Work_1
             Name=name!;
         }
 
-        public void SetMark(int marks)
+        public void SetMark(Student abiturient, Exam exam, int mark)
         {
-            Mark mark = new(marks);
+            exam.Mark = mark;
+            abiturient.Examen.Add(exam);
         }
     }
 }

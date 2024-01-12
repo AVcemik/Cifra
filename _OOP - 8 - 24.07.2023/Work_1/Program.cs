@@ -1,34 +1,38 @@
 ﻿using Work_1;
-// Домашняя работа
-// 1.	Задача на взаимодействие между классами.
-// Разработать систему «Вступительные экзамены».
-// Абитуриент регистрируется на Факультет, сдает Экзамены.
-// Преподаватель выставляет Оценку.
-// Система подсчитывает средний бал и определяет Абитуриента,
-// зачисленного в учебное заведение.
 
-// абитуриент > факудьтет > Экзамен
-// Преподователь > Оценка
+Exam matematika = new Exam("Математика");
+Exam informatika = new Exam("Информатика");
+Exam programirovanie = new Exam("Програмирование");
 
 Facult programist = new("Програмист");
+programist.AddExam(matematika);
+programist.AddExam(informatika);
+programist.AddExam(programirovanie);
 
-Abiturient abiturient1 = new("Иванов")
+Student studentOne = new("Иванов");
+programist.RegistrationStudent(studentOne);
+
+Teacher teacher = new("Преподователь");
+
+teacher.SetMark(studentOne, studentOne.Facult.Exam[0], 72);
+teacher.SetMark(studentOne, studentOne.Facult.Exam[1], 100);
+teacher.SetMark(studentOne, studentOne.Facult.Exam[2], 93);
+
+
+Resultat(studentOne);
+static void Resultat(Student student)
 {
-    Facult = programist
-};
-Teacher teacher = new("Преподователь")
-{
-    Facult = programist
-};
-Exam exam = new();
+	int succes = 80;
+    double averageMark = 0;
+	for (int i = 0; i < student.Examen.Count; i++)
+	{
+		averageMark += student.Examen[i].Mark;
+	}
+	averageMark /= student.Examen.Count;
 
-
-teacher.Facult.Exam!.SetName(abiturient1.Name);
-teacher.SetMark(5);
-
-Console.WriteLine();
-Console.WriteLine($"Средний был: {abiturient1.Facult.Exam!.Mark!.Marks}");
-
-
-//oop.Exam!.Mark = 5;
+	if (averageMark >= succes)
+        Console.WriteLine($"Проходной бал {succes}\tВаш средний бал {averageMark}\tВы поступили");
+	else
+        Console.WriteLine($"Проходной бал {succes}\tВаш средний бал {averageMark}\tВы не поступили");
+}
 
