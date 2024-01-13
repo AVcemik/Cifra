@@ -9,7 +9,7 @@ namespace InternetShop.Entity
 
         [Key]
         [Column("Category_id")]
-        public int Id { get; set; }
+        public int Category_Id { get; set; }
         [Column(TypeName ="VARCHAR(25)")]
         [Required]
         public string? Name { get; set; }

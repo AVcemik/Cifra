@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "server=192.168.40.78;database=HomeWork_34_3;user=cemik;password=0000"
+  }
+}

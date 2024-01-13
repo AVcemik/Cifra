@@ -15,7 +15,7 @@ namespace InternetShop.Entity
     {
         [Key]
         [Column("Order_id")]
-        public int Id { get; set; }
+        public int Order_Id { get; set; }
         [Column(TypeName = "DATETIME")]
         public DateTime Date { get; set; }
         [Column(TypeName = "VARCHAR(25)")]

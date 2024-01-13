@@ -6,8 +6,8 @@ namespace InternetShop
     {
         //-----------------------------------------------------
         // Здесь подставляем свои данные базы данных
-        public static string serverBD = "192.168.10.182";       // IP адрес сервера базы данных
-        public static string userBD = "online-shop-admin";      // Имя пользователя базы данных
+        public static string serverBD = "192.168.40.78";        // IP адрес сервера базы данных
+        public static string userBD = "Online-Shop-Admin";      // Имя пользователя базы данных
         public static string passwordBD = "0000";               // Пароль пользователя базы данных
         public static string databaseBD = "OnlineShop";         // Имя базы данных
         //-----------------------------------------------------

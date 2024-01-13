@@ -8,7 +8,7 @@ namespace InternetShop.Entity
     {
         [Key]
         [Column("Product_id")]
-        public int Id { get; set; }
+        public int Product_Id { get; set; }
         [Column(TypeName = "VARCHAR(40)")]
         public string? Name { get; set; }
         public string? Description { get; set; }
