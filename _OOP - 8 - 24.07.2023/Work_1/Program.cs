@@ -9,8 +9,7 @@ programist.AddExam(matematika);
 programist.AddExam(informatika);
 programist.AddExam(programirovanie);
 
-Student studentOne = new("Иванов");
-programist.RegistrationStudent(studentOne);
+Student studentOne = new("Иванов", programist);
 
 Teacher teacher = new("Преподователь");
 
@@ -31,8 +30,8 @@ static void Resultat(Student student)
 	averageMark /= student.Examen.Count;
 
 	if (averageMark >= succes)
-        Console.WriteLine($"Проходной бал {succes}\tВаш средний бал {averageMark}\tВы поступили");
+        Console.WriteLine($"Проходной бал {succes}\nВаш средний бал {averageMark:F2}\nВы поступили");
 	else
-        Console.WriteLine($"Проходной бал {succes}\tВаш средний бал {averageMark}\tВы не поступили");
+        Console.WriteLine($"Проходной бал {succes}\nВаш средний бал {averageMark:F2}\nВы не поступили");
 }
 

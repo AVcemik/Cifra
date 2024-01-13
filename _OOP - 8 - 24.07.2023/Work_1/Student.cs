@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Work_1
 {
@@ -10,11 +6,12 @@ namespace Work_1
     {
         public string? Name { get; set; }
         public Facult Facult { get; set; }
-        public List<Exam> Examen { get; set; }
+        public List<Exam> Examen { get; set; } = new();
 
-        public Student(string? name)
+        public  Student(string? name, Facult facult)
         {
             Name = name;
+            Facult = facult;
         }
     }
 }
