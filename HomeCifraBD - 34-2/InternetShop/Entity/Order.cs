@@ -23,15 +23,18 @@ namespace InternetShop.Entity
         [ForeignKey("User_id")]
         public User? User { get; set; }
         [ForeignKey("Product_id")]
-        public List<Product>? Products { get; set; }
+        [InverseProperty("Order")]
+        public List<OrderProduct> OrderProducts { get; set; }
+        //public List<Product>? Products { get; set; }
         public Order() { }
 
-        public Order(DateTime date, Statuse status, User? user, List<Product>? products)
+        public Order(DateTime date, Statuse status, User? user /*List<OrderProduct>? products*/)
         {
             Date = date;
             Status = status;
             User = user;
-            Products = products;
+            //Products = products;
+            //OrderProducts = products;
         }
     }
 }

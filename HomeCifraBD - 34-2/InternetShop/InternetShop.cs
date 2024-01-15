@@ -4,9 +4,10 @@ namespace InternetShop
 {
     internal class InternetShop
     {
+        private static Dictionary<string, string> ipAdress = new() { { "cifra", "192.168.10.182"}, { "home", "192.168.40.78"},{ "work", "192.168.0.10"} };
         //-----------------------------------------------------
         // Здесь подставляем свои данные базы данных
-        public static string serverBD = "192.168.40.78";        // IP адрес сервера базы данных
+        public static string serverBD = ipAdress["cifra"];        // IP адрес сервера базы данных
         public static string userBD = "Online-Shop-Admin";      // Имя пользователя базы данных
         public static string passwordBD = "0000";               // Пароль пользователя базы данных
         public static string databaseBD = "OnlineShop";         // Имя базы данных
@@ -41,8 +42,10 @@ namespace InternetShop
             User cemik = new("cemik", "Cifra39", "aveal.cemik@gmail.com");
             User basenka = new("basenka", "Cifra39", "basenka@gmail.com");
 
-            Order orderOne = new(DateTime.Now, Statuse.В_процессе, cemik, listProductOne);
-            Order orderTwo = new(DateTime.Now, Statuse.Создан, basenka, listProductTwo);
+            Order orderOne = new(DateTime.Now, Statuse.В_процессе, cemik);
+            Order orderTwo = new(DateTime.Now, Statuse.Создан, basenka);
+
+
 
             cemik.Orders!.Add(orderOne);
             basenka.Orders!.Add(orderTwo);

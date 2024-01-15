@@ -16,6 +16,10 @@ namespace InternetShop.Entity
         public decimal Price { get; set; }
         [ForeignKey("Category_id")]
         public Category? Categorys {get; set;}
+        [ForeignKey("Order_id")]
+        [InverseProperty("Product")]
+        public List<OrderProduct> OrderProducts { get; set; }
+        //public List<Order> Orders { get; set; }
         public Product() { }
 
         public Product(string? name, string? description, decimal price, Category? category)

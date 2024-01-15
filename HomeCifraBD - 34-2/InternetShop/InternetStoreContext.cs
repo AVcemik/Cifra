@@ -17,7 +17,7 @@ namespace InternetShop
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Order> Orders { get; set; } = null!;
-        public DbSet<OrderAndProduct> OrdersAndProducts { get; set; } = null!;
+        //public DbSet<OrderAndProduct> OrdersAndProducts { get; set; } = null!;
         public InternetStoreContext()
         {
             Database.EnsureDeleted();
