@@ -19,7 +19,7 @@
             <TextBlock Text="По середине синего прямоугольника"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       FontSize="32"
+                       FontSize="28"
                        TextWrapping="Wrap"
                        TextAlignment="Center"/>
         </Grid>
@@ -29,7 +29,17 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Rectangle Fill="#FFF0B5"/>
-            
+            <Rectangle Grid.Row="1"
+                       Width="133"
+                       Fill="#A0BBFF"/>
+            <TextBlock Text="Середина белого"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="24"
+                       Width="133"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>
