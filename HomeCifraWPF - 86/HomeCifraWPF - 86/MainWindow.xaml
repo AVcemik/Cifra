@@ -1,0 +1,59 @@
+﻿<Window x:Class="HomeCifraWPF___86.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeCifraWPF___86"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="600">
+    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Style="{StaticResource BaseButtonStyle}"/>
+            <Button Style="{StaticResource BaseButtonStyle}"/>
+            <Button Style="{StaticResource BaseButtonStyle}"/>
+            <Button Style="{StaticResource BaseButtonStyle}"/>
+            <Button Style="{StaticResource GrayButtonStyle}"/>
+            <Button Style="{StaticResource GrayButtonStyle}"/>
+            <Button Style="{StaticResource GrayButtonStyle}"/>
+            <Button Style="{StaticResource GrayButtonStyle}"/>
+            <Button Style="{StaticResource CyanButtonStyle}"/>
+            <Button Style="{StaticResource CyanButtonStyle}"/>
+            <Button Style="{StaticResource CyanButtonStyle}"/>
+            <Button Style="{StaticResource CyanButtonStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource BaseTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource GradientTextboxStyle}"/>
+            <TextBox Style="{StaticResource CyanTextboxStyle}"/>
+            <TextBox Style="{StaticResource CyanTextboxStyle}"/>
+            <TextBox Style="{StaticResource CyanTextboxStyle}"/>
+            <TextBox Style="{StaticResource CyanTextboxStyle}"/>
+            <TextBox Style="{StaticResource CyanTextboxStyle}"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlackCheckboxStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window>

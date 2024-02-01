@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Базовый стиль CheckBox-->
+    <Style x:Key="BaseCheckboxStyle" TargetType="CheckBox">
+        <Setter Property="Content" Value="Галочка"/>
+        <Setter Property="Margin" Value="10,5,10,5"/>
+    </Style>
+    
+    <!--Черный стиль-->
+    <Style x:Key="BlackCheckboxStyle" TargetType="CheckBox"
+           BasedOn="{StaticResource BaseCheckboxStyle}">
+        <Setter Property="Background" Value="Black"/>
+    </Style>
+    
+    <!--Градиентный стиль-->
+    <Style x:Key="GradientCheckboxStyle" TargetType="CheckBox"
+           BasedOn="{StaticResource BaseCheckboxStyle}"
+           <Setter Property="Background">
+                <Setter.Value>
+            <RadialGradientBrush>
+                
+            </RadialGradientBrush>
+                </Setter.Value>
+           </Setter>
+</ResourceDictionary>
