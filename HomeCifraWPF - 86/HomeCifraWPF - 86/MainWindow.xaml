@@ -54,6 +54,18 @@
             <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
             <CheckBox Style="{StaticResource BaseCheckboxStyle}"/>
             <CheckBox Style="{StaticResource BlackCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlackCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlackCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlackCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource GradientCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource GradientCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource GradientCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource GradientCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlockedBaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlockedBaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlockedBaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlockedBaseCheckboxStyle}"/>
+            <CheckBox Style="{StaticResource BlockedBaseCheckboxStyle}"/>
         </StackPanel>
     </Grid>
 </Window>

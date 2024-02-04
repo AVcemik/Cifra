@@ -14,12 +14,20 @@
     
     <!--Градиентный стиль-->
     <Style x:Key="GradientCheckboxStyle" TargetType="CheckBox"
-           BasedOn="{StaticResource BaseCheckboxStyle}"
-           <Setter Property="Background">
+           BasedOn="{StaticResource BaseCheckboxStyle}">
+        <Setter Property="Background">
                 <Setter.Value>
-            <RadialGradientBrush>
-                
-            </RadialGradientBrush>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="DarkRed" Offset="1.0"/>
+                    </RadialGradientBrush>
                 </Setter.Value>
-           </Setter>
+        </Setter>
+    </Style>
+    
+    <!--Базоый заблокированный стиль-->
+    <Style x:Key="BlockedBaseCheckboxStyle" TargetType="CheckBox"
+           BasedOn="{StaticResource BaseCheckboxStyle}">
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
 </ResourceDictionary>
