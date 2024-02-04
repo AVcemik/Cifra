@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--Базовый стиль бордюра-->
+    <Style x:Key="BaseBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+    
+    <!--Стиль бордюра для текстбокса-->
+    <Style x:Key="TextBoxBorderStyle" TargetType="Border"
+           BasedOn="{StaticResource BaseBorderStyle}">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+    
+    <!--Стиль бордюра для кнопки-->
+    <Style x:Key="ButtonBorderStyle" TargetType="Border"
+           BasedOn="{StaticResource BaseBorderStyle}">
+        <Setter Property="Background" Value="#70BB70"/>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeCifraWPF - 88", "HomeCifraWPF - 88\HomeCifraWPF - 88.csproj", "{E2C0D061-8173-4AAD-A407-CA0E129DBE59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{D1A97D76-2AED-4188-AD94-5974F5EA1724}"
+	ProjectSection(SolutionItems) = preProject
+		Dev.txt = Dev.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2C0D061-8173-4AAD-A407-CA0E129DBE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2C0D061-8173-4AAD-A407-CA0E129DBE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2C0D061-8173-4AAD-A407-CA0E129DBE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2C0D061-8173-4AAD-A407-CA0E129DBE59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C00019E2-1FDF-4B15-8510-3E659E38B41C}
+	EndGlobalSection
+EndGlobal
