@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using HomeCifraWPF___88.Context;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,19 @@ namespace HomeCifraWPF___88
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void AddDataBT_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new ApplicationContext())
+            {
+                People people = context.Peopls.First();
+
+                FirstNameTB.Text = people.FirstName;
+                LastNameTB.Text = people.LastName;
+                AgeTB.Text = people.Age.ToString();
+            }
         }
     }
 }

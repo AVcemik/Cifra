@@ -11,14 +11,14 @@
         <StackPanel Margin="20">
             <Label Content="Имя"
                    Style="{StaticResource BaseLabelStyle}"/>
-            <TextBox x:Name="FirstNameTB"/>
+            <TextBox x:Name="FirstNameTB" Text="asdf"/>
             <Label Content="Фамилия"
                    Style="{StaticResource BaseLabelStyle}"/>
             <TextBox x:Name="LastNameTB"/>
             <Label Content="Возраст"
                    Style="{StaticResource BaseLabelStyle}"/>
             <TextBox x:Name="AgeTB"/>
-            <Button Content="Получить данные"/>
+            <Button x:Name="AddDataBT" Content="Получить данные" Click="AddDataBT_Click"/>
         </StackPanel>
     </Grid>
 </Window>

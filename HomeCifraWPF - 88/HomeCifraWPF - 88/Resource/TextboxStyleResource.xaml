@@ -5,10 +5,10 @@
         <Setter Property="Margin" Value="0,0,0,5"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
+                <ControlTemplate TargetType="TextBox">
                     <Border Style="{DynamicResource TextBoxBorderStyle}">
+                        <TextBlock Text="dddd"/>
                     </Border>
-                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
