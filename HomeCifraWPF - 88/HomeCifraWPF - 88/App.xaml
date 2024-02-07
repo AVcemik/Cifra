@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resource/TextboxStyleResource.xaml"/>
-                <ResourceDictionary Source="Resource/LableStyleResource.xaml"/>
+                <ResourceDictionary Source="Resource/TextblockStyleResource.xaml"/>
                 <ResourceDictionary Source="Resource/BorderStaylResource.xaml"/>
                 <ResourceDictionary Source="Resource/ButtonStyleResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>

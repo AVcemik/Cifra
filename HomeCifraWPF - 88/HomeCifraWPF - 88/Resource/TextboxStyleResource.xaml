@@ -6,8 +6,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Style="{DynamicResource TextBoxBorderStyle}">
-                        <TextBlock Text="dddd"/>
+                    <Border Style="{DynamicResource BaseBorderStyle}">
+                        <TextBlock x:Name="Text" Text="{TemplateBinding Text}"
+                                   Style="{DynamicResource ContainerTextblockStyle}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

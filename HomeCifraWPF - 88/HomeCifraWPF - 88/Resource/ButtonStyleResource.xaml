@@ -10,8 +10,8 @@
                         <Border Style="{StaticResource ButtonBorderStyle}">
                             <ContentPresenter/>
                         </Border>
-                        <Label Content="Получить данные"
-                               Style="{StaticResource AlignmentLabelStyle}"/>
+                        <TextBlock Text="Получить данные"
+                               Style="{StaticResource AlignmentTextblocklStyle}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

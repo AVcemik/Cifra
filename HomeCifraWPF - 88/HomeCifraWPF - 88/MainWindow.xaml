@@ -8,16 +8,16 @@
         Title="MainWindow" Height="420" Width="500">
     <Grid>
         <Rectangle Fill="#FFCC40"/>
-        <StackPanel Margin="20">
-            <Label Content="Имя"
-                   Style="{StaticResource BaseLabelStyle}"/>
-            <TextBox x:Name="FirstNameTB" Text="asdf"/>
-            <Label Content="Фамилия"
-                   Style="{StaticResource BaseLabelStyle}"/>
-            <TextBox x:Name="LastNameTB"/>
-            <Label Content="Возраст"
-                   Style="{StaticResource BaseLabelStyle}"/>
-            <TextBox x:Name="AgeTB"/>
+        <StackPanel x:Name="DataStack" Margin="20" >
+            <TextBlock Text="Имя" 
+                   Style="{StaticResource BaseTextbloclStyle}"/>
+            <TextBox x:Name="FirstNameTB" Text="{Binding FirstName}"/>
+            <TextBlock Text="Фамилия"
+                   Style="{StaticResource BaseTextbloclStyle}"/>
+            <TextBox x:Name="LastNameTB" Text="{Binding LastName}"/>
+            <TextBlock Text="Возраст"
+                   Style="{StaticResource BaseTextbloclStyle}"/>
+            <TextBox x:Name="AgeTB" Text="{Binding Age}"/>
             <Button x:Name="AddDataBT" Content="Получить данные" Click="AddDataBT_Click"/>
         </StackPanel>
     </Grid>

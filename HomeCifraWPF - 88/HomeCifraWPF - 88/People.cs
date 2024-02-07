@@ -16,11 +16,11 @@ namespace HomeCifraWPF___88
         {
         }
 
-        public People(string? firstName, string? lasrName, int age)
+        public People(string? firstName, string? lasrName, string age)
         {
             FirstName = firstName;
             LastName = lasrName;
-            Age = age;
+            Age = int.Parse(age);
         }
     }
 }
