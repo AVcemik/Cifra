@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="TextBlockStyleBase" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+
+    <Style x:Key="TextBlockStyleHeader" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyleBase}">
+        <Setter Property="Foreground" Value="Gray"/>
+    </Style>
+
+    <Style x:Key="TextBlockStyleContext" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockStyleBase}">
+        <Setter Property="Foreground" Value="DarkBlue"/>
+    </Style>
+</ResourceDictionary>

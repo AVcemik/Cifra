@@ -1,0 +1,14 @@
+﻿<Application x:Class="HomeCifraWPF___93.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HomeCifraWPF___93"
+             StartupUri="Views/windows/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource/TextBlockStyleResource.xaml"/>
+                <ResourceDictionary Source="Resource/ButtonStyleResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
