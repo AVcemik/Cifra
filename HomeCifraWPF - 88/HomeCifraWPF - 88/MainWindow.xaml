@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeCifraWPF___88"
         mc:Ignorable="d"
-        Title="MainWindow" Height="420" Width="500">
+        Title="Считыватель данных" Height="420" Width="500"
+        WindowStartupLocation="CenterOwner">
+    
+    
+    
     <Grid>
         <Rectangle Fill="#FFCC40"/>
         <StackPanel x:Name="DataStack" Margin="20" >

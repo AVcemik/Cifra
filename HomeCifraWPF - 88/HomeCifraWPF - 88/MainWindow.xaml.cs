@@ -21,14 +21,13 @@ namespace HomeCifraWPF___88
         public MainWindow()
         {
             InitializeComponent();
-
-            
-
         }
 
         private void AddDataBT_Click(object sender, RoutedEventArgs e)
         {
+
             AddDataBT.IsEnabled = false;
+
             using (var context = new ApplicationContext())
             {
                 Data MyData = new Data(context.Peopls.FirstOrDefault()!);

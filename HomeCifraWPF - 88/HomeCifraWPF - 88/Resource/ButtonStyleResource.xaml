@@ -7,12 +7,24 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Grid>
-                        <Border Style="{StaticResource ButtonBorderStyle}">
+                        <Border x:Name="ButtonBorder" Style="{StaticResource ButtonBorderStyle}">
                             <ContentPresenter/>
                         </Border>
-                        <TextBlock Text="Получить данные"
+                        <TextBlock x:Name="ButtonText" Text="Получить данные" 
                                Style="{StaticResource AlignmentTextblocklStyle}"/>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#90DD90"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseCaptured" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#509950"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#CCCCCC"/>
+                            <Setter TargetName="ButtonText" Property="Foreground" Value="#808080"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
