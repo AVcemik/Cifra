@@ -1,0 +1,65 @@
+﻿<Window x:Class="HomeCifraWPF___96.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeCifraWPF___96"
+        mc:Ignorable="d"
+        xmlns:vm="clr-namespace:HomeCifraWPF___96.ViewModel"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <DockPanel >
+            <DockPanel.DataContext>
+                <vm:MainWindowViewModel/>
+            </DockPanel.DataContext>
+            <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False"
+                      DockPanel.Dock="Top">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ид" 
+                            Binding="{Binding Id}"
+                            Width="30"/>
+                    <DataGridTextColumn Header="Название" 
+                            Binding="{Binding Name}"
+                            Width="150"/>
+                    <DataGridTextColumn Header="Описание" 
+                            Binding="{Binding Description}"
+                            Width="*"/>
+                    <DataGridTextColumn Header="Цена" 
+                            Binding="{Binding Price}"
+                            Width="75"/>
+                    <DataGridTextColumn Header="Кол-во" 
+                            Binding="{Binding Quantity}"
+                            Width="50"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1">
+                    <Button Content="Сохранить данные в CSV"
+                            Height="30" Width="150"
+                            Margin="10"
+                            HorizontalAlignment="Center"
+                            Command="{Binding SaveDataCSVFileCommand}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <Button Content="Выход"
+                            Height="30" Width="150"
+                            Margin="10"
+                            HorizontalAlignment="Right"
+                            Command="{Binding ExitApplicationCommand}"/>
+                </StackPanel>
+            </Grid>
+            
+           
+        </DockPanel>
+        
+    </Grid>
+</Window>
