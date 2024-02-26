@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Базовый стиль-->
+    <Style x:Key="TextBlockBaseStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+     <!--Стиль для заголовков-->
+    <Style x:Key="TextBlockHeaderStyle" TargetType="TextBlock"
+           BasedOn="{StaticResource TextBlockBaseStyle}">
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
+    
+    
+</ResourceDictionary>

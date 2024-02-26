@@ -1,0 +1,46 @@
+﻿<Window x:Class="InternetShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternetShop"
+        mc:Ignorable="d"
+        Title="Офлайн магазин" Height="700" Width="1000"
+        Background="#1e283e">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Главное меню"/>
+                <MenuItem Header="Справка"/>
+                <MenuItem Header="Помощь"/>
+        </Menu>
+        <Grid DockPanel.Dock="Top" Margin="20">
+
+            <TextBlock Text="Офлайн магазин покупок"
+                       Style="{StaticResource TextBlockHeaderStyle}"
+                       Width="300"
+                       HorizontalAlignment="Left"/>
+            <Button Content="Открыть каталог"
+                    Style="{StaticResource ButtonCatalogStyle}"
+                    HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" CornerRadius="10" Background="#162036"/>
+            <StackPanel Grid.Row="0" Margin="10">
+                <TextBlock Text="Меню магазина"
+                       Style="{StaticResource TextBlockHeaderStyle}"
+                       VerticalAlignment="Top" Margin="0,10"
+                       Grid.Row="0"/>
+                <Button
+                    Style="{StaticResource ButtonMenuStyle}">
+                    
+                </Button>
+            </StackPanel>
+            
+        </Grid>
+    </DockPanel>
+</Window>
