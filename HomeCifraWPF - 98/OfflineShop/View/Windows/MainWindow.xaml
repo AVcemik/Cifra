@@ -30,16 +30,63 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Row="0" CornerRadius="10" Background="#162036"/>
-            <StackPanel Grid.Row="0" Margin="10">
-                <TextBlock Text="Меню магазина"
-                       Style="{StaticResource TextBlockHeaderStyle}"
-                       VerticalAlignment="Top" Margin="0,10"
-                       Grid.Row="0"/>
-                <Button
-                    Style="{StaticResource ButtonMenuStyle}">
-                    
-                </Button>
-            </StackPanel>
+            <Grid Grid.Row="0" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Меню магазина"
+        Style="{StaticResource TextBlockHeaderStyle}"
+        VerticalAlignment="Top" Margin="0,10"
+        Grid.Row="0"/>
+
+                    <Button Style="{StaticResource ButtonMenuStyle}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="\Resources\Icon\MenuCategoryIcon.png"/>
+                                <TextBlock Text="Категории товаров"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource ButtonMenuStyle}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="\Resources\Icon\MenuSearchIcon.png"/>
+                                <TextBlock Text="Поиск товаров"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource ButtonMenuStyle}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="\Resources\Icon\MenuRatingIcon.png"/>
+                                <TextBlock Text="Бонусная программа"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource ButtonMenuStyle}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="\Resources\Icon\MenuBasketIcon.png"/>
+                                <TextBlock Text="Корзина"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource ButtonMenuStyle}">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="\Resources\Icon\MenuPersonalityIcon.png"/>
+                                <TextBlock Text="Личный кабинет"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Button Grid.Row="1" 
+                        Style="{StaticResource ResourceKey=ButtonOpenBasketStyle}"
+                        Content="Перейти к корзине"/>
+            </Grid>
+            
             
         </Grid>
     </DockPanel>

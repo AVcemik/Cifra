@@ -21,24 +21,24 @@
     <EmbeddedResource Include="ClothProducts.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuBasketIcon.png">
+    <Resource Include="Resources\Icon\MenuBasketIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuCategoryIcon.png">
+    </Resource>
+    <Resource Include="Resources\Icon\MenuCategoryIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuPersonalityIcon.png">
+    </Resource>
+    <Resource Include="Resources\Icon\MenuPersonalityIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuRatingIcon.png">
+    </Resource>
+    <Resource Include="Resources\Icon\MenuRatingIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuRightArrow.png">
+    </Resource>
+    <Resource Include="Resources\Icon\MenuRightArrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icon\MenuSearchIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Resource>
+    <Resource Include="Resources\Icon\MenuSearchIcon.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
