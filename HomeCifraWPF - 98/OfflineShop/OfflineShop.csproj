@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClothProducts.csv" />
     <None Remove="Resources\Icon\MenuBasketIcon.png" />
     <None Remove="Resources\Icon\MenuCategoryIcon.png" />
     <None Remove="Resources\Icon\MenuPersonalityIcon.png" />
@@ -18,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="ClothProducts.csv">
+    <PackageReference Include="CsvHelper" Version="31.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ClothProducts.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Resource Include="Resources\Icon\MenuBasketIcon.png">
@@ -39,12 +42,6 @@
     <Resource Include="Resources\Icon\MenuSearchIcon.png">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModel\Base\" />
   </ItemGroup>
 
 </Project>
