@@ -8,10 +8,10 @@
         {
             _mediator = mediator;
         }
-        public virtual void Send(string message)
+        public virtual void Send(string msg)
         {
-            _mediator.Send(message, this);
+            _mediator.Send(msg, this);
         }
-        public abstract void Notify(string message);
+        public abstract void Notify(string msg);
     }
 }

@@ -6,9 +6,9 @@
         {
         }
 
-        public override void Notify(string message)
+        public override void Notify(string msg)
         {
-            Console.WriteLine("Сообщение повару: " + message);
+            Console.WriteLine("Сообщение повару: " + msg);
         }
     }
 }
